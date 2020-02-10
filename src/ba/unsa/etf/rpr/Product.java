@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.Location.Location;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Product {
     int id;
@@ -15,6 +16,9 @@ public class Product {
     LocalDateTime lifetime;
     LocalDateTime dateOfProduction;
     Location locationOfProduction;
+
+    public Product() {
+    }
 
     public Product(int id, String name, double price) {
         this.id = id;
@@ -131,5 +135,18 @@ public class Product {
 
     public void setLocationOfProduction(Location locationOfProduction) {
         this.locationOfProduction = locationOfProduction;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
