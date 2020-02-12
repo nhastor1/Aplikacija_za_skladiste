@@ -9,8 +9,8 @@ public class Product {
     int id;
     String name;
     double price;
-    int Guarantee = 0;
-    int discount = 0;
+    int guarantee = 0;
+    double discount = 0;
     Category category = new Category();
     Manufacturer manufacturer = new Manufacturer();
     LocalDateTime lifetime;
@@ -26,29 +26,29 @@ public class Product {
         this.price = price;
     }
 
-    public Product(int id, String name, double price, int guarantee, int discount) {
+    public Product(int id, String name, double price, int guarantee, double discount) {
         this.id = id;
         this.name = name;
         this.price = price;
-        Guarantee = guarantee;
+        this.guarantee = guarantee;
         this.discount = discount;
     }
 
-    public Product(int id, String name, double price, int guarantee, int discount, Category category, Manufacturer manufacturer) {
+    public Product(int id, String name, double price, int guarantee, double discount, Category category, Manufacturer manufacturer) {
         this.id = id;
         this.name = name;
         this.price = price;
-        Guarantee = guarantee;
+        this.guarantee = guarantee;
         this.discount = discount;
         this.category = category;
         this.manufacturer = manufacturer;
     }
 
-    public Product(int id, String name, double price, int guarantee, int discount, Category category, Manufacturer manufacturer, LocalDateTime lifetime, LocalDateTime dateOfProduction, Location locationOfProduction) {
+    public Product(int id, String name, double price, int guarantee, double discount, Category category, Manufacturer manufacturer, LocalDateTime lifetime, LocalDateTime dateOfProduction, Location locationOfProduction) {
         this.id = id;
         this.name = name;
         this.price = price;
-        Guarantee = guarantee;
+        this.guarantee = guarantee;
         this.discount = discount;
         this.category = category;
         this.manufacturer = manufacturer;
@@ -82,18 +82,18 @@ public class Product {
     }
 
     public int getGuarantee() {
-        return Guarantee;
+        return guarantee;
     }
 
     public void setGuarantee(int guarantee) {
-        Guarantee = guarantee;
+        this.guarantee = guarantee;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 

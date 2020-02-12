@@ -1,11 +1,14 @@
 package ba.unsa.etf.rpr;
 
+import java.time.LocalDateTime;
+
 public class ProductOrder {
     int id;
     Product product;
     int amount;
     Invoice invoice;
-    int discount = 0;
+    double discount = 0;
+    LocalDateTime timeOfOrder = LocalDateTime.now();
 
     public ProductOrder(int id, Product product, int amount, Invoice invoice) {
         this.id = id;
@@ -14,7 +17,7 @@ public class ProductOrder {
         this.invoice = invoice;
     }
 
-    public ProductOrder(int id, Product product, int amount, Invoice invoice, int discount) {
+    public ProductOrder(int id, Product product, int amount, Invoice invoice, double discount) {
         this.id = id;
         this.product = product;
         this.amount = amount;
@@ -54,16 +57,20 @@ public class ProductOrder {
         this.invoice = invoice;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
     public double getPrice(){
         double price = product.getPrice() * amount;
         return  price - price * discount;
+    }
+
+    public LocalDateTime getTimeOfOrder() {
+        return timeOfOrder;
     }
 }
