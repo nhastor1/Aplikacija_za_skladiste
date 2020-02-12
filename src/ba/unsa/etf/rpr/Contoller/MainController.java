@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
-import ba.unsa.etf.rpr.User.KorisniciModel;
+import ba.unsa.etf.rpr.User.UsersModel;
 import ba.unsa.etf.rpr.User.KorisnikController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,7 @@ public class MainController {
 
     public void btnAction(ActionEvent actionEvent) {
         try {
-            KorisniciModel model = new KorisniciModel();
+            UsersModel model = new UsersModel();
             model.napuni();
             KorisnikController ctrl = new KorisnikController(model);
 

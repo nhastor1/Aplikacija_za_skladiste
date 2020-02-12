@@ -21,22 +21,22 @@ public class KorisnikController {
     public CheckBox cbAdmin;
     public Tooltip sldToolTip = new Tooltip();
 
-    private KorisniciModel model;
+    private UsersModel model;
 
-    public KorisnikController(KorisniciModel model) { this.model = model; }
+    public KorisnikController(UsersModel model) { this.model = model; }
 
     @FXML
     public void initialize() {
-        listKorisnici.setItems(model.getKorisnici());
+        listKorisnici.setItems(model.getUsers());
         sliderGodinaRodjenja.setTooltip(sldToolTip);
         sldToolTip.setShowDelay(Duration.millis(10));
 
         listKorisnici.getSelectionModel().selectedItemProperty().addListener((obs, oldUser, newUser) -> {
-            model.setTrenutniKorisnik(newUser);
+            model.setCurrentUser(newUser);
             listKorisnici.refresh();
          });
 
-        model.trenutniKorisnikProperty().addListener((obs, oldUser, newUser) -> {
+        model.currentUserProperty().addListener((obs, oldUser, newUser) -> {
             if (oldUser != null) {
                 fldIme.textProperty().unbindBidirectional(oldUser.firstNameProperty() );
                 fldPrezime.textProperty().unbindBidirectional(oldUser.lastNameProperty() );
@@ -113,15 +113,15 @@ public class KorisnikController {
         });
 
         fldPassword.textProperty().addListener((obs, oldIme, newIme) -> {
-            if(model.getTrenutniKorisnik()==null)
+            if(model.getCurrentUser()==null)
                 return;
 
             if(newIme.equals(fldPasswordRepeat.getText())){
-                model.getTrenutniKorisnik().setPassword(newIme);
+                model.getCurrentUser().setPassword(newIme);
             }
 
             if (!newIme.isEmpty() && fldPasswordRepeat.getText().equals(fldPassword.getText())
-                    && model.getTrenutniKorisnik().checkPassword()) {
+                    && model.getCurrentUser().checkPassword()) {
                 passwordColor(true);
             } else {
                 passwordColor(false);
@@ -129,10 +129,10 @@ public class KorisnikController {
         });
 
         fldPasswordRepeat.textProperty().addListener((obs, oldIme, newIme) -> {
-            if(model.getTrenutniKorisnik()==null)
+            if(model.getCurrentUser()==null)
                 return;
             if (!newIme.isEmpty() && fldPasswordRepeat.getText().equals(fldPassword.getText())
-                    && model.getTrenutniKorisnik().checkPassword()) {
+                    && model.getCurrentUser().checkPassword()) {
                 passwordColor(true);
             } else {
                 passwordColor(false);
@@ -148,7 +148,7 @@ public class KorisnikController {
 
 
     public void dodajAction(ActionEvent actionEvent) {
-        model.getKorisnici().add(new User("", "", "", "", ""));
+        model.getUsers().add(new User("", "", "", "", ""));
         listKorisnici.getSelectionModel().selectLast();
     }
 
@@ -159,14 +159,14 @@ public class KorisnikController {
     }
 
     public void obrisiAction(ActionEvent actionEvent){
-        if(model.getTrenutniKorisnik()!=null) {
-            model.getKorisnici().remove(model.getTrenutniKorisnik());
-            model.setTrenutniKorisnik(null);
+        if(model.getCurrentUser()!=null) {
+            model.getUsers().remove(model.getCurrentUser());
+            model.setCurrentUser(null);
         }
     }
 
     public void generisiAction(ActionEvent actionEvent){
-        if(model.getTrenutniKorisnik()==null)
+        if(model.getCurrentUser()==null)
             return;
 
         // Generisi username
@@ -179,13 +179,13 @@ public class KorisnikController {
             s = s + getCSDZ(Character.toLowerCase(prezime.charAt(i)));
         }
         fldUsername.setText(s);
-        model.getTrenutniKorisnik().setUsername(s);
+        model.getCurrentUser().setUsername(s);
 
         // Generisi password
         int raspon = 127-33;
         // ako nije admin ide do 5 a ako jeste onda 4
         int j=5;
-        if(model.getTrenutniKorisnik() instanceof Administrator)
+        if(model.getCurrentUser() instanceof Administrator)
             j=4;
 
         s = "";
@@ -193,7 +193,7 @@ public class KorisnikController {
         s = s + getRandChar(10, '0');
         s = s + getRandChar(26, 'A');
         s = s + getRandChar(26, 'a');
-        if(model.getTrenutniKorisnik() instanceof Administrator){
+        if(model.getCurrentUser() instanceof Administrator){
             int raspon2 = 127-33-2*26-10;
             char c = getRandChar(raspon2, '!');
             if(Character.isLetterOrDigit(c))
@@ -229,7 +229,7 @@ public class KorisnikController {
 
         fldPassword.setText(s);
         fldPasswordRepeat.setText(s);
-        model.getTrenutniKorisnik().setPassword(s);
+        model.getCurrentUser().setPassword(s);
 
 
         // Dijaloski prozor za prikaz sifre
@@ -243,12 +243,12 @@ public class KorisnikController {
     }
 
     public void adminAction(ActionEvent actionEvent){
-        if(model.getTrenutniKorisnik()==null)
+        if(model.getCurrentUser()==null)
             return;
 
-        if(model.getTrenutniKorisnik() instanceof Administrator){
-            User a = model.getTrenutniKorisnik();
-            ObservableList<User> korisnici = model.getKorisnici();
+        if(model.getCurrentUser() instanceof Administrator){
+            User a = model.getCurrentUser();
+            ObservableList<User> korisnici = model.getUsers();
             int i;
             // Trazimo sada indeks korisnika da bi ga mogli zamijeniti
             for(i=0; i<korisnici.size(); i++){
@@ -257,12 +257,12 @@ public class KorisnikController {
             }
             korisnici.set(i, new User(a.getFirstName(), a.getLastName(), a.getEmail(), a.getUsername(), a.getPassword()));
             korisnici.get(i).setGodinaRodjenja(a.getGodinaRodjenja());
-            model.setTrenutniKorisnik(korisnici.get(i));
+            model.setCurrentUser(korisnici.get(i));
             cbAdmin.setSelected(false);
 
         }else{
-            User k = model.getTrenutniKorisnik();
-            ObservableList<User> korisnici = model.getKorisnici();
+            User k = model.getCurrentUser();
+            ObservableList<User> korisnici = model.getUsers();
             int i;
             // Trazimo sada indeks korisnika da bi ga mogli zamijeniti
             for(i=0; i<korisnici.size(); i++){
@@ -271,7 +271,7 @@ public class KorisnikController {
             }
             korisnici.set(i, new Administrator(k.getFirstName(), k.getLastName(), k.getEmail(), k.getUsername(), k.getPassword()));
             korisnici.get(i).setGodinaRodjenja(k.getGodinaRodjenja());
-            model.setTrenutniKorisnik(korisnici.get(i));
+            model.setCurrentUser(korisnici.get(i));
 
             cbAdmin.setSelected(true);
         }
