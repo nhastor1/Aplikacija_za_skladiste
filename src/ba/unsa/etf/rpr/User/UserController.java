@@ -17,9 +17,7 @@ public class UserController {
     public ListView<User> listKorisnici;
     public PasswordField fldPassword;
     public PasswordField fldPasswordRepeat;
-    public Slider sliderGodinaRodjenja;
     public CheckBox cbAdmin;
-    public Tooltip sldToolTip = new Tooltip();
 
     private UsersModel model;
 
@@ -28,9 +26,6 @@ public class UserController {
     @FXML
     public void initialize() {
         listKorisnici.setItems(model.getUsers());
-        sliderGodinaRodjenja.setTooltip(sldToolTip);
-        sldToolTip.setShowDelay(Duration.millis(10));
-
         listKorisnici.getSelectionModel().selectedItemProperty().addListener((obs, oldUser, newUser) -> {
             model.setCurrentUser(newUser);
             listKorisnici.refresh();
@@ -43,8 +38,6 @@ public class UserController {
                 fldEmail.textProperty().unbindBidirectional(oldUser.emailProperty() );
                 fldUsername.textProperty().unbindBidirectional(oldUser.usernameProperty() );
                 fldPassword.textProperty().unbindBidirectional(oldUser.passwordProperty() );
-                sliderGodinaRodjenja.valueProperty().unbindBidirectional(oldUser.godinaRodjenjaProperty());
-                sldToolTip.setText("2000");
             }
             if (newUser == null) {
                 fldIme.setText("");
@@ -52,9 +45,7 @@ public class UserController {
                 fldEmail.setText("");
                 fldUsername.setText("");
                 fldPassword.setText("");
-                sliderGodinaRodjenja.setValue(2000);
                 cbAdmin.setSelected(false);
-                sldToolTip.setText("2000");
             }
             else {
                 fldIme.textProperty().bindBidirectional( newUser.firstNameProperty() );
@@ -62,8 +53,6 @@ public class UserController {
                 fldEmail.textProperty().bindBidirectional( newUser.emailProperty() );
                 fldUsername.textProperty().bindBidirectional( newUser.usernameProperty() );
                 fldPassword.textProperty().bindBidirectional( newUser.passwordProperty() );
-                sliderGodinaRodjenja.valueProperty().bindBidirectional(newUser.godinaRodjenjaProperty());
-                sldToolTip.setText(Integer.toString(newUser.getGodinaRodjenja()));
                 if(newUser instanceof Administrator)
                     cbAdmin.setSelected(true);
                 else
@@ -137,11 +126,6 @@ public class UserController {
             } else {
                 passwordColor(false);
             }
-        });
-
-        sliderGodinaRodjenja.valueProperty().addListener((obs, oldGod, newGod) -> {
-            newGod = newGod.intValue();
-            sldToolTip.setText(newGod.toString());
         });
 
     }
@@ -256,7 +240,6 @@ public class UserController {
                     break;
             }
             korisnici.set(i, new User(a.getFirstName(), a.getLastName(), a.getEmail(), a.getUsername(), a.getPassword()));
-            korisnici.get(i).setGodinaRodjenja(a.getGodinaRodjenja());
             model.setCurrentUser(korisnici.get(i));
             cbAdmin.setSelected(false);
 
@@ -270,7 +253,6 @@ public class UserController {
                     break;
             }
             korisnici.set(i, new Administrator(k.getFirstName(), k.getLastName(), k.getEmail(), k.getUsername(), k.getPassword()));
-            korisnici.get(i).setGodinaRodjenja(k.getGodinaRodjenja());
             model.setCurrentUser(korisnici.get(i));
 
             cbAdmin.setSelected(true);

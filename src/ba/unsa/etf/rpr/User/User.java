@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class User {
     private SimpleStringProperty firstName, lastName, email, username, password;
-    private SimpleIntegerProperty godinaRodjenja;
 
     public User(String fristName, String lastName, String email, String username, String password) {
         this.firstName = new SimpleStringProperty(fristName);
@@ -13,7 +12,6 @@ public class User {
         this.email = new SimpleStringProperty(email);
         this.username = new SimpleStringProperty(username);
         this.password = new SimpleStringProperty(password);
-        this.godinaRodjenja = new SimpleIntegerProperty(2000);
     }
 
     @Override
@@ -80,12 +78,6 @@ public class User {
     public void setPassword(String password) {
         this.password.set(password);
     }
-
-    public int getGodinaRodjenja() { return godinaRodjenja.get(); }
-
-    public SimpleIntegerProperty godinaRodjenjaProperty() { return godinaRodjenja; }
-
-    public void setGodinaRodjenja(int godinaRodjenja) { this.godinaRodjenja.set(godinaRodjenja); }
 
     public boolean checkPassword(){
         String s = password.getValue();
