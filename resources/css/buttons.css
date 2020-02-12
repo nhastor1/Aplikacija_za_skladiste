@@ -1,0 +1,11 @@
+#btnObrisi{
+    -fx-graphic: url("/img/edit-delete.png");
+}
+
+#btnDodaj{
+    -fx-graphic: url("/img/list-add.png");
+}
+
+#btnKraj{
+    -fx-graphic: url("/img/application-exit.png");
+}
