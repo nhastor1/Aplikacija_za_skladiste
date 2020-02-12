@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.User.UsersModel;
-import ba.unsa.etf.rpr.User.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

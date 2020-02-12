@@ -1,5 +1,8 @@
-package ba.unsa.etf.rpr.User;
+package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.User.Administrator;
+import ba.unsa.etf.rpr.User.User;
+import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
