@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.User.UsersModel;
-import ba.unsa.etf.rpr.User.KorisnikController;
+import ba.unsa.etf.rpr.User.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,9 +18,9 @@ public class MainController {
         try {
             UsersModel model = new UsersModel();
             model.napuni();
-            KorisnikController ctrl = new KorisnikController(model);
+            UserController ctrl = new UserController(model);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/korisnici.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/users.fxml"));
             loader.setController(ctrl);
             Parent root = null;
 

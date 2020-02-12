@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class KorisnikController {
+public class UserController {
     public TextField fldIme;
     public TextField fldPrezime;
     public TextField fldEmail;
@@ -23,7 +23,7 @@ public class KorisnikController {
 
     private UsersModel model;
 
-    public KorisnikController(UsersModel model) { this.model = model; }
+    public UserController(UsersModel model) { this.model = model; }
 
     @FXML
     public void initialize() {
@@ -74,41 +74,41 @@ public class KorisnikController {
 
         fldIme.textProperty().addListener((obs, oldIme, newIme) -> {
             if (!newIme.isEmpty() && validName(fldIme.getText())) {
-                fldIme.getStyleClass().removeAll("poljeNijeIspravno");
-                fldIme.getStyleClass().add("poljeIspravno");
+                fldIme.getStyleClass().removeAll("fieldIncorrect");
+                fldIme.getStyleClass().add("fieldCorrect");
             } else {
-                fldIme.getStyleClass().removeAll("poljeIspravno");
-                fldIme.getStyleClass().add("poljeNijeIspravno");
+                fldIme.getStyleClass().removeAll("fieldCorrect");
+                fldIme.getStyleClass().add("fieldIncorrect");
             }
         });
 
         fldPrezime.textProperty().addListener((obs, oldIme, newIme) -> {
             if (!newIme.isEmpty() && validName(fldPrezime.getText())) {
-                fldPrezime.getStyleClass().removeAll("poljeNijeIspravno");
-                fldPrezime.getStyleClass().add("poljeIspravno");
+                fldPrezime.getStyleClass().removeAll("fieldIncorrect");
+                fldPrezime.getStyleClass().add("fieldCorrect");
             } else {
-                fldPrezime.getStyleClass().removeAll("poljeIspravno");
-                fldPrezime.getStyleClass().add("poljeNijeIspravno");
+                fldPrezime.getStyleClass().removeAll("fieldCorrect");
+                fldPrezime.getStyleClass().add("fieldIncorrect");
             }
         });
 
         fldEmail.textProperty().addListener((obs, oldIme, newIme) -> {
             if (!newIme.isEmpty() && validEmail(fldEmail.getText())) {
-                fldEmail.getStyleClass().removeAll("poljeNijeIspravno");
-                fldEmail.getStyleClass().add("poljeIspravno");
+                fldEmail.getStyleClass().removeAll("fieldIncorrect");
+                fldEmail.getStyleClass().add("fieldCorrect");
             } else {
-                fldEmail.getStyleClass().removeAll("poljeIspravno");
-                fldEmail.getStyleClass().add("poljeNijeIspravno");
+                fldEmail.getStyleClass().removeAll("fieldCorrect");
+                fldEmail.getStyleClass().add("fieldIncorrect");
             }
         });
 
         fldUsername.textProperty().addListener((obs, oldIme, newIme) -> {
             if (!newIme.isEmpty() && validUserName(fldUsername.getText())) {
-                fldUsername.getStyleClass().removeAll("poljeNijeIspravno");
-                fldUsername.getStyleClass().add("poljeIspravno");
+                fldUsername.getStyleClass().removeAll("fieldIncorrect");
+                fldUsername.getStyleClass().add("fieldCorrect");
             } else {
-                fldUsername.getStyleClass().removeAll("poljeIspravno");
-                fldUsername.getStyleClass().add("poljeNijeIspravno");
+                fldUsername.getStyleClass().removeAll("fieldCorrect");
+                fldUsername.getStyleClass().add("fieldIncorrect");
             }
         });
 
@@ -280,16 +280,16 @@ public class KorisnikController {
 
     private void passwordColor(boolean ispravno){
         if(ispravno) {
-            fldPassword.getStyleClass().removeAll("poljeNijeIspravno");
-            fldPassword.getStyleClass().add("poljeIspravno");
-            fldPasswordRepeat.getStyleClass().removeAll("poljeNijeIspravno");
-            fldPasswordRepeat.getStyleClass().add("poljeIspravno");
+            fldPassword.getStyleClass().removeAll("fieldIncorrect");
+            fldPassword.getStyleClass().add("fieldCorrect");
+            fldPasswordRepeat.getStyleClass().removeAll("fieldIncorrect");
+            fldPasswordRepeat.getStyleClass().add("fieldCorrect");
         }
         else{
-            fldPassword.getStyleClass().removeAll("poljeIspravno");
-            fldPassword.getStyleClass().add("poljeNijeIspravno");
-            fldPasswordRepeat.getStyleClass().removeAll("poljeIspravno");
-            fldPasswordRepeat.getStyleClass().add("poljeNijeIspravno");
+            fldPassword.getStyleClass().removeAll("fieldCorrect");
+            fldPassword.getStyleClass().add("fieldIncorrect");
+            fldPasswordRepeat.getStyleClass().removeAll("fieldCorrect");
+            fldPasswordRepeat.getStyleClass().add("fieldIncorrect");
         }
     }
 
