@@ -110,13 +110,13 @@ public class UserDAO {
 
     public User addUser(User s) {
         if(isExsisting(s))
-            throw new IllegalArgumentException("There is user with sam username");
+            throw new IllegalArgumentException("There is user with same username");
         try {
             addUserQuery.setInt(1, freeID);
             addUserQuery.setString(2, s.getFirstName());
             addUserQuery.setString(3, s.getLastName());
             addUserQuery.setString(4, s.getEmail());
-            addUserQuery.setString(5, s.getPassword());
+            addUserQuery.setString(5, s.getUsername());
             addUserQuery.setString(6, s.getPassword());
 
             int admin;
@@ -218,7 +218,7 @@ public class UserDAO {
             if(rs.getInt(1)==0)
                 return false;
         } catch (SQLException e) {
-            e.printStackTrace();
+            //
         }
         return true;
     }

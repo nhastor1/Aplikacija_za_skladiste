@@ -24,7 +24,9 @@ public class UserController {
 
     private UsersModel model;
 
-    public UserController(UsersModel model) { this.model = model; }
+    public UserController(UsersModel model) {
+        this.model = model;
+    }
 
     @FXML
     public void initialize() {
@@ -33,6 +35,10 @@ public class UserController {
             model.setCurrentUser(newUser);
             listKorisnici.refresh();
          });
+
+        if(model!=null && !(model.getLoginUser() instanceof Administrator)) {
+            cbAdmin.setDisable(true);
+        }
 
         model.currentUserProperty().addListener((obs, oldUser, newUser) -> {
             if (oldUser != null) {
@@ -135,6 +141,10 @@ public class UserController {
 
 
     public void dodajAction(ActionEvent actionEvent) {
+        if(!(model.getLoginUser() instanceof Administrator)) {
+            showErrorDialogBox();
+            return;
+        }
         model.addUser(new User(0, "", "", "", "", ""));
         listKorisnici.getSelectionModel().selectLast();
     }
@@ -146,6 +156,10 @@ public class UserController {
     }
 
     public void obrisiAction(ActionEvent actionEvent){
+        if(!(model.getLoginUser() instanceof Administrator)) {
+            showErrorDialogBox();
+            return;
+        }
         if(model.getCurrentUser()!=null) {
             model.removeUser(model.getCurrentUser());
             model.setCurrentUser(null);
@@ -339,5 +353,14 @@ public class UserController {
 
     private char getRandChar(int range, char starts){
         return  (char) ((char)(Math.random() * range ) + starts);
+    }
+
+    private void showErrorDialogBox(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText("You are not allowed to do this");
+        alert.setContentText("Try other solutions");
+
+        alert.showAndWait();
     }
 }

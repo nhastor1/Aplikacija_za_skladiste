@@ -7,6 +7,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 public class UsersModel {
     private ObservableList<User> users = FXCollections.observableArrayList(); 
     private SimpleObjectProperty<User> currentUser = new SimpleObjectProperty<>();
@@ -63,18 +65,18 @@ public class UsersModel {
     }
 
     public void updateAll(){
-        System.out.println(users.size());
-        for(User u : users){
-            System.out.println(u.getId());
-            System.out.println(u.getFirstName());
-            System.out.println(u.getLastName());
-            System.out.println(u.getEmail());
-            System.out.println(u.getUsername());
-            System.out.println(u.getPassword());
+        // First we need to clear ObservableList, to be allowed to modify users
+        ArrayList<User> usersList = new ArrayList<>(users);
+        users.clear();
+        for(User u : usersList){
             dao.updateUser(u);
     }}
 
     private void refreshUsers(){
         users = dao.getListUsers(user);
+    }
+
+    public User getLoginUser() {
+        return user;
     }
 }
