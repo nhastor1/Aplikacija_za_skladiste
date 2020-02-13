@@ -4,9 +4,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class User {
+    int id;
     private SimpleStringProperty firstName, lastName, email, username, password;
 
-    public User(String fristName, String lastName, String email, String username, String password) {
+    public User(int id, String fristName, String lastName, String email, String username, String password) {
         this.firstName = new SimpleStringProperty(fristName);
         this.lastName = new SimpleStringProperty(lastName);
         this.email = new SimpleStringProperty(email);
@@ -19,6 +20,14 @@ public class User {
         return lastName.get() + " " + firstName.get();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName.get();
     }
@@ -27,7 +36,7 @@ public class User {
         return firstName;
     }
 
-    public void setfirstName(String ime) {
+    public void setFirstName(String ime) {
         this.firstName.set(ime);
     }
 

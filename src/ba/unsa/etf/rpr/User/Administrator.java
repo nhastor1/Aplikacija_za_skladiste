@@ -1,8 +1,8 @@
 package ba.unsa.etf.rpr.User;
 
 public class Administrator extends User {
-    public Administrator(String firstName, String lastName, String email, String username, String password) {
-        super(firstName, lastName, email, username, password);
+    public Administrator(int id, String firstName, String lastName, String email, String username, String password) {
+        super(id, firstName, lastName, email, username, password);
     }
 
     @Override

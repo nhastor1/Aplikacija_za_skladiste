@@ -135,7 +135,7 @@ public class UserController {
 
 
     public void dodajAction(ActionEvent actionEvent) {
-        model.getUsers().add(new User("", "", "", "", ""));
+        model.getUsers().add(new User(0, "", "", "", "", "")); // Porebne prepravke
         listKorisnici.getSelectionModel().selectLast();
     }
 
@@ -156,7 +156,7 @@ public class UserController {
         if(model.getCurrentUser()==null)
             return;
 
-        // Generisi username
+        // Generate username
         String s = "";
         if(fldIme.getText().length()>0)
             s = s + getCSDZ(Character.toLowerCase(fldIme.getText().charAt(0)));
@@ -168,7 +168,7 @@ public class UserController {
         fldUsername.setText(s);
         model.getCurrentUser().setUsername(s);
 
-        // Generisi password
+        // Generate password
         int raspon = 127-33;
         // ako nije admin ide do 5 a ako jeste onda 4
         int j=5;
@@ -176,7 +176,7 @@ public class UserController {
             j=4;
 
         s = "";
-        // Generisi broj, veliko i malo slovo
+        // Generate number, capital i small letter
         s = s + getRandChar(10, '0');
         s = s + getRandChar(26, 'A');
         s = s + getRandChar(26, 'a');
@@ -219,7 +219,7 @@ public class UserController {
         model.getCurrentUser().setPassword(s);
 
 
-        // Dijaloski prozor za prikaz sifre
+        // Dialog box for displaying password
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText("Vaša lozinka glasi:");
@@ -235,36 +235,36 @@ public class UserController {
 
         if(model.getCurrentUser() instanceof Administrator){
             User a = model.getCurrentUser();
-            ObservableList<User> korisnici = model.getUsers();
+            ObservableList<User> users = model.getUsers();
             int i;
             // Trazimo sada indeks korisnika da bi ga mogli zamijeniti
-            for(i=0; i<korisnici.size(); i++){
-                if(korisnici.get(i)==a)
+            for(i=0; i<users.size(); i++){
+                if(users.get(i)==a)
                     break;
             }
-            korisnici.set(i, new User(a.getFirstName(), a.getLastName(), a.getEmail(), a.getUsername(), a.getPassword()));
-            model.setCurrentUser(korisnici.get(i));
+            users.set(i, new User(0, a.getFirstName(), a.getLastName(), a.getEmail(), a.getUsername(), a.getPassword())); // Potrebne prepravke
+            model.setCurrentUser(users.get(i));
             cbAdmin.setSelected(false);
 
         }else{
             User k = model.getCurrentUser();
-            ObservableList<User> korisnici = model.getUsers();
+            ObservableList<User> users = model.getUsers();
             int i;
             // Trazimo sada indeks korisnika da bi ga mogli zamijeniti
-            for(i=0; i<korisnici.size(); i++){
-                if(korisnici.get(i)==k)
+            for(i=0; i<users.size(); i++){
+                if(users.get(i)==k)
                     break;
             }
-            korisnici.set(i, new Administrator(k.getFirstName(), k.getLastName(), k.getEmail(), k.getUsername(), k.getPassword()));
-            model.setCurrentUser(korisnici.get(i));
+            users.set(i, new Administrator(0, k.getFirstName(), k.getLastName(), k.getEmail(), k.getUsername(), k.getPassword()));// Potrebne prepravke
+            model.setCurrentUser(users.get(i));
 
             cbAdmin.setSelected(true);
         }
     }
 
 
-    private void passwordColor(boolean ispravno){
-        if(ispravno) {
+    private void passwordColor(boolean correct){
+        if(correct) {
             fldPassword.getStyleClass().removeAll("fieldIncorrect");
             fldPassword.getStyleClass().add("fieldCorrect");
             fldPasswordRepeat.getStyleClass().removeAll("fieldIncorrect");
@@ -337,7 +337,7 @@ public class UserController {
         return c;
     }
 
-    private char getRandChar(int raspon, char pocinje){
-        return  (char) ((char)(Math.random() * raspon ) + pocinje);
+    private char getRandChar(int range, char starts){
+        return  (char) ((char)(Math.random() * range ) + starts);
     }
 }
