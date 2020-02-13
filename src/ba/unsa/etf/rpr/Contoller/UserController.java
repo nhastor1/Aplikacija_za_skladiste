@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 
 public class UserController {
@@ -21,6 +20,8 @@ public class UserController {
     public PasswordField fldPassword;
     public PasswordField fldPasswordRepeat;
     public CheckBox cbAdmin;
+    public Button btnObrisi;
+    public Button btnDodaj;
 
     private UsersModel model;
 
@@ -38,6 +39,8 @@ public class UserController {
 
         if(model!=null && !(model.getLoginUser() instanceof Administrator)) {
             cbAdmin.setDisable(true);
+            btnObrisi.setDisable(true);
+            btnDodaj.setDisable(true);
         }
 
         model.currentUserProperty().addListener((obs, oldUser, newUser) -> {
@@ -141,25 +144,19 @@ public class UserController {
 
 
     public void dodajAction(ActionEvent actionEvent) {
-        if(!(model.getLoginUser() instanceof Administrator)) {
-            showErrorDialogBox();
-            return;
-        }
         model.addUser(new User(0, "", "", "", "", ""));
         listKorisnici.getSelectionModel().selectLast();
     }
 
     public void krajAction(ActionEvent actionEvent) {
+        if(!checkFields())
+            return;
         Node n = (Node) actionEvent.getSource();
         Stage stage = (Stage) n.getScene().getWindow();
         stage.close();
     }
 
     public void obrisiAction(ActionEvent actionEvent){
-        if(!(model.getLoginUser() instanceof Administrator)) {
-            showErrorDialogBox();
-            return;
-        }
         if(model.getCurrentUser()!=null) {
             model.removeUser(model.getCurrentUser());
             model.setCurrentUser(null);
@@ -355,11 +352,23 @@ public class UserController {
         return  (char) ((char)(Math.random() * range ) + starts);
     }
 
+    private boolean checkFields() {
+        String w = "fieldIncorrect";
+        if(validName(fldIme.getText()) && validName(fldPrezime.getText()) && validEmail(fldEmail.getText()) &&
+            validUserName(fldUsername.getText()) && model.getCurrentUser().checkPassword() &&
+                fldPassword.getText().equals(fldPasswordRepeat.getText())){
+            return true;
+        }
+        showErrorDialogBox();
+        return false;
+    }
+
     private void showErrorDialogBox(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Dialog");
-        alert.setHeaderText("You are not allowed to do this");
-        alert.setContentText("Try other solutions");
+        alert.setHeaderText("You need to enter valid info");
+        alert.setContentText("For password you need to enter minimum 1 character \nof capital, lowercase and number," +
+                " and for \nadministrator 1 other character");
 
         alert.showAndWait();
     }
