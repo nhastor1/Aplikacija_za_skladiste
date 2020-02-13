@@ -135,7 +135,7 @@ public class UserController {
 
 
     public void dodajAction(ActionEvent actionEvent) {
-        model.getUsers().add(new User(0, "", "", "", "", "")); // Porebne prepravke
+        model.addUser(new User(0, "", "", "", "", ""));
         listKorisnici.getSelectionModel().selectLast();
     }
 
@@ -147,7 +147,7 @@ public class UserController {
 
     public void obrisiAction(ActionEvent actionEvent){
         if(model.getCurrentUser()!=null) {
-            model.getUsers().remove(model.getCurrentUser());
+            model.removeUser(model.getCurrentUser());
             model.setCurrentUser(null);
         }
     }
@@ -242,7 +242,7 @@ public class UserController {
                 if(users.get(i)==a)
                     break;
             }
-            users.set(i, new User(0, a.getFirstName(), a.getLastName(), a.getEmail(), a.getUsername(), a.getPassword())); // Potrebne prepravke
+            users.set(i, new User(model.getCurrentUser().getId(), a.getFirstName(), a.getLastName(), a.getEmail(), a.getUsername(), a.getPassword()));
             model.setCurrentUser(users.get(i));
             cbAdmin.setSelected(false);
 
@@ -255,7 +255,7 @@ public class UserController {
                 if(users.get(i)==k)
                     break;
             }
-            users.set(i, new Administrator(0, k.getFirstName(), k.getLastName(), k.getEmail(), k.getUsername(), k.getPassword()));// Potrebne prepravke
+            users.set(i, new Administrator(model.getCurrentUser().getId(), k.getFirstName(), k.getLastName(), k.getEmail(), k.getUsername(), k.getPassword()));
             model.setCurrentUser(users.get(i));
 
             cbAdmin.setSelected(true);

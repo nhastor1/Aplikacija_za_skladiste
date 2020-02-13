@@ -28,6 +28,13 @@ public class MainController {
             Stage stage = new Stage();
             stage.setTitle("Korisnici");
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setOnHiding((event)->{
+                try {
+                    model.updateAll();
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
+            });
             stage.show();
             } catch (IOException e) {
             e.printStackTrace();

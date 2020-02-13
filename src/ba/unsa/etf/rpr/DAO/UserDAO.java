@@ -15,7 +15,6 @@ public class UserDAO {
     private static UserDAO instance = null;
     private Connection conn;
     private ObservableList<User> listUsers = FXCollections.observableArrayList();
-    private User currentUser;
     private PreparedStatement allUserQuery, getUserQueryFromID, addUserQuery, removeUserQuery, updateUserQuery, getIDQuery,
             getUserQueryFromUsername, countUsernameQuery;
     private int freeID;
@@ -39,7 +38,7 @@ public class UserDAO {
             getUserQueryFromID = conn.prepareStatement("SELECT * FROM User WHERE id=?");
             getUserQueryFromUsername = conn.prepareStatement("SELECT * FROM User WHERE username=?");
             removeUserQuery = conn.prepareStatement("DELETE FROM User WHERE id=?");
-            countUsernameQuery = conn.prepareStatement("SELECT Count(*) FROM User WHERE username=?");
+            countUsernameQuery = conn.prepareStatement("SELECT Count(*) FROM User WHERE username=? AND id<>?");
 
             getIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM User");
             ResultSet rs = getIDQuery.executeQuery();
@@ -110,6 +109,8 @@ public class UserDAO {
     }
 
     public User addUser(User s) {
+        if(isExsisting(s))
+            throw new IllegalArgumentException("There is user with sam username");
         try {
             addUserQuery.setInt(1, freeID);
             addUserQuery.setString(2, s.getFirstName());
@@ -137,19 +138,28 @@ public class UserDAO {
     }
 
     public User updateUser(User s) {
+        System.out.println(s.getId());
+        System.out.println(s.getFirstName());
+        System.out.println(s.getLastName());
+        System.out.println(s.getEmail());
+        System.out.println(s.getUsername());
+        System.out.println(s.getPassword());
+        if(isExsisting(s))
+            throw new IllegalArgumentException("There is user with sam username");
         try {
-            updateUserQuery.setString(2, s.getFirstName());
-            updateUserQuery.setString(3, s.getLastName());
-            updateUserQuery.setString(4, s.getEmail());
+            updateUserQuery.setString(1, s.getFirstName());
+            updateUserQuery.setString(2, s.getLastName());
+            updateUserQuery.setString(3, s.getEmail());
+            updateUserQuery.setString(4, s.getUsername());
             updateUserQuery.setString(5, s.getPassword());
-            updateUserQuery.setString(6, s.getPassword());
 
             int admin;
             if(s instanceof Administrator)
                 admin = 1;
             else
                 admin = 0;
-            updateUserQuery.setInt(7, admin);
+            updateUserQuery.setInt(6, admin);
+            updateUserQuery.setInt(7, s.getId());
 
             updateUserQuery.executeUpdate();
         } catch (SQLException e) {
@@ -158,6 +168,16 @@ public class UserDAO {
 
         refreshListUsers();
         return s;
+    }
+
+    public void removeUser(User u){
+        try {
+            removeUserQuery.setInt(1, u.getId());
+            removeUserQuery.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        refreshListUsers();
     }
 
     public User getUser(int id){
@@ -192,17 +212,10 @@ public class UserDAO {
             return null;
     }
 
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
-
-    public boolean isExsisting(String username){
+    public boolean isExsisting(String username, int id){
         try {
             countUsernameQuery.setString(1, username);
+            countUsernameQuery.setInt(2, id);
             ResultSet rs = countUsernameQuery.executeQuery();
             if(rs.getInt(1)==0)
                 return false;
@@ -213,7 +226,7 @@ public class UserDAO {
     }
 
     public boolean isExsisting(User u){
-        return isExsisting(u.getUsername());
+        return isExsisting(u.getUsername(), u.getId());
     }
 
     private ArrayList<User> getAllUsers() {
