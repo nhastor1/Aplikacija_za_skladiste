@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,16 +19,18 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 
 public class FrontPageController {
-    UsersModel usersModel;
+    private UsersModel usersModel;
+    private Scene scene;
+    public Button btnUser;
 
-    public FrontPageController(UsersModel usersModel){
+    public FrontPageController(UsersModel usersModel, Scene scene){
         this.usersModel = usersModel;
+        this.scene = scene;
     }
 
     public void closeAction(ActionEvent actionEvent){
-        Node n = (Node) actionEvent.getSource();
-        Stage stage = (Stage) n.getScene().getWindow();
-        stage.close();
+        Stage stage = (Stage) btnUser.getScene().getWindow();
+        stage.setScene(scene);
     }
 
     public void userAction(ActionEvent actionEvent){

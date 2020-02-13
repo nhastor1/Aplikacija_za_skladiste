@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS "User" (
 	"admin"	INTEGER,
 	PRIMARY KEY("id")
 );
-INSERT INTO "User" VALUES (1,'Admin', 'Admin', 'admin@admin', 'admin', 'Admin123!', 1);
+INSERT INTO "User" VALUES (1,'Admin', 'Admin', 'admin@admin', 'admin', 'Ad1!', 1);
 COMMIT;

@@ -57,7 +57,7 @@ public class MainController {
                 return;
             }
             model.napuni();
-            FrontPageController ctrl = new FrontPageController(model);
+            FrontPageController ctrl = new FrontPageController(model, scene);
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/frontPage.fxml"));
             loader.setController(ctrl);
