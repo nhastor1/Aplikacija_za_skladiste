@@ -25,7 +25,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#btnAction" text="Login" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#btnLoginAction" text="Login" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
                   <Font size="17.0" />
                </font></Button>
@@ -56,12 +56,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField prefHeight="34.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets right="50.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField prefHeight="35.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="fldUsername" prefHeight="34.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin>
@@ -74,6 +69,11 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
+            <PasswordField fx:id="fldPassword" prefHeight="34.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets right="50.0" />
+               </GridPane.margin>
+            </PasswordField>
          </children>
       </GridPane>
    </center>

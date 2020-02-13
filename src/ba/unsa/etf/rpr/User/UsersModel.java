@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.User;
 
 import ba.unsa.etf.rpr.DAO.UserDAO;
+import ba.unsa.etf.rpr.Exception.InvalidPasswordException;
+import ba.unsa.etf.rpr.Exception.InvalidUsernameException;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,8 +13,13 @@ public class UsersModel {
     private UserDAO dao;
     private User user = new Administrator(1, "a", "a", "a", "a", "a");
 
-    public UsersModel() {
+    public UsersModel(String username, String password) throws InvalidPasswordException, InvalidUsernameException {
         dao = UserDAO.getInstance();
+        user = dao.getUser(username);
+        if(user==null)
+            throw new InvalidUsernameException("Wrong username");
+        if(!user.getPassword().equals(password))
+            throw new InvalidPasswordException("Wrong password");
     }
 
     public void napuni() {
