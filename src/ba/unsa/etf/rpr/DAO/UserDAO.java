@@ -27,13 +27,13 @@ public class UserDAO {
             e.printStackTrace();
         }
         try {
-            allUserQuery = conn.prepareStatement("SELECT id, first_name, last_name, email, username, password, admin FROM User");
+            allUserQuery = conn.prepareStatement("SELECT * FROM User");
         } catch (SQLException e) {
             createDatabase();
         }
         try {
-            allUserQuery = conn.prepareStatement("SELECT id, first_name, last_name, email, username, password, admin FROM User");
-            addUserQuery = conn.prepareStatement("INSERT INTO student VALUES(?,?,?,?,?,?,?)");
+            allUserQuery = conn.prepareStatement("SELECT * FROM User");
+            addUserQuery = conn.prepareStatement("INSERT INTO User VALUES(?,?,?,?,?,?,?)");
             updateUserQuery = conn.prepareStatement("UPDATE User SET first_name=?, last_name=?, email=?, username=?, password=?, admin=? WHERE id=?");
 
             getUserQueryFromID = conn.prepareStatement("SELECT * FROM User WHERE id=?");
@@ -56,7 +56,7 @@ public class UserDAO {
     private void createDatabase() {
         Scanner input = null;
         try {
-            input = new Scanner(new FileInputStream("UserDatabse.sql"));
+            input = new Scanner(new FileInputStream("UserDatabase.sql"));
             String sqlQuery = "";
             while (input.hasNext()) {
                 sqlQuery += input.nextLine();
