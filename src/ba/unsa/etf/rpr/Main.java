@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.Contoller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +13,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
-        primaryStage.setTitle("Hello World");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        MainController ctrl = new MainController(primaryStage);
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        primaryStage.setTitle("WAFFLE");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

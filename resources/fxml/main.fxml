@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="frontPageBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Contoller.MainController">
+<BorderPane fx:id="frontPageBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@/css/frontPage.css" />
+        <URL value="@/css/loginPage.css" />
     </stylesheets>
     <center>
       <GridPane BorderPane.alignment="CENTER">

@@ -21,9 +21,16 @@ public class MainController {
     public TextField fldUsername;
     public PasswordField fldPassword;
     private UserDAO userDAO = UserDAO.getInstance();
+    Stage primaryStage;
+    Scene scene;
+
+    public MainController(Stage stage){
+        primaryStage = stage;
+    }
 
     public void btnLoginAction(ActionEvent actionEvent) {
         try {
+            scene = fldUsername.getScene();
             String username = fldUsername.getText();
             String password = fldPassword.getText();
 
@@ -50,28 +57,25 @@ public class MainController {
                 return;
             }
             model.napuni();
-            UserController ctrl = new UserController(model);
+            FrontPageController ctrl = new FrontPageController(model);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/users.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/frontPage.fxml"));
             loader.setController(ctrl);
             Parent root = null;
 
             root = loader.load();
 
-            Stage stage = new Stage();
-            stage.setTitle("Korisnici");
+            Stage stage = primaryStage;
+            stage.setTitle("Front Page");
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             UsersModel finalModel = model;
             stage.setOnHiding((event)->{
-                try {
-                    finalModel.updateAll();
-                }catch (IllegalArgumentException e){
-                    e.printStackTrace();
-                }
+                primaryStage = new Stage();
+                primaryStage.setScene(scene);
             });
             stage.show();
             } catch (IOException e) {
             e.printStackTrace();
-        }
+            }
     }
 }
