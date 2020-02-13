@@ -11,7 +11,7 @@ public class UsersModel {
     private ObservableList<User> users = FXCollections.observableArrayList(); 
     private SimpleObjectProperty<User> currentUser = new SimpleObjectProperty<>();
     private UserDAO dao;
-    private User user = new Administrator(1, "a", "a", "a", "a", "a");
+    private User user;
 
     public UsersModel(String username, String password) throws InvalidPasswordException, InvalidUsernameException {
         dao = UserDAO.getInstance();
@@ -63,9 +63,16 @@ public class UsersModel {
     }
 
     public void updateAll(){
-        for(User u : users)
+        System.out.println(users.size());
+        for(User u : users){
+            System.out.println(u.getId());
+            System.out.println(u.getFirstName());
+            System.out.println(u.getLastName());
+            System.out.println(u.getEmail());
+            System.out.println(u.getUsername());
+            System.out.println(u.getPassword());
             dao.updateUser(u);
-    }
+    }}
 
     private void refreshUsers(){
         users = dao.getListUsers(user);

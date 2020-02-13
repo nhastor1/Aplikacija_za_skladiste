@@ -8,6 +8,7 @@ public class User {
     private SimpleStringProperty firstName, lastName, email, username, password;
 
     public User(int id, String fristName, String lastName, String email, String username, String password) {
+        this.id = id;
         this.firstName = new SimpleStringProperty(fristName);
         this.lastName = new SimpleStringProperty(lastName);
         this.email = new SimpleStringProperty(email);

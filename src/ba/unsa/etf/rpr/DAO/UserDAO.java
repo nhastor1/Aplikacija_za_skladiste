@@ -138,12 +138,6 @@ public class UserDAO {
     }
 
     public User updateUser(User s) {
-        System.out.println(s.getId());
-        System.out.println(s.getFirstName());
-        System.out.println(s.getLastName());
-        System.out.println(s.getEmail());
-        System.out.println(s.getUsername());
-        System.out.println(s.getPassword());
         if(isExsisting(s))
             throw new IllegalArgumentException("There is user with sam username");
         try {
@@ -198,6 +192,7 @@ public class UserDAO {
             getUserQueryFromUsername.setString(1, username);
             ResultSet rs = getUserQueryFromUsername.executeQuery();
             u = getUserFromRS(rs);
+
         } catch (SQLException e) {
             //
         }
@@ -208,8 +203,11 @@ public class UserDAO {
         if (u instanceof Administrator){
             return listUsers;
         }
-        else
-            return null;
+        else{
+            ObservableList<User> users = FXCollections.observableArrayList();
+            users.add(u);
+            return  users;
+        }
     }
 
     public boolean isExsisting(String username, int id){
