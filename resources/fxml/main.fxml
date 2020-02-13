@@ -25,7 +25,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#btnLoginAction" text="Login" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#btnLoginAction" text="Login" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
                   <Font size="17.0" />
                </font></Button>

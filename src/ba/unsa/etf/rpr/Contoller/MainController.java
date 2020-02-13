@@ -5,10 +5,12 @@ import ba.unsa.etf.rpr.Exception.InvalidPasswordException;
 import ba.unsa.etf.rpr.Exception.InvalidUsernameException;
 import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,12 +22,18 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 public class MainController {
     public TextField fldUsername;
     public PasswordField fldPassword;
+    public Button btnLogin;
     private UserDAO userDAO = UserDAO.getInstance();
-    Stage primaryStage;
-    Scene scene;
+    private Stage primaryStage;
+    private Scene scene;
 
     public MainController(Stage stage){
         primaryStage = stage;
+    }
+
+    @FXML
+    public void initialize(){
+        btnLogin.setDefaultButton(true);
     }
 
     public void btnLoginAction(ActionEvent actionEvent) {
