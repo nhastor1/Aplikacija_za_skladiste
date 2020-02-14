@@ -87,6 +87,23 @@ public class FrontPageController {
     }
 
     public void categoryAction(ActionEvent actionEvent) {
+        try {
+            this.primaryStage = (Stage) btnUser.getScene().getWindow();
+            Scene scene = btnUser.getScene();
+            CategoryController ctrl = new CategoryController(scene);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/category.fxml"));
+
+            loader.setController(ctrl);
+            Parent root = null;
+            root = loader.load();
+
+            Stage stage = primaryStage;
+            stage.setTitle("Category");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void productAction(ActionEvent actionEvent) {

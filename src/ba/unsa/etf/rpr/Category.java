@@ -38,4 +38,9 @@ public class Category {
     public void setSupercategory(Category supercategory) {
         this.supercategory = supercategory;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
