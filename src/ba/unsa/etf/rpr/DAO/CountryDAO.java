@@ -23,7 +23,7 @@ public class CountryDAO {
         try {
             allCountryQuery = conn.prepareStatement("SELECT * FROM Country");
             getCountryQueryFromID = conn.prepareStatement("SELECT * FROM Country WHERE id=?");
-            addCountryQuery = conn.prepareStatement("INSERT INTO User VALUES(?,?,?)");
+            addCountryQuery = conn.prepareStatement("INSERT INTO Country VALUES(?,?,?)");
             getCountryIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Country");
             ResultSet rs = getCountryIDQuery.executeQuery();
             rs.next();

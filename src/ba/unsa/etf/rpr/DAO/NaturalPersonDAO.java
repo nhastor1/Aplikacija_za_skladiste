@@ -23,7 +23,7 @@ public class NaturalPersonDAO {
         try {
             allNaturalPersonQuery = conn.prepareStatement("SELECT * FROM Natural_person");
             getNaturalPersonQueryFromID = conn.prepareStatement("SELECT * FROM Natural_person WHERE id=?");
-            addNaturalPersonQuery = conn.prepareStatement("INSERT INTO User VALUES(?,?,?)");
+            addNaturalPersonQuery = conn.prepareStatement("INSERT INTO Natural_person VALUES(?,?,?)");
             getNaturalPersonIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Natural_person");
             ResultSet rs = getNaturalPersonIDQuery.executeQuery();
             rs.next();

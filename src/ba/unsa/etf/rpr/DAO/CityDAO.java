@@ -23,7 +23,7 @@ public class CityDAO {
         try {
             allCityQuery = conn.prepareStatement("SELECT * FROM City");
             getCityQueryFromID = conn.prepareStatement("SELECT * FROM City WHERE id=?");
-            addCityQuery = conn.prepareStatement("INSERT INTO User VALUES(?,?,?)");
+            addCityQuery = conn.prepareStatement("INSERT INTO City VALUES(?,?,?)");
             getCityIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM City");
             ResultSet rs = getCityIDQuery.executeQuery();
             rs.next();

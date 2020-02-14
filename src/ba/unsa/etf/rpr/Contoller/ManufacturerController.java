@@ -1,16 +1,23 @@
 package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
+import ba.unsa.etf.rpr.Location.Location;
 import ba.unsa.etf.rpr.Manufacturer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 
 public class ManufacturerController {
@@ -54,6 +61,19 @@ public class ManufacturerController {
     }
 
     public void addAction(ActionEvent actionEvent) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/enterLocation.fxml"));
+            LocationController ctrl = new LocationController();
+            loader.setController(ctrl);
 
+            Stage stage = new Stage();
+            root = loader.load();
+            stage.setTitle("Location");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -24,7 +24,7 @@ public class LocationDAO {
         try {
             allLocationQuery = conn.prepareStatement("SELECT * FROM Location");
             getLocationQueryFromID = conn.prepareStatement("SELECT * FROM Location WHERE id=?");
-            addLocationQuery = conn.prepareStatement("INSERT INTO User VALUES(?,?,?)");
+            addLocationQuery = conn.prepareStatement("INSERT INTO Location VALUES(?,?,?,?)");
             getLocationIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Location");
             ResultSet rs = getLocationIDQuery.executeQuery();
             rs.next();
