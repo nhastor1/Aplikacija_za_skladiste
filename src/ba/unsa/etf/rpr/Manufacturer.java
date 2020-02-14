@@ -29,4 +29,12 @@ public class Manufacturer {
     public void setManufacturer(LegalPerson manufacturer) {
         this.manufacturer = manufacturer;
     }
+
+    public String getName(){
+        return manufacturer.getName();
+    }
+
+    public String getAddres(){
+        return manufacturer.getLocation() + "";
+    }
 }

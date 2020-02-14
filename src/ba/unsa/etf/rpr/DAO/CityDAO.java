@@ -34,6 +34,7 @@ public class CityDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        refreshlistCities();
     }
 
     public static CityDAO getInstance() {

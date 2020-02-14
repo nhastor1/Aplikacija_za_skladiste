@@ -34,6 +34,7 @@ public class CountryDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        refreshlistCountries();
     }
 
     public static CountryDAO getInstance() {

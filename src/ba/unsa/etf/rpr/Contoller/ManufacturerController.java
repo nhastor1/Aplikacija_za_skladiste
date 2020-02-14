@@ -39,7 +39,7 @@ public class ManufacturerController {
     public void initialize(){
         colID.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colLocation.setCellValueFactory(new PropertyValueFactory<>("Location"));
+        colLocation.setCellValueFactory(new PropertyValueFactory<>("Addres"));
 
         dao = ManufacturerDAO.getInstance();
         tableViewManufacturer.setItems(dao.getListManufacturer());

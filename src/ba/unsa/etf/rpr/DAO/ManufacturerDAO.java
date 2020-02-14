@@ -35,6 +35,7 @@ public class ManufacturerDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        refreshlistManufacturers();
     }
 
     public static ManufacturerDAO getInstance() {

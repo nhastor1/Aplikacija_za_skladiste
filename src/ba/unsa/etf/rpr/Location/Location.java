@@ -44,4 +44,10 @@ public class Location {
     public void setCity(City city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return getStreet() + " " + getNumber() + ", " + city + ", " +
+                city.getCountry() + ", " + city.getCountry().getContinent();
+    }
 }

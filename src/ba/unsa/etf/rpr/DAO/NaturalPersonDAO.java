@@ -33,6 +33,7 @@ public class NaturalPersonDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        refreshlistNaturalPersons();
     }
 
     public static NaturalPersonDAO getInstance() {

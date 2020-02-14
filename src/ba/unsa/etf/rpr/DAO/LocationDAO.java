@@ -34,6 +34,7 @@ public class LocationDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        refreshlistLocations();
     }
 
     public static LocationDAO getInstance() {
