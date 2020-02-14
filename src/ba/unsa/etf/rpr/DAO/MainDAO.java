@@ -29,7 +29,7 @@ public class MainDAO {
     private void createDatabase() {
         Scanner input = null;
         try {
-            input = new Scanner(new FileInputStream("database.sql"));
+            input = new Scanner(new FileInputStream("database.db.sql"));
             String sqlQuery = "";
             while (input.hasNext()) {
                 sqlQuery += input.nextLine();

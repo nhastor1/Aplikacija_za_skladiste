@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.DAO;
 
 import ba.unsa.etf.rpr.Manufacturer;
 import ba.unsa.etf.rpr.Manufacturer;
+import ba.unsa.etf.rpr.Person.LegalPerson;
 import ba.unsa.etf.rpr.User.Administrator;
 import ba.unsa.etf.rpr.User.User;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ public class ManufacturerDAO {
     private static ManufacturerDAO instance = null;
     private Connection conn;
     private ObservableList<Manufacturer> listManufacturers = FXCollections.observableArrayList();
+    private Manufacturer currentManufacturer = null;
     private PreparedStatement allManufacturerQuery, getManufacturerQueryFromID, addManufacturerQuery, getManufacturerIDQuery;
     private int freeID;
 
@@ -22,7 +24,7 @@ public class ManufacturerDAO {
         try {
             allManufacturerQuery = conn.prepareStatement("SELECT * FROM Manufacturer");
             getManufacturerQueryFromID = conn.prepareStatement("SELECT * FROM Manufacturer WHERE id=?");
-            addManufacturerQuery = conn.prepareStatement("INSERT INTO User VALUES(?,?,?)");
+            addManufacturerQuery = conn.prepareStatement("INSERT INTO Manufacturer VALUES(?,?)");
             getManufacturerIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Manufacturer");
             ResultSet rs = getManufacturerIDQuery.executeQuery();
             rs.next();
@@ -48,14 +50,14 @@ public class ManufacturerDAO {
     }
 
     public Manufacturer getManufacturerFromRS(ResultSet rs){
-        Manufacturer c = null;
-//        try {
-//            City cont = CityDAO.getInstance().getCity(rs.getInt(4));
-//            c = new Manufacturer(rs.getInt(1), rs.getString(2), rs.getInt(3), cont);
-//        } catch (SQLException e) {
-//            //
-//        }
-        return c;
+        Manufacturer m = null;
+        try {
+            LegalPerson lp = LegalPersonDAO.getInstance().getLegalPerson(rs.getInt(2));
+            m = new Manufacturer(rs.getInt(1), lp);
+        } catch (SQLException e) {
+            //
+        }
+        return m;
     }
 
     public Manufacturer getManufacturer(int id){
@@ -74,21 +76,27 @@ public class ManufacturerDAO {
         return listManufacturers;
     }
 
-    public Manufacturer addManufacturer(Manufacturer c) {
-//        try {
-//            addManufacturerQuery.setInt(1, freeID);
-//            addManufacturerQuery.setString(2, c.getStreet());
-//            addManufacturerQuery.setInt(3, c.getNumber());
-//            addManufacturerQuery.setInt(4, c.getCity().getId());
-//            addManufacturerQuery.executeUpdate();
-//            c.setId(freeID);
-//            freeID++;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        refreshlistManufacturers();
-        return c;
+    public Manufacturer addManufacturer(Manufacturer m) {
+        try {
+            addManufacturerQuery.setInt(1, freeID);
+            addManufacturerQuery.setInt(2, m.getManufacturer().getId());
+            addManufacturerQuery.executeUpdate();
+            m.setId(freeID);
+            freeID++;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        refreshlistManufacturers();
+        return m;
+    }
+
+    public Manufacturer getCurrentManufacturer() {
+        return currentManufacturer;
+    }
+
+    public void setCurrentManufacturer(Manufacturer currentManufacturer) {
+        this.currentManufacturer = currentManufacturer;
     }
 
     private void refreshlistManufacturers(){

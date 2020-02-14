@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
 import ba.unsa.etf.rpr.Manufacturer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,12 +14,13 @@ import javafx.stage.Stage;
 
 
 public class ManufacturerController {
-    Scene scene;
-    Button btnBack;
-    TableView<Manufacturer>  tableViewManufacturer;
-    TableColumn<Manufacturer, Integer> colID;
-    TableColumn<Manufacturer, String> colName;
-    TableColumn<Manufacturer, String> colLocation;
+    private Scene scene;
+    public Button btnBack;
+    public TableView<Manufacturer>  tableViewManufacturer;
+    public TableColumn<Manufacturer, Integer> colID;
+    public TableColumn<Manufacturer, String> colName;
+    public TableColumn<Manufacturer, String> colLocation;
+    private ManufacturerDAO dao = null;
 
     public ManufacturerController(Scene scene) {
         this.scene = scene;
@@ -26,16 +28,16 @@ public class ManufacturerController {
 
     @FXML
     public void initialize(){
-//        colID.setCellValueFactory(new PropertyValueFactory<>("Id"));
-//        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-//        colLocation.setCellValueFactory(new PropertyValueFactory<>("Location"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colLocation.setCellValueFactory(new PropertyValueFactory<>("Location"));
 
-        //dao = GeografijaDAO.getInstance();
-        //tableViewManufacturer.setItems(dao.getListaGradova());
+        dao = ManufacturerDAO.getInstance();
+        tableViewManufacturer.setItems(dao.getListManufacturer());
 
-//        tableViewManufacturer.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-//            dao.setTrenutni(newSelection);
-//        });
+        tableViewManufacturer.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            dao.setCurrentManufacturer(newSelection);
+        });
     }
 
     public void backAction(ActionEvent actionEvent) {
