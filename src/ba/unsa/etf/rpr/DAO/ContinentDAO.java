@@ -26,6 +26,7 @@ public class ContinentDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        refreshListContinents();
     }
 
     public static ContinentDAO getInstance() {

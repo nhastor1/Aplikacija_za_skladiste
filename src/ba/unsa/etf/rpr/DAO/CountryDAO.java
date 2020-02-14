@@ -15,7 +15,7 @@ public class CountryDAO {
     private static CountryDAO instance = null;
     private Connection conn;
     private ObservableList<Country> listCountries = FXCollections.observableArrayList();
-    private PreparedStatement allCountryQuery, getCountryQueryFromID, addCountryQuery, getCountryIDQuery;
+    private PreparedStatement allCountryQuery, getCountryQueryFromID, addCountryQuery, getCountryIDQuery, getCountryQueryFromName;
     private int freeID;
 
     private CountryDAO() {
@@ -23,6 +23,7 @@ public class CountryDAO {
         try {
             allCountryQuery = conn.prepareStatement("SELECT * FROM Country");
             getCountryQueryFromID = conn.prepareStatement("SELECT * FROM Country WHERE id=?");
+            getCountryQueryFromName = conn.prepareStatement("SELECT * FROM Country WHERE name=?");
             addCountryQuery = conn.prepareStatement("INSERT INTO Country VALUES(?,?,?)");
             getCountryIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Country");
             ResultSet rs = getCountryIDQuery.executeQuery();
@@ -76,6 +77,10 @@ public class CountryDAO {
     }
 
     public Country addCountry(Country c) {
+        Country country = getCountry(c.getName());
+        if(country!=null)
+            return country;
+
         try {
             addCountryQuery.setInt(1, freeID);
             addCountryQuery.setString(2, c.getName());
@@ -88,6 +93,20 @@ public class CountryDAO {
         }
 
         refreshlistCountries();
+        return c;
+    }
+
+    public Country getCountry(String s){
+        Country c = null;
+        try {
+            getCountryQueryFromName.setString(1, s);
+            ResultSet rs = getCountryQueryFromName.executeQuery();
+            if(rs.next()){
+                c = getCountryFromRS(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return c;
     }
 

@@ -24,4 +24,9 @@ public class Continent {
     public void setNaziv(String naziv) {
         this.name = naziv;
     }
+
+    @Override
+    public String toString() {
+        return  name;
+    }
 }
