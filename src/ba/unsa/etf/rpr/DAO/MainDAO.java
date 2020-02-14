@@ -11,7 +11,9 @@ import java.util.Scanner;
 public class MainDAO {
     private static MainDAO instance = null;
     private Connection conn;
-    private PreparedStatement checkIsThereAnyDatabase;
+    private PreparedStatement checkIsThereCategory, checkIsThereCity, checkIsThereLocation, checkIsThereCountry, checkIsThereContinent,
+            checkIsThereInovice, checkIsThereLegalPerson, checkIsThereNaturalPerson, checkIsThereManufacturer,
+            checkIsThereProduct, checkIsTherePrdouct_order, checkIsThereWarehouse;
 
     private MainDAO() {
         try {
@@ -20,7 +22,18 @@ public class MainDAO {
             e.printStackTrace();
         }
         try {
-            checkIsThereAnyDatabase = conn.prepareStatement("SELECT * FROM *");
+            checkIsThereCategory = conn.prepareStatement("SELECT * FROM Category");
+            checkIsThereCity = conn.prepareStatement("SELECT * FROM City");
+            checkIsThereLocation = conn.prepareStatement("SELECT * FROM Location");
+            checkIsThereCountry = conn.prepareStatement("SELECT * FROM Country");
+            checkIsThereContinent = conn.prepareStatement("SELECT * FROM Continent");
+            checkIsThereInovice = conn.prepareStatement("SELECT * FROM Inovice");
+            checkIsThereLegalPerson = conn.prepareStatement("SELECT * FROM Legal_person");
+            checkIsThereNaturalPerson = conn.prepareStatement("SELECT * FROM Natural_person");
+            checkIsThereManufacturer = conn.prepareStatement("SELECT * FROM Manufacturer");
+            checkIsThereProduct = conn.prepareStatement("SELECT * FROM Product");
+            checkIsTherePrdouct_order = conn.prepareStatement("SELECT * FROM Product_order");
+            checkIsThereWarehouse = conn.prepareStatement("SELECT * FROM Warehouse");
         } catch (SQLException e) {
             createDatabase();
         }

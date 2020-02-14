@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "Product" (
 	PRIMARY KEY("id"),
 	FOREIGN KEY("category") REFERENCES "Category"("id"),
 	FOREIGN KEY("manufacturer") REFERENCES "Manufacturer"("id"),
-	FOREIGN KEY("locationOfProduction") REFERENCES "Loaction"("id")
+	FOREIGN KEY("locationOfProduction") REFERENCES "Location"("id")
 );
 CREATE TABLE IF NOT EXISTS "Manufacturer" (
 	"id"	INTEGER,
@@ -53,23 +53,23 @@ CREATE TABLE IF NOT EXISTS "Warehouse" (
 	"location"	INTEGER,
 	"responsible_person"	INTEGER,
 	PRIMARY KEY("id"),
-	FOREIGN KEY("location") REFERENCES "Loaction"("id"),
-	FOREIGN KEY("responsible_person") REFERENCES "Natrual_person"("id")
+	FOREIGN KEY("location") REFERENCES "Location"("id"),
+	FOREIGN KEY("responsible_person") REFERENCES "Natural_person"("id")
 );
 CREATE TABLE IF NOT EXISTS "Legal_person" (
 	"id"	INTEGER,
 	"location"	INTEGER,
 	"name"	TEXT,
 	PRIMARY KEY("id"),
-	FOREIGN KEY("location") REFERENCES "Loaction"("id")
+	FOREIGN KEY("location") REFERENCES "Location"("id")
 );
-CREATE TABLE IF NOT EXISTS "Natrual_person" (
+CREATE TABLE IF NOT EXISTS "Natural_person" (
 	"id"	INTEGER,
 	"Location"	INTEGER,
 	"name"	TEXT,
 	PRIMARY KEY("id")
 );
-CREATE TABLE IF NOT EXISTS "Loaction" (
+CREATE TABLE IF NOT EXISTS "Location" (
 	"id"	INTEGER,
 	"street"	TEXT,
 	"number"	INTEGER,

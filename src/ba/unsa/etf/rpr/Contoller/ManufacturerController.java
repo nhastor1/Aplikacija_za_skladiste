@@ -47,8 +47,13 @@ public class ManufacturerController {
     }
 
     public void removeAction(ActionEvent actionEvent) {
+        if(dao.getCurrentManufacturer()==null)
+            return;
+        dao.removeManufacturer(dao.getCurrentManufacturer());
+        dao.setCurrentManufacturer(null);
     }
 
     public void addAction(ActionEvent actionEvent) {
+
     }
 }

@@ -16,7 +16,7 @@ public class ManufacturerDAO {
     private Connection conn;
     private ObservableList<Manufacturer> listManufacturers = FXCollections.observableArrayList();
     private Manufacturer currentManufacturer = null;
-    private PreparedStatement allManufacturerQuery, getManufacturerQueryFromID, addManufacturerQuery, getManufacturerIDQuery;
+    private PreparedStatement allManufacturerQuery, getManufacturerQueryFromID, addManufacturerQuery, getManufacturerIDQuery, removeManufacturerQuery;
     private int freeID;
 
     private ManufacturerDAO() {
@@ -26,6 +26,7 @@ public class ManufacturerDAO {
             getManufacturerQueryFromID = conn.prepareStatement("SELECT * FROM Manufacturer WHERE id=?");
             addManufacturerQuery = conn.prepareStatement("INSERT INTO Manufacturer VALUES(?,?)");
             getManufacturerIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Manufacturer");
+            removeManufacturerQuery = conn.prepareStatement("DELETE FROM Manufacturer WHERE id=?");
             ResultSet rs = getManufacturerIDQuery.executeQuery();
             rs.next();
             freeID = rs.getInt(1);
@@ -97,6 +98,16 @@ public class ManufacturerDAO {
 
     public void setCurrentManufacturer(Manufacturer currentManufacturer) {
         this.currentManufacturer = currentManufacturer;
+    }
+
+    public void removeManufacturer(Manufacturer m){
+        try {
+            removeManufacturerQuery.setInt(1, m.getId());
+            removeManufacturerQuery.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        refreshlistManufacturers();
     }
 
     private void refreshlistManufacturers(){
