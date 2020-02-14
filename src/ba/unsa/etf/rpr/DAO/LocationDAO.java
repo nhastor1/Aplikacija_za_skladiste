@@ -29,6 +29,8 @@ public class LocationDAO {
             ResultSet rs = getLocationIDQuery.executeQuery();
             rs.next();
             freeID = rs.getInt(1);
+            if(freeID<1)
+                freeID = 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }

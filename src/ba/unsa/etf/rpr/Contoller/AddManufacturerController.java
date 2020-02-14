@@ -1,6 +1,10 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.DAO.LegalPersonDAO;
+import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
 import ba.unsa.etf.rpr.Location.Location;
+import ba.unsa.etf.rpr.Manufacturer;
+import ba.unsa.etf.rpr.Person.LegalPerson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,7 +21,6 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class AddManufacturerController {
     public TextField fldName;
     private Location location = null;
-    private boolean set = false;
 
     public void addLocationAction(ActionEvent actionEvent) {
         Parent root = null;
@@ -51,8 +54,8 @@ public class AddManufacturerController {
             alert.showAndWait();
         }
         else{
-            set = true;
-
+            LegalPerson lp = LegalPersonDAO.getInstance().addLegalPerson(new LegalPerson(0, location, fldName.getText()));
+            Manufacturer m = ManufacturerDAO.getInstance().addManufacturer(new Manufacturer(0, lp));
             cancelAction(actionEvent);
         }
     }
@@ -61,9 +64,5 @@ public class AddManufacturerController {
         Node n = (Node) actionEvent.getSource();
         Stage stage = (Stage) n.getScene().getWindow();
         stage.close();
-    }
-
-    public boolean isSet() {
-        return set;
     }
 }

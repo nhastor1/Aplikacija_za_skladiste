@@ -28,6 +28,8 @@ public class LegalPersonDAO {
             ResultSet rs = getLegalPersonIDQuery.executeQuery();
             rs.next();
             freeID = rs.getInt(1);
+            if(freeID<1)
+                freeID = 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
