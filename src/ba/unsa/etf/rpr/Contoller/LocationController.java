@@ -32,7 +32,7 @@ public class LocationController {
         choiceContinent.setItems(ContinentDAO.getInstance().getListContinent());
 
         choiceLocation.showingProperty().addListener((newLocation) ->{
-            if(newLocation!=null) {
+            if(choiceLocation.getSelectionModel().getSelectedItem()!=null) {
                 choiceContinent.setDisable(true);
                 fldCountry.setDisable(true);
                 fldCity.setDisable(true);
