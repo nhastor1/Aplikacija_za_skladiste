@@ -13,7 +13,7 @@ public class MainDAO {
     private Connection conn;
     private PreparedStatement checkIsThereCategory, checkIsThereCity, checkIsThereLocation, checkIsThereCountry, checkIsThereContinent,
             checkIsThereInovice, checkIsThereLegalPerson, checkIsThereNaturalPerson, checkIsThereManufacturer,
-            checkIsThereProduct, checkIsTherePrdouct_order, checkIsThereWarehouse, sysdateQuery;
+            checkIsThereProduct, checkIsTherePrdouct_order, checkIsThereWarehouse;
 
     private MainDAO() {
         try {
@@ -34,7 +34,6 @@ public class MainDAO {
             checkIsThereProduct = conn.prepareStatement("SELECT * FROM Product");
             checkIsTherePrdouct_order = conn.prepareStatement("SELECT * FROM Product_order");
             checkIsThereWarehouse = conn.prepareStatement("SELECT * FROM Warehouse");
-            sysdateQuery = conn.prepareStatement("SELECT SYSDATE FROM Dual");
         } catch (SQLException e) {
             createDatabase();
         }
@@ -81,15 +80,5 @@ public class MainDAO {
 
     public Connection getConn() {
         return conn;
-    }
-
-    public Date getSysdate(){
-        try {
-            ResultSet rs = sysdateQuery.executeQuery();
-            return rs.getDate(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

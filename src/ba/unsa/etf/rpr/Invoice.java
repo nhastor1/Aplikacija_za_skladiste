@@ -13,7 +13,7 @@ public class Invoice {
     List<ProductOrder> orders;
     double price;
     double discount = 0;
-    Date timeOfOrder = MainDAO.getInstance().getSysdate();
+    Date timeOfOrder = new Date(System.currentTimeMillis());;
 
     public Invoice(int id, Person customer, List<ProductOrder> orders) {
         this.id = id;
@@ -26,6 +26,15 @@ public class Invoice {
         this.customer = customer;
         this.orders = orders;
         this.discount = discount;
+    }
+
+    public Invoice(int id, Person customer, List<ProductOrder> orders, double price, double discount, Date timeOfOrder) {
+        this.id = id;
+        this.customer = customer;
+        this.orders = orders;
+        this.price = price;
+        this.discount = discount;
+        this.timeOfOrder = timeOfOrder;
     }
 
     public int getId() {

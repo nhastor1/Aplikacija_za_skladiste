@@ -26,9 +26,9 @@ public class ProductDAO {
             allProductQuery = conn.prepareStatement("SELECT * FROM Product");
             getProductQueryFromID = conn.prepareStatement("SELECT * FROM Product WHERE id=?");
             getProductQueryFromName = conn.prepareStatement("SELECT * FROM Product WHERE name=?");
-            addProductQuery = conn.prepareStatement("INSERT INTO Product VALUES(?,?,?)");
+            addProductQuery = conn.prepareStatement("INSERT INTO Product VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
             getProductIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Product");
-            canDeleteQuerryProduct = conn.prepareStatement("SELECT COUNT(*) FROM Product WHERE Product.Product=?");
+            canDeleteQuerryProduct = conn.prepareStatement("SELECT COUNT(*) FROM Product WHERE Product.id=?");
             removeManufacturerQuery = conn.prepareStatement("DELETE FROM Product WHERE id=?");
             allProductsFromWarehouseQuerry = conn.prepareStatement("SELECT * FROM Product WHERE Product.warehouse=?");
             ResultSet rs = getProductIDQuery.executeQuery();

@@ -16,6 +16,12 @@ public class Warehouse {
     public Warehouse() {
     }
 
+    public Warehouse(int id, String name, Location location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+    }
+
     public Warehouse(int id, String name, Location location, Map<Integer, Product> products) {
         this.id = id;
         this.name = name;
