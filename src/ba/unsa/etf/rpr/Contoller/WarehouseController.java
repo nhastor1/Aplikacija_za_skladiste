@@ -25,6 +25,7 @@ public class WarehouseController {
     public TableColumn<Warehouse, String> colName;
     public TableColumn<Warehouse, Integer> colLocation;
     private WarehouseDAO dao = WarehouseDAO.getInstance();
+    private Scene scene;
 
     public WarehouseController(Scene scene){
         this.scene = scene;
@@ -33,10 +34,9 @@ public class WarehouseController {
     @FXML
     public void initialize(){
         colID.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        colWarehouse.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colSuperWarehouse.setCellValueFactory(new PropertyValueFactory<>("SuperWarehouse"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colLocation.setCellValueFactory(new PropertyValueFactory<>("Location"));
 
-        dao = WarehouseDAO.getInstance();
         tableViewWarehouse.setItems(dao.getListWarehouse());
 
         tableViewWarehouse.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
