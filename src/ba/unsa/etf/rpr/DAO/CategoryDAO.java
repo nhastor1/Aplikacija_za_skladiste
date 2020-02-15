@@ -18,7 +18,6 @@ public class CategoryDAO {
             removeManufacturerQuery, canDeleteQuerryCategory, canDeleteQuerryProduct;
     private int freeID;
     private Category currentCategory;
-    int i=1;
 
     private CategoryDAO() {
         conn = MainDAO.getInstance().getConn();
@@ -156,12 +155,6 @@ public class CategoryDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        System.out.println("\n");
-        for(Category c : result){
-            System.out.println(c.getId() + "\t" + c.getName() + "\t" + c.getSupercategory());
-        }
-
         return result;
     }
 

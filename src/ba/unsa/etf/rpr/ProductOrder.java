@@ -1,6 +1,9 @@
 package ba.unsa.etf.rpr;
 
-import java.time.LocalDateTime;
+
+import ba.unsa.etf.rpr.DAO.MainDAO;
+
+import java.util.Date;
 
 public class ProductOrder {
     int id;
@@ -8,7 +11,7 @@ public class ProductOrder {
     int amount;
     Invoice invoice;
     double discount = 0;
-    LocalDateTime timeOfOrder = LocalDateTime.now();
+    Date timeOfOrder = MainDAO.getInstance().getSysdate();
 
     public ProductOrder(int id, Product product, int amount, Invoice invoice) {
         this.id = id;
@@ -70,7 +73,7 @@ public class ProductOrder {
         return  price - price * discount;
     }
 
-    public LocalDateTime getTimeOfOrder() {
+    public Date getTimeOfOrder() {
         return timeOfOrder;
     }
 }

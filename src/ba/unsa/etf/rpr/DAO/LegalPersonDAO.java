@@ -43,11 +43,6 @@ public class LegalPersonDAO {
     }
 
     public static void removeInstance() {
-        try {
-            instance.conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         instance = null;
     }
 

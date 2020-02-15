@@ -10,17 +10,17 @@ public class Warehouse {
     int id;
     String name;
     Location location;
-    NaturalPerson responsiblePerson;
-    Map<Product, Integer> products = new HashMap<>();
+//    NaturalPerson responsiblePerson;
+    Map<Integer, Product> products = new HashMap<>();
 
     public Warehouse() {
     }
 
-    public Warehouse(int id, String name, Location location, NaturalPerson responsiblePerson, Map<Product, Integer> products) {
+    public Warehouse(int id, String name, Location location, Map<Integer, Product> products) {
         this.id = id;
         this.name = name;
         this.location = location;
-        this.responsiblePerson = responsiblePerson;
+//        this.responsiblePerson = responsiblePerson;
         this.products = products;
     }
 
@@ -48,40 +48,44 @@ public class Warehouse {
         this.location = location;
     }
 
-    public NaturalPerson getResponsiblePerson() {
-        return responsiblePerson;
-    }
+//    public NaturalPerson getResponsiblePerson() {
+//        return responsiblePerson;
+//    }
+//
+//    public void setResponsiblePerson(NaturalPerson responsiblePerson) {
+//        this.responsiblePerson = responsiblePerson;
+//    }
 
-    public void setResponsiblePerson(NaturalPerson responsiblePerson) {
-        this.responsiblePerson = responsiblePerson;
-    }
-
-    public Map<Product, Integer> getProducts() {
+    public Map<Integer, Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Map<Product, Integer> products) {
+    public void setProducts(Map<Integer, Product> products) {
         this.products = products;
     }
 
-    public void addProuct(Product p, int number){
-        if(products.containsKey(p))
-            products.replace(p, products.get(p)+number);
+    public boolean addProuct(Product p, int number){
+        if(number<=0)
+            return false;
+        if(products.containsKey(p.getId()))
+            products.get(p.getId()).addAmount(number);
         else
-            products.put(p, number);
+            products.put(p.getId(), p);
+
+        return true;
     }
 
     public int howMuch(Product p){
-        Integer n = products.get(p);
-        if(n==null)
-            n = 0;
-        return n;
+        Product p2 = products.get(p.getId());
+        if(p2==null)
+            return 0;
+        return p2.getAmount();
     }
 
     public boolean take(Product p, int number){
         if(howMuch(p)<number)
             return false;
-        products.replace(p, products.get(p) - number);
+        products.get(p.getId()).takeAmount(number);
         return true;
     }
 }

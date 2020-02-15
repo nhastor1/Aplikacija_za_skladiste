@@ -2,20 +2,23 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.Location.Location;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 public class Product {
     int id;
     String name;
     double price;
+    int amount;
+    Warehouse warehouse;
     int guarantee = 0;
     double discount = 0;
     Category category = new Category();
     Manufacturer manufacturer = new Manufacturer();
-    LocalDateTime lifetime;
-    LocalDateTime dateOfProduction;
+    Date lifetime;
+    Date dateOfProduction;
     Location locationOfProduction;
+
 
     public Product() {
     }
@@ -26,28 +29,42 @@ public class Product {
         this.price = price;
     }
 
-    public Product(int id, String name, double price, int guarantee, double discount) {
+    public Product(int id, String name, double price, int amount, Warehouse warehouse) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.amount = amount;
+        this.warehouse = warehouse;
+    }
+
+    public Product(int id, String name, double price, int amount, Warehouse warehouse, int guarantee, double discount) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.warehouse = warehouse;
         this.guarantee = guarantee;
         this.discount = discount;
     }
 
-    public Product(int id, String name, double price, int guarantee, double discount, Category category, Manufacturer manufacturer) {
+    public Product(int id, String name, double price, int amount, Warehouse warehouse, int guarantee, double discount, Category category, Manufacturer manufacturer) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.amount = amount;
+        this.warehouse = warehouse;
         this.guarantee = guarantee;
         this.discount = discount;
         this.category = category;
         this.manufacturer = manufacturer;
     }
 
-    public Product(int id, String name, double price, int guarantee, double discount, Category category, Manufacturer manufacturer, LocalDateTime lifetime, LocalDateTime dateOfProduction, Location locationOfProduction) {
+    public Product(int id, String name, double price, int amount, Warehouse warehouse, int guarantee, double discount, Category category, Manufacturer manufacturer, Date lifetime, Date dateOfProduction, Location locationOfProduction) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.amount = amount;
+        this.warehouse = warehouse;
         this.guarantee = guarantee;
         this.discount = discount;
         this.category = category;
@@ -113,19 +130,19 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
-    public LocalDateTime getLifetime() {
+    public Date getLifetime() {
         return lifetime;
     }
 
-    public void setLifetime(LocalDateTime lifetime) {
+    public void setLifetime(Date lifetime) {
         this.lifetime = lifetime;
     }
 
-    public LocalDateTime getDateOfProduction() {
+    public Date getDateOfProduction() {
         return dateOfProduction;
     }
 
-    public void setDateOfProduction(LocalDateTime dateOfProduction) {
+    public void setDateOfProduction(Date dateOfProduction) {
         this.dateOfProduction = dateOfProduction;
     }
 
@@ -135,6 +152,30 @@ public class Product {
 
     public void setLocationOfProduction(Location locationOfProduction) {
         this.locationOfProduction = locationOfProduction;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public void addAmount(int number){
+        amount+=number;
+    }
+
+    public void takeAmount(int number){
+        amount-=number;
     }
 
     @Override

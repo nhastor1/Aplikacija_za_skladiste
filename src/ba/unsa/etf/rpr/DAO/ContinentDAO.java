@@ -36,11 +36,6 @@ public class ContinentDAO {
     }
 
     public static void removeInstance() {
-        try {
-            instance.conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         instance = null;
     }
 

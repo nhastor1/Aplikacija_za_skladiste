@@ -23,13 +23,17 @@ CREATE TABLE IF NOT EXISTS "Product" (
 	"id"	INTEGER,
 	"name"	TEXT,
 	"price"	REAL,
+	"amount" INTEGER,
+	"warehouse" INTEGER,
 	"guarantee"	INTEGER,
+	"discount" REAL,
 	"category"	INTEGER,
 	"manufacturer"	INTEGER,
 	"lifetime"	DATE,
 	"dateOfProduction"	DATE,
 	"locationOfProduction"	INTEGER,
 	PRIMARY KEY("id"),
+	FOREIGN KEY("warehouse") REFERENCES "Warehouse"("id"),
 	FOREIGN KEY("category") REFERENCES "Category"("id"),
 	FOREIGN KEY("manufacturer") REFERENCES "Manufacturer"("id"),
 	FOREIGN KEY("locationOfProduction") REFERENCES "Location"("id")
@@ -51,10 +55,8 @@ CREATE TABLE IF NOT EXISTS "Warehouse" (
 	"id"	INTEGER,
 	"name"	TEXT,
 	"location"	INTEGER,
-	"responsible_person"	INTEGER,
 	PRIMARY KEY("id"),
-	FOREIGN KEY("location") REFERENCES "Location"("id"),
-	FOREIGN KEY("responsible_person") REFERENCES "Natural_person"("id")
+	FOREIGN KEY("location") REFERENCES "Location"("id")
 );
 CREATE TABLE IF NOT EXISTS "Legal_person" (
 	"id"	INTEGER,
