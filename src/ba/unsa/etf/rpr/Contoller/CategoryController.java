@@ -34,7 +34,7 @@ public class CategoryController {
     public void initialize(){
         colID.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colSuperCategory.setCellValueFactory(new PropertyValueFactory<>("SupercategoryName"));
+        colSuperCategory.setCellValueFactory(new PropertyValueFactory<>("Supercategory"));
 
         dao = CategoryDAO.getInstance();
         tableViewCategory.setItems(dao.getListCategory());

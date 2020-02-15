@@ -1,8 +1,6 @@
 package ba.unsa.etf.rpr.DAO;
 
-import ba.unsa.etf.rpr.Location.Continent;
 import ba.unsa.etf.rpr.Category;
-import ba.unsa.etf.rpr.Manufacturer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -17,9 +15,10 @@ public class CategoryDAO {
     private Connection conn;
     private ObservableList<Category> listCategories = FXCollections.observableArrayList();
     private PreparedStatement allCategoryQuery, getCategoryQueryFromID, addCategoryQuery, getCategoryIDQuery, getCategoryQueryFromName,
-            removeManufacturerQuery, canDeleteQuerry;
+            removeManufacturerQuery, canDeleteQuerryCategory, canDeleteQuerryProduct;
     private int freeID;
     private Category currentCategory;
+    int i=1;
 
     private CategoryDAO() {
         conn = MainDAO.getInstance().getConn();
@@ -29,7 +28,8 @@ public class CategoryDAO {
             getCategoryQueryFromName = conn.prepareStatement("SELECT * FROM Category WHERE name=?");
             addCategoryQuery = conn.prepareStatement("INSERT INTO Category VALUES(?,?,?)");
             getCategoryIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Category");
-            canDeleteQuerry = conn.prepareStatement("SELECT  Count(*) FROM Category c1, Category c2, Product p WHERE c1.id=? AND (c2.supercategory=c1.id OR p.category=c1.id)");
+            canDeleteQuerryCategory = conn.prepareStatement("SELECT COUNT(*) FROM Category WHERE Category.supercategory=?");
+            canDeleteQuerryProduct = conn.prepareStatement("SELECT COUNT(*) FROM Product WHERE Product.category=?");
             removeManufacturerQuery = conn.prepareStatement("DELETE FROM Category WHERE id=?");
             ResultSet rs = getCategoryIDQuery.executeQuery();
             rs.next();
@@ -55,8 +55,7 @@ public class CategoryDAO {
     public Category getCategoryFromRS(ResultSet rs){
         Category c = null;
         try {
-            Category cont = this.getCategory(rs.getInt(3));
-            c = new Category(rs.getInt(1), rs.getString(2), cont);
+            c = new Category(rs.getInt(1), rs.getString(2), getCategory(rs.getInt(3)));
         } catch (SQLException e) {
             //
         }
@@ -70,7 +69,8 @@ public class CategoryDAO {
         try {
             getCategoryQueryFromID.setInt(1, id);
             ResultSet rs = getCategoryQueryFromID.executeQuery();
-            c = getCategoryFromRS(rs);
+            if(rs.next())
+                c = getCategoryFromRS(rs);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -150,21 +150,28 @@ public class CategoryDAO {
         ArrayList<Category> result = new ArrayList<>();
         try {
             ResultSet rs = allCategoryQuery.executeQuery();
-            result.add(getCategoryFromRS(rs));
             while (rs.next()) {
                 result.add(getCategoryFromRS(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        System.out.println("\n");
+        for(Category c : result){
+            System.out.println(c.getId() + "\t" + c.getName() + "\t" + c.getSupercategory());
+        }
+
         return result;
     }
 
     private boolean canDelete(int id){
         try {
-            canDeleteQuerry.setInt(1, id);
-            ResultSet rs = canDeleteQuerry.executeQuery();
-            if(rs.getInt(1)==0)
+            canDeleteQuerryCategory.setInt(1, id);
+            canDeleteQuerryProduct.setInt(1, id);
+            ResultSet rs1 = canDeleteQuerryCategory.executeQuery();
+            ResultSet rs2 = canDeleteQuerryProduct.executeQuery();
+            if(rs1.getInt(1)==0 && rs2.getInt(1)==0)
                 return true;
         } catch (SQLException e) {
             e.printStackTrace();
