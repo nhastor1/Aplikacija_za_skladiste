@@ -2,15 +2,21 @@ package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.Category;
 import ba.unsa.etf.rpr.DAO.CategoryDAO;
-import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class CategoryController {
     public TableView<Category> tableViewCategory;
@@ -28,7 +34,7 @@ public class CategoryController {
     public void initialize(){
         colID.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colSuperCategory.setCellValueFactory(new PropertyValueFactory<>("Supecategory"));
+        colSuperCategory.setCellValueFactory(new PropertyValueFactory<>("SupercategoryName"));
 
         dao = CategoryDAO.getInstance();
         tableViewCategory.setItems(dao.getListCategory());
@@ -47,10 +53,31 @@ public class CategoryController {
     public void removeAction(ActionEvent actionEvent) {
         if(dao.getCurrentCategory()==null)
             return;
-        dao.removeCategory(dao.getCurrentCategory());
+        if(!dao.removeCategory(dao.getCurrentCategory())){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Cannot delete category");
+            alert.setContentText("Some product has this category,\nor this category is supercategory\nof some categories");
+
+            alert.showAndWait();
+        }
         dao.setCurrentCategory(null);
     }
 
     public void addAction(ActionEvent actionEvent) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addCategory.fxml"));
+            AddCategoryController ctrl = new AddCategoryController();
+            loader.setController(ctrl);
+
+            Stage stage = new Stage();
+            root = loader.load();
+            stage.setTitle("Add category");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

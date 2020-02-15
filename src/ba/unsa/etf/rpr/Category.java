@@ -35,6 +35,12 @@ public class Category {
         return supercategory;
     }
 
+    public String getSupercategoryName() {
+        if(supercategory!=null)
+            return supercategory.getName();
+        return "";
+    }
+
     public void setSupercategory(Category supercategory) {
         this.supercategory = supercategory;
     }

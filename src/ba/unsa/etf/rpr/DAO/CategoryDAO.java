@@ -16,7 +16,8 @@ public class CategoryDAO {
     private static CategoryDAO instance = null;
     private Connection conn;
     private ObservableList<Category> listCategories = FXCollections.observableArrayList();
-    private PreparedStatement allCategoryQuery, getCategoryQueryFromID, addCategoryQuery, getCategoryIDQuery, getCategoryQueryFromName, removeManufacturerQuery;
+    private PreparedStatement allCategoryQuery, getCategoryQueryFromID, addCategoryQuery, getCategoryIDQuery, getCategoryQueryFromName,
+            removeManufacturerQuery, canDeleteQuerry;
     private int freeID;
     private Category currentCategory;
 
@@ -28,6 +29,7 @@ public class CategoryDAO {
             getCategoryQueryFromName = conn.prepareStatement("SELECT * FROM Category WHERE name=?");
             addCategoryQuery = conn.prepareStatement("INSERT INTO Category VALUES(?,?,?)");
             getCategoryIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Category");
+            canDeleteQuerry = conn.prepareStatement("SELECT  Count(*) FROM Category c1, Category c2, Product p WHERE c1.id=? AND (c2.supercategory=c1.id OR p.category=c1.id)");
             removeManufacturerQuery = conn.prepareStatement("DELETE FROM Category WHERE id=?");
             ResultSet rs = getCategoryIDQuery.executeQuery();
             rs.next();
@@ -47,18 +49,13 @@ public class CategoryDAO {
     }
 
     public static void removeInstance() {
-        try {
-            instance.conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         instance = null;
     }
 
     public Category getCategoryFromRS(ResultSet rs){
         Category c = null;
         try {
-            Category cont = CategoryDAO.getInstance().getCategory(rs.getInt(3));
+            Category cont = this.getCategory(rs.getInt(3));
             c = new Category(rs.getInt(1), rs.getString(2), cont);
         } catch (SQLException e) {
             //
@@ -67,6 +64,8 @@ public class CategoryDAO {
     }
 
     public Category getCategory(int id){
+        if(id==0)
+            return null;
         Category c = null;
         try {
             getCategoryQueryFromID.setInt(1, id);
@@ -129,7 +128,9 @@ public class CategoryDAO {
         this.currentCategory = currentCategory;
     }
 
-    public void removeCategory(Category c){
+    public boolean removeCategory(Category c){
+        if(!canDelete(c.getId()))
+            return false;
         try {
             removeManufacturerQuery.setInt(1, c.getId());
             removeManufacturerQuery.executeUpdate();
@@ -137,6 +138,7 @@ public class CategoryDAO {
             e.printStackTrace();
         }
         refreshlistCategories();
+        return true;
     }
 
     private void refreshlistCategories(){
@@ -148,6 +150,7 @@ public class CategoryDAO {
         ArrayList<Category> result = new ArrayList<>();
         try {
             ResultSet rs = allCategoryQuery.executeQuery();
+            result.add(getCategoryFromRS(rs));
             while (rs.next()) {
                 result.add(getCategoryFromRS(rs));
             }
@@ -155,5 +158,17 @@ public class CategoryDAO {
             e.printStackTrace();
         }
         return result;
+    }
+
+    private boolean canDelete(int id){
+        try {
+            canDeleteQuerry.setInt(1, id);
+            ResultSet rs = canDeleteQuerry.executeQuery();
+            if(rs.getInt(1)==0)
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
