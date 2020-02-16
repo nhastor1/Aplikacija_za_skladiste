@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS "Product" (
 	"lifetime"	DATE,
 	"dateOfProduction"	DATE,
 	"locationOfProduction"	INTEGER,
+	"image" TEXT,
 	PRIMARY KEY("id"),
 	FOREIGN KEY("warehouse") REFERENCES "Warehouse"("id"),
 	FOREIGN KEY("category") REFERENCES "Category"("id"),

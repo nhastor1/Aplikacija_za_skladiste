@@ -53,8 +53,8 @@ public class AddProductController {
     }
 
     public void okAction(ActionEvent actionEvent) {
-        if(isValid()){
-            Product p = ProductDAO.getInstance().addProduct(new Product(
+        if(isValid() && product==null){
+            ProductDAO.getInstance().addProduct(new Product(
                     0,
                     fldName.getText(),
                     Double.parseDouble(fldPrice.getText()),
@@ -68,8 +68,17 @@ public class AddProductController {
                     getDate(dateProduction),
                     choiceLoaction.getSelectionModel().getSelectedItem()
                     ));
-            System.out.println(p.getDateOfProduction().getYear() + "-" + p.getDateOfProduction().getMonth() + "-" + p.getDateOfProduction().getDay());
-            System.out.println(p.getLifetime().getYear() + "-" + p.getLifetime().getMonth() + "-" + p.getLifetime().getDay());
+            cancelAction(actionEvent);
+        }
+        else if(isValid() && product!=null){
+            product.set(fldName.getText(),
+                    Double.parseDouble(fldPrice.getText()),
+                    Integer.parseInt(fldAmount.getText()),
+                    choiceWarehouse.getSelectionModel().getSelectedItem(),
+                    getGuarantee(),
+                    choiceCategory.getSelectionModel().getSelectedItem(),
+                    choiceManufacturer.getSelectionModel().getSelectedItem(),
+                    choiceLoaction.getSelectionModel().getSelectedItem());
             cancelAction(actionEvent);
         }
         else{
@@ -81,6 +90,10 @@ public class AddProductController {
         Node n = (Node) actionEvent.getSource();
         Stage stage = (Stage) n.getScene().getWindow();
         stage.close();
+    }
+
+    public Product getProduct() {
+        return product;
     }
 
     private boolean isInteger(String s) {

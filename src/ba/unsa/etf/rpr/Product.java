@@ -19,6 +19,7 @@ public class Product {
     private Date lifetime;
     private Date dateOfProduction;
     private Location locationOfProduction;
+    private String image = "file:resources/img/no-image.png";
 
 
     public Product() {
@@ -177,6 +178,25 @@ public class Product {
 
     public void takeAmount(int number){
         amount-=number;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void set(String name, double price, int amount, Warehouse warehouse, int guarantee, Category category, Manufacturer manufacturer, Location locationOfProduction) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.warehouse = warehouse;
+        this.guarantee = guarantee;
+        this.category = category;
+        this.manufacturer = manufacturer;
+        this.locationOfProduction = locationOfProduction;
     }
 
     @Override

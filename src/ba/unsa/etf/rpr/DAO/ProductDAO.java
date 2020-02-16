@@ -16,7 +16,7 @@ public class ProductDAO {
     private Connection conn;
     private ObservableList<Product> listProducts = FXCollections.observableArrayList();
     private PreparedStatement allProductQuery, getProductQueryFromID, addProductQuery, getProductIDQuery, getProductQueryFromName,
-            removeProductQuery, allProductsFromWarehouseQuerry;
+            removeProductQuery, allProductsFromWarehouseQuerry, modifyProductQuery;
     private int freeID;
     private Product currentProduct;
 
@@ -26,9 +26,10 @@ public class ProductDAO {
             allProductQuery = conn.prepareStatement("SELECT * FROM Product");
             getProductQueryFromID = conn.prepareStatement("SELECT * FROM Product WHERE id=?");
             getProductQueryFromName = conn.prepareStatement("SELECT * FROM Product WHERE name=?");
-            addProductQuery = conn.prepareStatement("INSERT INTO Product VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+            addProductQuery = conn.prepareStatement("INSERT INTO Product VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             getProductIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Product");
             removeProductQuery = conn.prepareStatement("DELETE FROM Product WHERE id=?");
+            modifyProductQuery = conn.prepareStatement("UPDATE Product SET name=?, price=?, amount=?, warehouse=?, guarantee=?, discount=?, category=?, manufacturer=?, locationOfProduction=?, image=? WHERE id=?");
             allProductsFromWarehouseQuerry = conn.prepareStatement("SELECT * FROM Product WHERE Product.warehouse=?");
             ResultSet rs = getProductIDQuery.executeQuery();
             rs.next();
@@ -58,6 +59,7 @@ public class ProductDAO {
                     WarehouseDAO.getInstance().getWarehouse(rs.getInt(5)), rs.getInt(6), rs.getDouble(7),
                     CategoryDAO.getInstance().getCategory(rs.getInt(8)), ManufacturerDAO.getInstance().getManufacturer(rs.getInt(9)),
                     rs.getDate(10), rs.getDate(11), LocationDAO.getInstance().getLocation(rs.getInt(12)));
+            p.setImage(rs.getString(13));
         } catch (SQLException e) {
             //
         }
@@ -82,9 +84,9 @@ public class ProductDAO {
     }
 
     public Product addProduct(Product p) {
-        Product Product = getProduct(p.getName());
-        if(Product!=null)
-            return Product;
+        Product product = getProduct(p.getName());
+        if(product!=null)
+            return product;
 
         try {
             addProductQuery.setInt(1, freeID);
@@ -99,6 +101,7 @@ public class ProductDAO {
             addProductQuery.setDate(10, p.getLifetime());
             addProductQuery.setDate(11, p.getDateOfProduction());
             addProductQuery.setInt(12, p.getLocationOfProduction().getId());
+            addProductQuery.setString(13, p.getImage());
             addProductQuery.executeUpdate();
             p.setId(freeID);
             freeID++;
@@ -156,6 +159,33 @@ public class ProductDAO {
         }
 
         return products;
+    }
+
+    public Product modifyProduct(Product p) {
+        Product product = getProduct(p.getName());
+        if(product==null)
+            return null;
+
+        try {
+            modifyProductQuery.setString(1, p.getName());
+            modifyProductQuery.setDouble(2, p.getPrice());
+            modifyProductQuery.setInt(3, p.getAmount());
+            modifyProductQuery.setInt(4, p.getWarehouse().getId());
+            modifyProductQuery.setInt(5, p.getGuarantee());
+            modifyProductQuery.setDouble(6, p.getDiscount());
+            modifyProductQuery.setInt(7, p.getCategory().getId());
+            modifyProductQuery.setInt(8, p.getManufacturer().getId());
+            modifyProductQuery.setInt(9, p.getLocationOfProduction().getId());
+            modifyProductQuery.setString(10, p.getImage());
+            modifyProductQuery.setInt(11, p.getId());
+            modifyProductQuery.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        refreshlistProducts();
+        return p;
     }
 
     private void refreshlistProducts(){
