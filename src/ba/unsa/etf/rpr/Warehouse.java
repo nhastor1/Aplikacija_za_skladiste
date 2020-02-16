@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.Person.NaturalPerson;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Warehouse {
     int id;
@@ -47,5 +48,18 @@ public class Warehouse {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Warehouse warehouse = (Warehouse) o;
+        return id == warehouse.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

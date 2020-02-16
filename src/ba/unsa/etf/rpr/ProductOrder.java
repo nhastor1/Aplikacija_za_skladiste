@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class ProductOrder {
     int id;
@@ -82,5 +83,18 @@ public class ProductOrder {
 
     public Date getTimeOfOrder() {
         return timeOfOrder;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductOrder that = (ProductOrder) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

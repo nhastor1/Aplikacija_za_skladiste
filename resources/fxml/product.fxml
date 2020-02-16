@@ -83,18 +83,18 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></Label>
-            <Label fx:id="lblID" text="Label" GridPane.columnIndex="1" />
-            <Label fx:id="lblName" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="lblPrice" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="lblAmount" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="lblWarehouse" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="lblGuarantee" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="lblDiscount" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label fx:id="lblCategory" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label fx:id="lblManufacturer" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Label fx:id="lblLocation" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Label fx:id="lblDateProduction" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Label fx:id="lblTime" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Label fx:id="lblID" GridPane.columnIndex="1" />
+            <Label fx:id="lblName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="lblPrice" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="lblAmount" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="lblWarehouse" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="lblGuarantee" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="lblDiscount" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="lblCategory" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="lblManufacturer" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label fx:id="lblLocation" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="lblDateProduction" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label fx:id="lblTime" GridPane.columnIndex="3" GridPane.rowIndex="7" />
             <Button fx:id="btnImg" mnemonicParsing="false" onAction="#changeImageAction" prefHeight="128.0" prefWidth="128.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowSpan="4" GridPane.valignment="CENTER" />
          </children>
       </GridPane>

@@ -6,6 +6,7 @@ import ba.unsa.etf.rpr.Person.Person;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 public class Invoice {
     int id;
@@ -79,5 +80,18 @@ public class Invoice {
             price += o.getPrice();
         }
         price = price - discount * price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Invoice invoice = (Invoice) o;
+        return id == invoice.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

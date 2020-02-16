@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.Location;
 
+import java.util.Objects;
+
 public class Location {
     int id;
     String street;
@@ -51,5 +53,16 @@ public class Location {
                 city.getCountry() + ", " + city.getCountry().getContinent();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return id == location.id;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

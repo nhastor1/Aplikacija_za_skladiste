@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.Location;
 
+import java.util.Objects;
+
 public class Country {
     int id;
     String name;
@@ -38,5 +40,18 @@ public class Country {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return id == country.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

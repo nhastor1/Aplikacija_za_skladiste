@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.Location;
 
+import java.util.Objects;
+
 public class Continent {
     int id;
     String name;
@@ -28,5 +30,18 @@ public class Continent {
     @Override
     public String toString() {
         return  name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Continent continent = (Continent) o;
+        return id == continent.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

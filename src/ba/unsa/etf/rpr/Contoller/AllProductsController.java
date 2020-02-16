@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.Contoller;
 import ba.unsa.etf.rpr.DAO.ProductDAO;
 import ba.unsa.etf.rpr.Product;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -46,6 +48,17 @@ public class AllProductsController {
         tableViewProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             dao.setCurrentProduct(newSelection);
         });
+
+        tableViewProduct.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                    if(mouseEvent.getClickCount() == 2){
+                        productAction(mouseEvent);
+                    }
+                }
+            }
+        });
     }
 
     public void backAction(ActionEvent actionEvent) {
@@ -79,7 +92,7 @@ public class AllProductsController {
         }
     }
 
-    public void productAction(MouseEvent actionEvent){
+    public void productAction(MouseEvent mouseEvent){
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"));
