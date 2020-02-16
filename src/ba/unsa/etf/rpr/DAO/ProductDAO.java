@@ -16,7 +16,7 @@ public class ProductDAO {
     private Connection conn;
     private ObservableList<Product> listProducts = FXCollections.observableArrayList();
     private PreparedStatement allProductQuery, getProductQueryFromID, addProductQuery, getProductIDQuery, getProductQueryFromName,
-            removeManufacturerQuery, canDeleteQuerryProduct, allProductsFromWarehouseQuerry;
+            removeProductQuery, allProductsFromWarehouseQuerry;
     private int freeID;
     private Product currentProduct;
 
@@ -28,8 +28,7 @@ public class ProductDAO {
             getProductQueryFromName = conn.prepareStatement("SELECT * FROM Product WHERE name=?");
             addProductQuery = conn.prepareStatement("INSERT INTO Product VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
             getProductIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Product");
-            canDeleteQuerryProduct = conn.prepareStatement("SELECT COUNT(*) FROM Product WHERE Product.id=?");
-            removeManufacturerQuery = conn.prepareStatement("DELETE FROM Product WHERE id=?");
+            removeProductQuery = conn.prepareStatement("DELETE FROM Product WHERE id=?");
             allProductsFromWarehouseQuerry = conn.prepareStatement("SELECT * FROM Product WHERE Product.warehouse=?");
             ResultSet rs = getProductIDQuery.executeQuery();
             rs.next();
@@ -90,7 +89,16 @@ public class ProductDAO {
         try {
             addProductQuery.setInt(1, freeID);
             addProductQuery.setString(2, p.getName());
-            addProductQuery.setInt(3, p.getAmount());
+            addProductQuery.setDouble(3, p.getPrice());
+            addProductQuery.setInt(4, p.getAmount());
+            addProductQuery.setInt(5, p.getWarehouse().getId());
+            addProductQuery.setInt(6, p.getGuarantee());
+            addProductQuery.setDouble(7, p.getDiscount());
+            addProductQuery.setInt(8, p.getCategory().getId());
+            addProductQuery.setInt(9, p.getManufacturer().getId());
+            addProductQuery.setDate(10, p.getLifetime());
+            addProductQuery.setDate(11, p.getDateOfProduction());
+            addProductQuery.setInt(12, p.getLocationOfProduction().getId());
             addProductQuery.executeUpdate();
             p.setId(freeID);
             freeID++;
@@ -124,17 +132,14 @@ public class ProductDAO {
         this.currentProduct = currentProduct;
     }
 
-    public boolean removeProduct(Product c){
-        if(!canDelete(c.getId()))
-            return false;
+    public void removeProduct(Product c){
         try {
-            removeManufacturerQuery.setInt(1, c.getId());
-            removeManufacturerQuery.executeUpdate();
+            removeProductQuery.setInt(1, c.getId());
+            removeProductQuery.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         refreshlistProducts();
-        return true;
     }
 
     public Map<Integer, Product> getProductsFromWarehouse(int warehouseID) {
@@ -169,17 +174,5 @@ public class ProductDAO {
             e.printStackTrace();
         }
         return result;
-    }
-
-    private boolean canDelete(int id){
-        try {
-            canDeleteQuerryProduct.setInt(1, id);
-            ResultSet rs = canDeleteQuerryProduct.executeQuery();
-            if(rs.getInt(1)==0)
-                return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 }

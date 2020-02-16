@@ -2,7 +2,8 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.Location.Location;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.Objects;
 
 public class Product {

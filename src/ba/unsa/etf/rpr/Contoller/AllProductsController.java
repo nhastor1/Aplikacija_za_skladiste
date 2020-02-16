@@ -59,14 +59,7 @@ public class AllProductsController {
         if(dao.getCurrentProduct()==null)
             return;
         dao.removeProduct(dao.getCurrentProduct());
-//        if(!dao.removeProduct(dao.getCurrentProduct())){
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Error Dialog");
-//            alert.setHeaderText("Cannot delete product");
-//            alert.setContentText("Some product has this Warehouse,\nor this Warehouse is superWarehouse\nof some categories");
-//
-//            alert.showAndWait();
-//        }
+        System.out.println("Deleted product");
         dao.setCurrentProduct(null);
     }
 

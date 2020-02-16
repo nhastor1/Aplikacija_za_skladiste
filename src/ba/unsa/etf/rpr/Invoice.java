@@ -3,8 +3,8 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.DAO.MainDAO;
 import ba.unsa.etf.rpr.Person.Person;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class Invoice {

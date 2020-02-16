@@ -6,7 +6,7 @@ public class Category {
     Category supercategory;
 
     public Category() {
-        supercategory = new Category();
+        supercategory = null;
     }
 
     public Category(int id, String name, Category supercategory) {

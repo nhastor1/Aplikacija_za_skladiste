@@ -14,10 +14,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
 
 public class AddProductController {
     public TextField fldPrice;
@@ -55,6 +57,7 @@ public class AddProductController {
                     getDate(dateProduction),
                     choiceLoaction.getSelectionModel().getSelectedItem()
                     ));
+            cancelAction(actionEvent);
         }
     }
 
@@ -107,7 +110,7 @@ public class AddProductController {
 
     private Date getDate(DatePicker datePicker){
         LocalDate localDate = datePicker.getValue();
-        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-        return Date.from(instant);
+        Date date = new Date(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth());
+        return date;
     }
 }

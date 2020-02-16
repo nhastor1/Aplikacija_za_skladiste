@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProductOrder {
     int id;
