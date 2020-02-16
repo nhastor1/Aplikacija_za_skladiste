@@ -50,9 +50,9 @@ public class AddManufacturerController {
     public void okAction(ActionEvent actionEvent) {
         if(fldName.getText().equals("") || location==null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("Incorrect name or location");
-            alert.setContentText("You need to enter name and location");
+            alert.setTitle(Bundle.get().getString("ErrorDialog"));
+            alert.setHeaderText(Bundle.get().getString("Incorrectnameorlocation"));
+            alert.setContentText(Bundle.get().getString("Youneedtoenternameandlocation"));
 
             alert.showAndWait();
         }

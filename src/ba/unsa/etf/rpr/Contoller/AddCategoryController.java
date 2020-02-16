@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.Category;
 import ba.unsa.etf.rpr.DAO.CategoryDAO;
 import javafx.event.ActionEvent;
@@ -22,9 +23,9 @@ public class AddCategoryController {
     public void addAction(ActionEvent actionEvent) {
         if(fldCategory.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("Incorrect category");
-            alert.setContentText("You need to enter field category");
+            alert.setTitle(Bundle.get().getString("ErrorDialog"));
+            alert.setHeaderText(Bundle.get().getString("Incorrectcategory"));
+            alert.setContentText(Bundle.get().getString("Youneedtoenterfieldcategory"));
 
             alert.showAndWait();
         }

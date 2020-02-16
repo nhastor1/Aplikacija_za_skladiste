@@ -1,11 +1,8 @@
 package ba.unsa.etf.rpr.Contoller;
 
-import ba.unsa.etf.rpr.Category;
+import ba.unsa.etf.rpr.*;
 import ba.unsa.etf.rpr.DAO.*;
 import ba.unsa.etf.rpr.Location.Location;
-import ba.unsa.etf.rpr.Manufacturer;
-import ba.unsa.etf.rpr.Product;
-import ba.unsa.etf.rpr.Warehouse;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,11 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.temporal.TemporalField;
-import java.util.Calendar;
 
 public class AddProductController {
     public TextField fldPrice;
@@ -82,7 +74,7 @@ public class AddProductController {
             cancelAction(actionEvent);
         }
         else{
-            ErrorBox("Some fields are empty or incorrect", "You need to enter those fields");
+            ErrorBox("Somefieldsareemptyorincorrect", "Youneedtoenterthosefields");
         }
     }
 
@@ -161,9 +153,9 @@ public class AddProductController {
 
     private void ErrorBox(String s1, String s2) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error Dialog");
-        alert.setHeaderText(s1);
-        alert.setContentText(s2);
+        alert.setTitle(Bundle.get().getString("ErrorDialog"));
+        alert.setHeaderText(Bundle.get().getString(s1));
+        alert.setContentText(Bundle.get().getString(s2));
 
         alert.showAndWait();
     }

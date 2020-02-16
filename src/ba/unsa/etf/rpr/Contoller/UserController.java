@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.User.Administrator;
 import ba.unsa.etf.rpr.User.User;
 import ba.unsa.etf.rpr.User.UsersModel;
@@ -232,8 +233,8 @@ public class UserController {
 
         // Dialog box for displaying password
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText("Vaša lozinka glasi:");
+        alert.setTitle(Bundle.get().getString("InformationDialog"));
+        alert.setHeaderText(Bundle.get().getString("Vašalozinkaglasi"));
         alert.setContentText(s);
 
         alert.showAndWait();
@@ -365,10 +366,9 @@ public class UserController {
 
     private void showErrorDialogBox(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error Dialog");
-        alert.setHeaderText("You need to enter valid info");
-        alert.setContentText("For password you need to enter minimum 1 character \nof capital, lowercase and number," +
-                " and for \nadministrator 1 other character");
+        alert.setTitle(Bundle.get().getString("ErrorDialog"));
+        alert.setHeaderText(Bundle.get().getString("Youneedtoentervalidinfo"));
+        alert.setContentText(Bundle.get().getString("er4"));
 
         alert.showAndWait();
     }

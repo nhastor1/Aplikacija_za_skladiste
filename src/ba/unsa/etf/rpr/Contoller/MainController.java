@@ -53,18 +53,18 @@ public class MainController {
             }
             catch (InvalidUsernameException e) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Warning Dialog");
-                alert.setHeaderText("Invalid username");
-                alert.setContentText("Try, again");
+                alert.setTitle(Bundle.get().getString("WarningDialog"));
+                alert.setHeaderText(Bundle.get().getString("Invalidusername"));
+                alert.setContentText(Bundle.get().getString("Tryagain"));
 
                 alert.showAndWait();
                 return;
             }
             catch (InvalidPasswordException e) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Warning Dialog");
-                alert.setHeaderText("Invalid password");
-                alert.setContentText("Try, again");
+                alert.setTitle(Bundle.get().getString("WarningDialog"));
+                alert.setHeaderText(Bundle.get().getString("Invalidpassword"));
+                alert.setContentText(Bundle.get().getString("Tryagain"));
 
                 alert.showAndWait();
                 return;

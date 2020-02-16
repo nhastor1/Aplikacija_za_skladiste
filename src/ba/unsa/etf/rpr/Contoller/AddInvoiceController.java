@@ -51,9 +51,9 @@ public class AddInvoiceController {
     public void okAction(ActionEvent actionEvent) {
         if(fldName.getText().equals("") || !isNumber(fldDiscount.getText()) || location==null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("Incorrect discount or location");
-            alert.setContentText("You need to enter discount and location");
+            alert.setTitle(Bundle.get().getString("ErrorDialog"));
+            alert.setHeaderText(Bundle.get().getString("Incorrectdiscountorlocation"));
+            alert.setContentText(Bundle.get().getString("Youneedtoenterdiscountandlocation"));
 
             alert.showAndWait();
         }

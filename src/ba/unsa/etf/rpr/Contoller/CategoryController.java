@@ -57,9 +57,9 @@ public class CategoryController {
             return;
         if(!dao.removeCategory(dao.getCurrentCategory())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("Cannot delete category");
-            alert.setContentText("Some product has this category,\nor this category is supercategory\nof some categories");
+            alert.setTitle(Bundle.get().getString("ErrorDialog"));
+            alert.setHeaderText(Bundle.get().getString("Cannotdeletecategory"));
+            alert.setContentText(Bundle.get().getString("Someproducthasthiscategoryorthiscategoryissupercategoryofsomecategories"));
 
             alert.showAndWait();
         }

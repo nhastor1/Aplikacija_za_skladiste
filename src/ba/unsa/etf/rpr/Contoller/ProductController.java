@@ -111,9 +111,8 @@ public class ProductController {
 
     public void productOrederAction(ActionEvent actionEvent){
         TextInputDialog dialog = new TextInputDialog("1");
-        dialog.setTitle("Text Input Dialog");
-        dialog.setHeaderText("Enter amount of product");
-//        dialog.setContentText("Please enter your name:");
+        dialog.setTitle(Bundle.get().getString("TextInputDialog"));
+        dialog.setHeaderText(Bundle.get().getString("Enteramountofproduct"));
 
 
         Optional<String> result = dialog.showAndWait();
@@ -124,9 +123,9 @@ public class ProductController {
             }
             else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Dialog");
-                alert.setHeaderText("Number you input is not valid");
-                alert.setContentText("You need to input an integer");
+                alert.setTitle(Bundle.get().getString("ErrorDialog"));
+                alert.setHeaderText(Bundle.get().getString("Numberyouinputisnotvalid"));
+                alert.setContentText(Bundle.get().getString("Youneedtoinputaninteger"));
 
                 alert.showAndWait();
             }

@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.CityDAO;
 import ba.unsa.etf.rpr.DAO.ContinentDAO;
 import ba.unsa.etf.rpr.DAO.CountryDAO;
@@ -57,9 +58,9 @@ public class LocationController {
                 || !isInteger(fldNumber.getText())){
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Dialog");
-                alert.setHeaderText("Incorrect location");
-                alert.setContentText("You need to enter all fields,\n or choose persistent location");
+                alert.setTitle(Bundle.get().getString("ErrorDialog"));
+                alert.setHeaderText(Bundle.get().getString("Incorrectlocation"));
+                alert.setContentText(Bundle.get().getString("Youneedtoenterallfieldsorchoosepersistentlocation"));
 
                 alert.showAndWait();
             }

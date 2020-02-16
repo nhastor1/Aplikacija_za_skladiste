@@ -97,8 +97,8 @@ public class ProductOrderController {
         tableViewProductOrder.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Confirmation Dialog");
-                alert.setHeaderText("Do you want to add this product order to invoice?");
+                alert.setTitle(Bundle.get().getString("ConfirmationDialog"));
+                alert.setHeaderText(Bundle.get().getString("Doyouwanttoaddthisproductordertoinvoice"));
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK)

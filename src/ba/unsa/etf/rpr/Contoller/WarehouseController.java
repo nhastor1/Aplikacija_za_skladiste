@@ -58,9 +58,9 @@ public class WarehouseController {
             return;
         if(!dao.removeWarehouse(dao.getCurrentWarehouse())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("Cannot delete Warehouse");
-            alert.setContentText("Some product has this Warehouse,\nor this Warehouse is superWarehouse\nof some categories");
+            alert.setTitle(Bundle.get().getString("ErrorDialog"));
+            alert.setHeaderText(Bundle.get().getString("CannotdeleteWarehouse"));
+            alert.setContentText(Bundle.get().getString("er5"));
 
             alert.showAndWait();
         }

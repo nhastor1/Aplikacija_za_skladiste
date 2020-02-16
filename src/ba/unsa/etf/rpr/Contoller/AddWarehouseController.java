@@ -47,9 +47,9 @@ public class AddWarehouseController {
     public void okAction(ActionEvent actionEvent) {
         if(fldName.getText().equals("") || location==null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("Incorrect name or location");
-            alert.setContentText("You need to enter name and location");
+            alert.setTitle(Bundle.get().getString("ErrorDialog"));
+            alert.setHeaderText(Bundle.get().getString("Incorrectdiscountorlocation"));
+            alert.setContentText(Bundle.get().getString("Youneedtoenterdiscountandlocation"));
 
             alert.showAndWait();
         }
