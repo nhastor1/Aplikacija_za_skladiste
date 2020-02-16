@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -78,7 +79,8 @@ public class AllProductsController {
     public void addAction(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"), bundle);
             AddProductController ctrl = new AddProductController();
             loader.setController(ctrl);
 
@@ -95,7 +97,8 @@ public class AllProductsController {
     public void productAction(MouseEvent mouseEvent){
         Parent root = null;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"), bundle);
             ProductController ctrl = new ProductController(tableViewProduct.getSelectionModel().getSelectedItem().getId());
             loader.setController(ctrl);
 

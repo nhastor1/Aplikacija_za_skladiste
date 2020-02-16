@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -62,7 +63,8 @@ public class ProductController {
     public void changeProduct(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"), bundle);
             AddProductController ctrl = new AddProductController(product);
             loader.setController(ctrl);
 
@@ -85,7 +87,8 @@ public class ProductController {
         Parent root = null;
         try {
             Stage myStage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchImage.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchImage.fxml"), bundle);
             SearchImageController ctrl = new SearchImageController();
             loader.setController(ctrl);
             root = loader.load();
@@ -165,7 +168,8 @@ public class ProductController {
 
     private void refreshScene(){
         Stage window = (Stage) btnImg.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"), bundle);
         loader.setController(this);
         try {
             window.setScene(new Scene(loader.load()));

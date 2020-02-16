@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -67,7 +68,8 @@ public class MainController {
             model.napuni();
             FrontPageController ctrl = new FrontPageController(model, scene);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/frontPage.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/frontPage.fxml"), bundle);
             loader.setController(ctrl);
             Parent root = null;
 

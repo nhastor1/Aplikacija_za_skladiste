@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class ProductOrderController {
     public TableView<ProductOrder> tableViewProductOrder;
@@ -74,7 +75,8 @@ public class ProductOrderController {
 
         try {
             AddInvoiceController ctrl = new AddInvoiceController();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addInvoice.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addInvoice.fxml"), bundle);
 
             loader.setController(ctrl);
             Parent root = null;
