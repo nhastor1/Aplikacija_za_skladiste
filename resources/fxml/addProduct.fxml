@@ -20,22 +20,22 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Price" GridPane.rowIndex="1">
+        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%price" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </GridPane.margin>
         </Label>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Amount" GridPane.rowIndex="2">
+        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%amount" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </GridPane.margin>
         </Label>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Warehouse" GridPane.rowIndex="3">
+        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%warehouse" GridPane.rowIndex="3">
             <GridPane.margin>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </GridPane.margin>
         </Label>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Guarantee" GridPane.rowIndex="4">
+        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%guarantee" GridPane.rowIndex="4">
             <GridPane.margin>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </GridPane.margin>
@@ -60,12 +60,12 @@
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin></TextField>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="153.0" text="Category" GridPane.columnIndex="2">
+        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="153.0" text="%category" GridPane.columnIndex="2">
             <GridPane.margin>
                 <Insets bottom="10.0" right="20.0" top="10.0" />
             </GridPane.margin>
         </Label>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Name">
+        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%name">
             <GridPane.margin>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </GridPane.margin>
@@ -83,10 +83,10 @@
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin></ChoiceBox>
-      <Label text="Manufacaturer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Label text="Location of production" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Label text="Date of production" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <Label text="Life time" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Label text="%manufacaturer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Label text="%locationOfProduction" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Label text="%dateOfProduction" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Label text="%lifeTime" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <ChoiceBox fx:id="choiceManufacturer" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="10.0" />

@@ -25,9 +25,9 @@
          <children>
             <TableView fx:id="tableViewCategory" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="6" GridPane.rowSpan="5">
               <columns>
-                <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="colCategory" prefWidth="233.4000015258789" text="Category" />
-                  <TableColumn fx:id="colSuperCategory" prefWidth="291.3999938964844" text="SuperCategory" />
+                <TableColumn fx:id="colID" prefWidth="75.0" text="%ID" />
+                <TableColumn fx:id="colCategory" prefWidth="233.4000015258789" text="%category" />
+                  <TableColumn fx:id="colSuperCategory" prefWidth="291.3999938964844" text="%supercategory" />
               </columns>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -39,9 +39,9 @@
    <top>
       <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#backAction" text="Back" />
-            <Button mnemonicParsing="false" onAction="#removeAction" text="Remove category" />
-          <Button mnemonicParsing="false" onAction="#addAction" text="Add category" />
+            <Button mnemonicParsing="false" onAction="#backAction" text="%back" />
+            <Button mnemonicParsing="false" onAction="#removeAction" text="%removeCategory" />
+          <Button mnemonicParsing="false" onAction="#addAction" text="%addCategory" />
         </buttons>
          <BorderPane.margin>
             <Insets left="20.0" right="20.0" />

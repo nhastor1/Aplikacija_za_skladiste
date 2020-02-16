@@ -14,7 +14,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Name of warehouse">
+        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%NameOfWarehouse">
             <GridPane.margin>
                 <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
             </GridPane.margin>
@@ -26,9 +26,9 @@
         </TextField>
         <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.rowIndex="1">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#addLocationAction" prefHeight="26.0" prefWidth="100.0" text="Add Location" />
-                <Button mnemonicParsing="false" onAction="#okAction" text="Ok" />
-                <Button mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
+                <Button mnemonicParsing="false" onAction="#addLocationAction" prefHeight="26.0" prefWidth="100.0" text="%addLocation" />
+                <Button mnemonicParsing="false" onAction="#okAction" text="%ok" />
+                <Button mnemonicParsing="false" onAction="#cancelAction" text="%cancel" />
             </buttons>
             <GridPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

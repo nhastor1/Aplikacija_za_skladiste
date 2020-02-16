@@ -21,11 +21,11 @@
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin></ChoiceBox>
-            <Label text="Supercategory" GridPane.rowIndex="1">
+            <Label text="%supercategory" GridPane.rowIndex="1">
                <padding>
                   <Insets left="10.0" />
                </padding></Label>
-            <Label text="New Category">
+            <Label text="%newCategory">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Label>
@@ -35,8 +35,8 @@
                </GridPane.margin></TextField>
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.rowIndex="2">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#addAction" text="Add" />
-                  <Button mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
+                <Button mnemonicParsing="false" onAction="#addAction" text="%add" />
+                  <Button mnemonicParsing="false" onAction="#cancelAction" text="%cancel" />
               </buttons>
                <GridPane.margin>
                   <Insets right="20.0" />

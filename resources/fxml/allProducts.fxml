@@ -26,11 +26,11 @@
             <children>
                 <TableView fx:id="tableViewProduct" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="6" GridPane.rowSpan="6">
                     <columns>
-                        <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="colCategory" prefWidth="179.59998321533203" text="Category" />
-                        <TableColumn fx:id="colName" minWidth="0.0" prefWidth="189.20000457763672" text="Name" />
-                  <TableColumn fx:id="colAmount" minWidth="0.0" prefWidth="68.0" text="Amount" />
-                  <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="68.20001220703125" text="Price" />
+                        <TableColumn fx:id="colID" prefWidth="75.0" text="%ID" />
+                        <TableColumn fx:id="colCategory" prefWidth="179.59998321533203" text="%category" />
+                        <TableColumn fx:id="colName" minWidth="0.0" prefWidth="189.20000457763672" text="%name" />
+                  <TableColumn fx:id="colAmount" minWidth="0.0" prefWidth="68.0" text="%amount" />
+                  <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="68.20001220703125" text="%price" />
                     </columns>
                     <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -42,9 +42,9 @@
     <top>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#backAction" text="Back" />
-                <Button mnemonicParsing="false" onAction="#removeAction" text="Remove product" />
-                <Button mnemonicParsing="false" onAction="#addAction" text="Add product" />
+                <Button mnemonicParsing="false" onAction="#backAction" text="%back" />
+                <Button mnemonicParsing="false" onAction="#removeAction" text="%removeProduct" />
+                <Button mnemonicParsing="false" onAction="#addAction" text="%addProduct" />
             </buttons>
             <padding>
                 <Insets left="20.0" right="20.0" />
