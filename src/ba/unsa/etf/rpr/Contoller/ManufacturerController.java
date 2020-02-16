@@ -69,7 +69,7 @@ public class ManufacturerController {
 
             Stage stage = new Stage();
             root = loader.load();
-            stage.setTitle("Manufacturer");
+            stage.setTitle(Bundle.get().getString("manufacturer"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {

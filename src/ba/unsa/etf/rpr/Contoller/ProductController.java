@@ -70,7 +70,7 @@ public class ProductController {
 
             Stage stage = new Stage();
             root = loader.load();
-            stage.setTitle("Change product");
+            stage.setTitle(Bundle.get().getString("changeProduct"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setOnHiding((event) -> {
                 product = ctrl.getProduct();
@@ -92,7 +92,7 @@ public class ProductController {
             loader.setController(ctrl);
             root = loader.load();
 
-            myStage.setTitle("Search");
+            myStage.setTitle(Bundle.get().getString("search"));
             myStage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             myStage.setOnHiding((event) -> {
                 String s = ctrl.getImageToSet();

@@ -76,7 +76,7 @@ public class WarehouseController {
 
             Stage stage = new Stage();
             root = loader.load();
-            stage.setTitle("Add Warehouse");
+            stage.setTitle(Bundle.get().getString("addWarehouse"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {

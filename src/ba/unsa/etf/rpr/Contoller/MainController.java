@@ -79,7 +79,7 @@ public class MainController {
             root = loader.load();
 
             Stage stage = primaryStage;
-            stage.setTitle("Front Page");
+            stage.setTitle(Bundle.get().getString("frontPage"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             UsersModel finalModel = model;
             stage.setOnHiding((event)->{

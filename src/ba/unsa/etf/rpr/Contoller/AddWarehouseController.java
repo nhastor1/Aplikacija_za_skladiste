@@ -31,7 +31,7 @@ public class AddWarehouseController {
 
             Stage stage = new Stage();
             root = loader.load();
-            stage.setTitle("Location");
+            stage.setTitle(Bundle.get().getString("location"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setOnHiding((event) ->{
                 if(ctrl.isSet()){

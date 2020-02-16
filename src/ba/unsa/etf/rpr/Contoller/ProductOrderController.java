@@ -83,7 +83,7 @@ public class ProductOrderController {
             root = loader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("New invoice");
+            stage.setTitle(Bundle.get().getString("newInvoice"));
             stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
             stage.setOnHiding((event) -> {
                 legalPerson = ctrl.getLegalPerson();

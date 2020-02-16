@@ -53,7 +53,7 @@ public class FrontPageController {
             root = loader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("Front Page");
+            stage.setTitle(Bundle.get().getString("users"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             UsersModel finalModel = usersModel;
             stage.setOnHiding((event)->{
@@ -81,7 +81,7 @@ public class FrontPageController {
             root = loader.load();
 
             Stage stage = primaryStage;
-            stage.setTitle("Manufacturers");
+            stage.setTitle(Bundle.get().getString("manufacturers"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {
@@ -101,7 +101,7 @@ public class FrontPageController {
             root = loader.load();
 
             Stage stage = primaryStage;
-            stage.setTitle("Warehouse");
+            stage.setTitle(Bundle.get().getString("warehouse"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {
@@ -121,7 +121,7 @@ public class FrontPageController {
             root = loader.load();
 
             Stage stage = primaryStage;
-            stage.setTitle("Category");
+            stage.setTitle(Bundle.get().getString("category"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {
@@ -144,7 +144,7 @@ public class FrontPageController {
             root = loader.load();
 
             Stage stage = primaryStage;
-            stage.setTitle("All products");
+            stage.setTitle(Bundle.get().getString("allProducts"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {
@@ -167,7 +167,7 @@ public class FrontPageController {
             root = loader.load();
 
             Stage stage = primaryStage;
-            stage.setTitle("Invoice");
+            stage.setTitle(Bundle.get().getString("invoice"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {
@@ -187,7 +187,7 @@ public class FrontPageController {
             root = loader.load();
 
             Stage stage = primaryStage;
-            stage.setTitle("Product order");
+            stage.setTitle(Bundle.get().getString("productOrder"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {

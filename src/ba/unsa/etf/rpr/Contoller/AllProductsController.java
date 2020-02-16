@@ -86,7 +86,7 @@ public class AllProductsController {
 
             Stage stage = new Stage();
             root = loader.load();
-            stage.setTitle("Add product");
+            stage.setTitle(Bundle.get().getString("addProduct"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {
@@ -103,7 +103,7 @@ public class AllProductsController {
 
             Stage stage = new Stage();
             root = loader.load();
-            stage.setTitle("Product");
+            stage.setTitle(Bundle.get().getString("product"));
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {
