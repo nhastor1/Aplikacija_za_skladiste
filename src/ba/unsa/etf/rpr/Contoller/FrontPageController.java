@@ -1,7 +1,11 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.DAO.InvoiceDAO;
+import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
 import ba.unsa.etf.rpr.Exception.InvalidPasswordException;
 import ba.unsa.etf.rpr.Exception.InvalidUsernameException;
+import ba.unsa.etf.rpr.Invoice;
+import ba.unsa.etf.rpr.ProductOrder;
 import ba.unsa.etf.rpr.User.User;
 import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.event.ActionEvent;
@@ -156,6 +160,23 @@ public class FrontPageController {
     }
 
     public void productOrederAction(ActionEvent actionEvent) {
+        try {
+            this.primaryStage = (Stage) btnUser.getScene().getWindow();
+            Scene scene = btnUser.getScene();
+            ProductOrderController ctrl = new ProductOrderController(scene);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/productOrder.fxml"));
+
+            loader.setController(ctrl);
+            Parent root = null;
+            root = loader.load();
+
+            Stage stage = primaryStage;
+            stage.setTitle("Product order");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void employeesAction(ActionEvent actionEvent) {

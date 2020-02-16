@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,9 +18,11 @@ import java.io.IOException;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
-public class AddManufacturerController {
+public class AddInvoiceController {
+    public TextField fldDiscount;
     public TextField fldName;
     private Location location = null;
+    private LegalPerson legalPerson;
 
     public void addLocationAction(ActionEvent actionEvent) {
         Parent root = null;
@@ -46,17 +47,16 @@ public class AddManufacturerController {
     }
 
     public void okAction(ActionEvent actionEvent) {
-        if(fldName.getText().equals("") || location==null){
+        if(fldName.getText().equals("") || !isNumber(fldDiscount.getText()) || location==null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setHeaderText("Incorrect name or location");
-            alert.setContentText("You need to enter name and location");
+            alert.setHeaderText("Incorrect discount or location");
+            alert.setContentText("You need to enter discount and location");
 
             alert.showAndWait();
         }
         else{
-            LegalPerson lp = LegalPersonDAO.getInstance().addLegalPerson(new LegalPerson(0, location, fldName.getText()));
-            Manufacturer m = ManufacturerDAO.getInstance().addManufacturer(new Manufacturer(0, lp));
+            legalPerson = LegalPersonDAO.getInstance().addLegalPerson(new LegalPerson(0, location, fldName.getText()));
             cancelAction(actionEvent);
         }
     }
@@ -65,5 +65,26 @@ public class AddManufacturerController {
         Node n = (Node) actionEvent.getSource();
         Stage stage = (Stage) n.getScene().getWindow();
         stage.close();
+    }
+
+    public String getName() {
+        return fldName.getText();
+    }
+
+    public LegalPerson getLegalPerson() {
+        return legalPerson;
+    }
+
+    public double getDiscount(){
+        return Double.parseDouble(fldDiscount.getText());
+    }
+
+    private boolean isNumber(String s) {
+        try {
+            Double.parseDouble(s);
+        } catch(NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
     }
 }

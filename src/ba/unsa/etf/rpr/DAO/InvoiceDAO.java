@@ -26,7 +26,6 @@ public class InvoiceDAO {
             addInvoiceQuery = conn.prepareStatement("INSERT INTO Invoice VALUES(?,?,?,?,?)");
             getInvoiceIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Invoice");
             removeInvoiceQuery = conn.prepareStatement("DELETE FROM Invoice WHERE id=?");
-//            modifyInvoiceQuery = conn.prepareStatement("UPDATE Invoice SET discount=? WHERE id=?");
             ResultSet rs = getInvoiceIDQuery.executeQuery();
             rs.next();
             freeID = rs.getInt(1);

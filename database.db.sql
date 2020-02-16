@@ -3,12 +3,12 @@ CREATE TABLE IF NOT EXISTS "Product_order" (
 	"id"	INTEGER,
 	"product"	INTEGER,
 	"amount"	INTEGER,
-	"inovice"	INTEGER,
+	"invoice"	INTEGER,
 	"discount"	REAL,
 	"timeOfOrder"	DATE,
 	PRIMARY KEY("id"),
 	FOREIGN KEY("product") REFERENCES "Product_order"("id"),
-	FOREIGN KEY("inovice") REFERENCES "Inovice"("id")
+	FOREIGN KEY("invoice") REFERENCES "Invoice"("id")
 );
 CREATE TABLE IF NOT EXISTS "Invoice" (
 	"id"	INTEGER,

@@ -18,9 +18,10 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public Invoice(int id, Person customer, double discount) {
+    public Invoice(int id, Person customer, double price, double discount) {
         this.id = id;
         this.customer = customer;
+        this.price = price;
         this.discount = discount;
     }
 

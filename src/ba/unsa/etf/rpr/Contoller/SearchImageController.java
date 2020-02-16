@@ -123,12 +123,18 @@ public class SearchImageController {
 
     private void setImage(int i, String s) {
         new Thread(() -> {
-            ImageView v = new ImageView(new Image(s));
-            v.setFitHeight(128);
-            v.setFitWidth(128);
-            Platform.runLater(() -> {
-                buttons.get(i).setGraphic(v);
-            });
+            ImageView v;
+            try {
+                v = new ImageView(new Image(s));
+                v.setFitHeight(128);
+                v.setFitWidth(128);
+                Platform.runLater(() -> {
+                    buttons.get(i).setGraphic(v);
+                });
+            }
+            catch (IllegalArgumentException e){
+                //
+            }
         }).start();
     }
 }

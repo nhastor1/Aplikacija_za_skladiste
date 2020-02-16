@@ -24,7 +24,7 @@ public class ProductOrderDAO {
     private ProductOrderDAO() {
         conn = MainDAO.getInstance().getConn();
         try {
-            allProductOrderQuery = conn.prepareStatement("SELECT * FROM Product_order");
+            allProductOrderQuery = conn.prepareStatement("SELECT * FROM Product_order WHERE invoice=0");
             getProductOrderQueryFromID = conn.prepareStatement("SELECT * FROM Product_order WHERE id=?");
             addProductOrderQuery = conn.prepareStatement("INSERT INTO Product_order VALUES(?,?,?,?,?,?)");
             getProductOrderIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Product_order");
