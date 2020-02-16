@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.LegalPersonDAO;
 import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
 import ba.unsa.etf.rpr.Location.Location;
@@ -28,8 +29,7 @@ public class AddInvoiceController {
     public void addLocationAction(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/enterLocation.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/enterLocation.fxml"), Bundle.get());
             LocationController ctrl = new LocationController();
             loader.setController(ctrl);
 

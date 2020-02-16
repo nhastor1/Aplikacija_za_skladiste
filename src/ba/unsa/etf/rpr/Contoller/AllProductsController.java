@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.ProductDAO;
 import ba.unsa.etf.rpr.Product;
 import javafx.event.ActionEvent;
@@ -79,8 +80,7 @@ public class AllProductsController {
     public void addAction(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"), Bundle.get());
             AddProductController ctrl = new AddProductController();
             loader.setController(ctrl);
 
@@ -97,8 +97,7 @@ public class AllProductsController {
     public void productAction(MouseEvent mouseEvent){
         Parent root = null;
         try {
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"), Bundle.get());
             ProductController ctrl = new ProductController(tableViewProduct.getSelectionModel().getSelectedItem().getId());
             loader.setController(ctrl);
 

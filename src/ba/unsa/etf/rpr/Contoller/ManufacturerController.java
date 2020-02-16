@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
-import ba.unsa.etf.rpr.Location.Location;
 import ba.unsa.etf.rpr.Manufacturer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,13 +12,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -66,8 +63,7 @@ public class ManufacturerController {
     public void addAction(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addManufacturer.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addManufacturer.fxml"), Bundle.get());
             AddManufacturerController ctrl = new AddManufacturerController();
             loader.setController(ctrl);
 

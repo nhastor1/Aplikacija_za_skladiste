@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.InvoiceDAO;
 import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
 import ba.unsa.etf.rpr.Invoice;
@@ -75,8 +76,7 @@ public class ProductOrderController {
 
         try {
             AddInvoiceController ctrl = new AddInvoiceController();
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addInvoice.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addInvoice.fxml"), Bundle.get());
 
             loader.setController(ctrl);
             Parent root = null;

@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.Category;
 import ba.unsa.etf.rpr.DAO.CategoryDAO;
 import javafx.event.ActionEvent;
@@ -68,8 +69,7 @@ public class CategoryController {
     public void addAction(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addCategory.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addCategory.fxml"), Bundle.get());
             AddCategoryController ctrl = new AddCategoryController();
             loader.setController(ctrl);
 

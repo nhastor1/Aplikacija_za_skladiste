@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.InvoiceDAO;
 import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
 import ba.unsa.etf.rpr.Exception.InvalidPasswordException;
@@ -29,7 +30,6 @@ public class FrontPageController {
     private Scene scene;
     private Stage primaryStage;
     public Button btnUser;
-    private ResourceBundle bundle = ResourceBundle.getBundle("Translation");
 
     public FrontPageController(UsersModel usersModel, Scene scene){
         this.usersModel = usersModel;
@@ -46,7 +46,7 @@ public class FrontPageController {
             usersModel.napuni();
             UserController ctrl = new UserController(usersModel);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/users.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/users.fxml"), Bundle.get());
             loader.setController(ctrl);
             Parent root = null;
 
@@ -74,7 +74,7 @@ public class FrontPageController {
             this.primaryStage = (Stage) btnUser.getScene().getWindow();
             Scene scene = btnUser.getScene();
             ManufacturerController ctrl = new ManufacturerController(scene);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/manufacturer.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/manufacturer.fxml"), Bundle.get());
 
             loader.setController(ctrl);
             Parent root = null;
@@ -94,7 +94,7 @@ public class FrontPageController {
             this.primaryStage = (Stage) btnUser.getScene().getWindow();
             Scene scene = btnUser.getScene();
             WarehouseController ctrl = new WarehouseController(scene);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/warehouse.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/warehouse.fxml"), Bundle.get());
 
             loader.setController(ctrl);
             Parent root = null;
@@ -114,7 +114,7 @@ public class FrontPageController {
             this.primaryStage = (Stage) btnUser.getScene().getWindow();
             Scene scene = btnUser.getScene();
             CategoryController ctrl = new CategoryController(scene);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/category.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/category.fxml"), Bundle.get());
 
             loader.setController(ctrl);
             Parent root = null;
@@ -137,7 +137,7 @@ public class FrontPageController {
             this.primaryStage = (Stage) btnUser.getScene().getWindow();
             Scene scene = btnUser.getScene();
             AllProductsController ctrl = new AllProductsController(scene);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/allProducts.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/allProducts.fxml"), Bundle.get());
 
             loader.setController(ctrl);
             Parent root = null;
@@ -160,7 +160,7 @@ public class FrontPageController {
             this.primaryStage = (Stage) btnUser.getScene().getWindow();
             Scene scene = btnUser.getScene();
             InvoiceController ctrl = new InvoiceController(scene);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/invoice.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/invoice.fxml"), Bundle.get());
 
             loader.setController(ctrl);
             Parent root = null;
@@ -180,7 +180,7 @@ public class FrontPageController {
             this.primaryStage = (Stage) btnUser.getScene().getWindow();
             Scene scene = btnUser.getScene();
             ProductOrderController ctrl = new ProductOrderController(scene);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/productOrder.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/productOrder.fxml"), Bundle.get());
 
             loader.setController(ctrl);
             Parent root = null;

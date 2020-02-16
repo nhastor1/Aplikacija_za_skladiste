@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.ProductDAO;
 import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
 import ba.unsa.etf.rpr.Product;
@@ -63,8 +64,7 @@ public class ProductController {
     public void changeProduct(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addProduct.fxml"), Bundle.get());
             AddProductController ctrl = new AddProductController(product);
             loader.setController(ctrl);
 
@@ -87,8 +87,7 @@ public class ProductController {
         Parent root = null;
         try {
             Stage myStage = new Stage();
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchImage.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchImage.fxml"), Bundle.get());
             SearchImageController ctrl = new SearchImageController();
             loader.setController(ctrl);
             root = loader.load();
@@ -168,8 +167,7 @@ public class ProductController {
 
     private void refreshScene(){
         Stage window = (Stage) btnImg.getScene().getWindow();
-        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"), bundle);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"), Bundle.get());
         loader.setController(this);
         try {
             window.setScene(new Scene(loader.load()));

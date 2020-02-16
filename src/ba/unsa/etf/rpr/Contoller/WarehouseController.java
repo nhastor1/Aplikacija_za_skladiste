@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
+import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.WarehouseDAO;
 import ba.unsa.etf.rpr.Warehouse;
 import javafx.event.ActionEvent;
@@ -69,8 +70,7 @@ public class WarehouseController {
     public void addAction(ActionEvent actionEvent) {
         Parent root = null;
         try {
-            ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addWarehouse.fxml"), bundle);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addWarehouse.fxml"), Bundle.get());
             AddWarehouseController ctrl = new AddWarehouseController();
             loader.setController(ctrl);
 
