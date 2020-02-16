@@ -28,10 +28,10 @@
             <children>
                 <TableView fx:id="tableViewInvoice" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowSpan="9">
                     <columns>
-                        <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="colCustomer" prefWidth="246.1999740600586" text="Customer" />
-                        <TableColumn fx:id="colPrice" prefWidth="86.60003662109375" text="Price" />
-                        <TableColumn fx:id="colDate" prefWidth="171.79995727539062" text="Date and time of ordering" />
+                        <TableColumn fx:id="colID" prefWidth="75.0" text="%ID" />
+                        <TableColumn fx:id="colCustomer" prefWidth="246.1999740600586" text="%customer" />
+                        <TableColumn fx:id="colPrice" prefWidth="86.60003662109375" text="%price" />
+                        <TableColumn fx:id="colDate" prefWidth="171.79995727539062" text="%dateAndTimeOfOrdering" />
                     </columns>
                     <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -43,8 +43,8 @@
     <top>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#backAction" prefHeight="26.0" prefWidth="100.0" text="Back" />
-                <Button mnemonicParsing="false" onAction="#removeAction" text="Remove invoice" />
+                <Button mnemonicParsing="false" onAction="#backAction" prefHeight="26.0" prefWidth="100.0" text="%back" />
+                <Button mnemonicParsing="false" onAction="#removeAction" text="%removeInvoice" />
             </buttons>
             <BorderPane.margin>
                 <Insets left="20.0" />
