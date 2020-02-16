@@ -83,7 +83,8 @@ public class InvoiceDAO {
             addInvoiceQuery.setDouble(4, p.getDiscount());
             addInvoiceQuery.setDate(5, p.getTimeOfOrder());
             addInvoiceQuery.executeUpdate();
-
+            p.setId(freeID);
+            freeID++;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,23 +110,6 @@ public class InvoiceDAO {
         }
         refreshlistInvoices();
     }
-
-//    public Invoice modifyInvoice(Invoice p) {
-//        Invoice Invoice = getInvoice(p.getId());
-//        if(Invoice==null)
-//            return null;
-//
-//        try {
-//            modifyInvoiceQuery.setDouble(1, p.getDiscount());
-//            modifyInvoiceQuery.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        refreshlistInvoices();
-//        return p;
-//    }
 
     private void refreshlistInvoices(){
         listInvoices.clear();
