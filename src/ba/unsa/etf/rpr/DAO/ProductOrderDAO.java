@@ -17,7 +17,7 @@ public class ProductOrderDAO {
     private Connection conn;
     private ObservableList<ProductOrder> listProductOrders = FXCollections.observableArrayList();
     private PreparedStatement allProductOrderQuery, getProductOrderQueryFromID, addProductOrderQuery, getProductOrderIDQuery,
-         removeProductOrderQuery;
+         removeProductOrderQuery, removeInvoiceQuery;
     private int freeID;
     private ProductOrder currentProductOrder;
 
@@ -29,6 +29,7 @@ public class ProductOrderDAO {
             addProductOrderQuery = conn.prepareStatement("INSERT INTO Product_order VALUES(?,?,?,?,?,?)");
             getProductOrderIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Product_order");
             removeProductOrderQuery = conn.prepareStatement("DELETE FROM Product_order WHERE id=?");
+            removeInvoiceQuery  = conn.prepareStatement("DELETE FROM Product_order WHERE invoice=?");
             ResultSet rs = getProductOrderIDQuery.executeQuery();
             rs.next();
             freeID = rs.getInt(1);
@@ -122,6 +123,16 @@ public class ProductOrderDAO {
         }
         refreshlistProductOrders();
         return true;
+    }
+
+    public void removeInvoice(int id){
+        try {
+            removeInvoiceQuery.setInt(1, id);
+            removeInvoiceQuery.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        refreshlistProductOrders();
     }
 
     private void refreshlistProductOrders(){

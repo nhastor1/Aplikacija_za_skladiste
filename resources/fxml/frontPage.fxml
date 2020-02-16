@@ -21,13 +21,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#userAction" text="Users" GridPane.columnIndex="4">
+            <Button fx:id="btnUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#userAction" text="Users" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin></Button>
@@ -39,67 +35,47 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Label>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#manufacturerAction" text="Manufacturer" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#manufacturerAction" text="Manufacturer" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#warehouseAction" text="Warehouse" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#warehouseAction" text="Warehouse" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryAction" text="Category" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryAction" text="Category" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allProductAction" text="All products" GridPane.columnSpan="2" GridPane.rowIndex="4">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allProductAction" text="All products" GridPane.columnSpan="2" GridPane.rowIndex="4">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productAction" text="Product" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productAction" text="Product" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#locationAction" text="Location" GridPane.columnSpan="2" GridPane.rowIndex="6">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#inoviceAction" text="Inovice" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#inoviceAction" text="Inovice" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productOrederAction" text="Product order" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productOrederAction" text="Product order" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAction" text="Search" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
                <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
-               </GridPane.margin>
-            </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
-               </GridPane.margin>
-            </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAction" text="Search" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
-               </GridPane.margin>
-            </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#employeesAction" text="Employees" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="30.0" right="30.0" />
-               </GridPane.margin>
-            </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeAction" text="Close" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeAction" text="Close" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>

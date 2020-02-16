@@ -153,10 +153,24 @@ public class FrontPageController {
     public void searchAction(ActionEvent actionEvent) {
     }
 
-    public void locationAction(ActionEvent actionEvent) {
-    }
-
     public void inoviceAction(ActionEvent actionEvent) {
+        try {
+            this.primaryStage = (Stage) btnUser.getScene().getWindow();
+            Scene scene = btnUser.getScene();
+            InvoiceController ctrl = new InvoiceController(scene);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/invoice.fxml"));
+
+            loader.setController(ctrl);
+            Parent root = null;
+            root = loader.load();
+
+            Stage stage = primaryStage;
+            stage.setTitle("Invoice");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void productOrederAction(ActionEvent actionEvent) {
@@ -177,8 +191,5 @@ public class FrontPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void employeesAction(ActionEvent actionEvent) {
     }
 }
