@@ -3,9 +3,9 @@ package ba.unsa.etf.rpr.Person;
 import ba.unsa.etf.rpr.Location.Location;
 
 public class Person {
-    int id;
-    Location location;
-    String name;
+    private int id;
+    private Location location;
+    private String name;
 
     public Person() {
     }

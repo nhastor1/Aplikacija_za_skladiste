@@ -3,9 +3,9 @@ package ba.unsa.etf.rpr.Location;
 import java.util.Objects;
 
 public class Country {
-    int id;
-    String name;
-    Continent continent;
+    private int id;
+    private String name;
+    private Continent continent;
 
     public Country(int id, String name, Continent continent) {
         this.id = id;

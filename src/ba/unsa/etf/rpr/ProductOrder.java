@@ -5,12 +5,12 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class ProductOrder {
-    int id;
-    Product product;
-    int amount;
-    Invoice invoice;
-    double discount = 0;
-    Date timeOfOrder = new Date(System.currentTimeMillis());;
+    private int id;
+    private Product product;
+    private int amount;
+    private Invoice invoice;
+    private double discount = 0;
+    private Date timeOfOrder = new Date(System.currentTimeMillis());;
 
     public ProductOrder(int id, Product product, int amount, Invoice invoice) {
         this.id = id;

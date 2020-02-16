@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class Invoice {
-    int id;
-    Person customer;
-    List<ProductOrder> orders;
-    double price;
-    double discount = 0;
-    Date timeOfOrder = new Date(System.currentTimeMillis());;
+    private int id;
+    private Person customer;
+    private List<ProductOrder> orders;
+    private double price;
+    private double discount = 0;
+    private Date timeOfOrder = new Date(System.currentTimeMillis());;
 
     public Invoice(int id, Person customer, List<ProductOrder> orders) {
         this.id = id;

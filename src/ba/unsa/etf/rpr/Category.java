@@ -3,9 +3,9 @@ package ba.unsa.etf.rpr;
 import java.util.Objects;
 
 public class Category {
-    int id;
-    String name;
-    Category supercategory;
+    private int id;
+    private String name;
+    private Category supercategory;
 
     public Category() {
         supercategory = null;

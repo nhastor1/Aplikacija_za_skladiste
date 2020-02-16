@@ -5,8 +5,8 @@ import ba.unsa.etf.rpr.Person.LegalPerson;
 import java.util.Objects;
 
 public class Manufacturer {
-    int id;
-    LegalPerson manufacturer;
+    private int id;
+    private LegalPerson manufacturer;
 
     public Manufacturer() {
     }

@@ -3,9 +3,9 @@ package ba.unsa.etf.rpr.Location;
 import java.util.Objects;
 
 public class City {
-    int id;
-    String name;
-    Country country;
+    private int id;
+    private String name;
+    private Country country;
 
     public City(int id, String name, Country country) {
         this.id = id;

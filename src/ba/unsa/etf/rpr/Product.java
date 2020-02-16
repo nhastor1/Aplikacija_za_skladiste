@@ -7,18 +7,18 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class Product {
-    int id;
-    String name;
-    double price;
-    int amount;
-    Warehouse warehouse;
-    int guarantee = 0;
-    double discount = 0;
-    Category category = new Category();
-    Manufacturer manufacturer = new Manufacturer();
-    Date lifetime;
-    Date dateOfProduction;
-    Location locationOfProduction;
+    private int id;
+    private String name;
+    private double price;
+    private int amount;
+    private Warehouse warehouse;
+    private int guarantee = 0;
+    private double discount = 0;
+    private Category category = new Category();
+    private Manufacturer manufacturer = new Manufacturer();
+    private Date lifetime;
+    private Date dateOfProduction;
+    private Location locationOfProduction;
 
 
     public Product() {

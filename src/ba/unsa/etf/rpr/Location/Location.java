@@ -3,10 +3,10 @@ package ba.unsa.etf.rpr.Location;
 import java.util.Objects;
 
 public class Location {
-    int id;
-    String street;
-    int number;
-    City city;
+    private int id;
+    private String street;
+    private int number;
+    private City city;
 
     public Location(int id, String street, int number, City city) {
         this.id = id;

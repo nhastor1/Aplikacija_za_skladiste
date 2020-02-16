@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Warehouse {
-    int id;
-    String name;
-    Location location;
+    private int id;
+    private String name;
+    private Location location;
 
     public Warehouse() {
     }

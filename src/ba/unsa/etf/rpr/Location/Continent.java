@@ -3,8 +3,8 @@ package ba.unsa.etf.rpr.Location;
 import java.util.Objects;
 
 public class Continent {
-    int id;
-    String name;
+    private int id;
+    private String name;
 
     public Continent(int id, String naziv) {
         this.id = id;
