@@ -26,9 +26,9 @@
          <children>
             <TableView fx:id="tableViewWarehouse" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="6" GridPane.rowSpan="6">
               <columns>
-                <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="colName" prefWidth="210.20003509521484" text="Name" />
-                  <TableColumn fx:id="colLocation" prefWidth="293.79998779296875" text="Location" />
+                <TableColumn fx:id="colID" prefWidth="75.0" text="%ID" />
+                <TableColumn fx:id="colName" prefWidth="210.20003509521484" text="%name" />
+                  <TableColumn fx:id="colLocation" prefWidth="293.79998779296875" text="%location" />
               </columns>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -40,9 +40,9 @@
    <top>
       <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#backAction" text="Back" />
-            <Button mnemonicParsing="false" onAction="#removeAction" text="Remove warehouse" />
-            <Button mnemonicParsing="false" onAction="#addAction" text="Add warehouse" />
+          <Button mnemonicParsing="false" onAction="#backAction" text="%back" />
+            <Button mnemonicParsing="false" onAction="#removeAction" text="%removeWarehouse" />
+            <Button mnemonicParsing="false" onAction="#addAction" text="%addWarehouse" />
         </buttons>
          <padding>
             <Insets left="20.0" right="20.0" />

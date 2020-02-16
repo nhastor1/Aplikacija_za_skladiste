@@ -28,27 +28,27 @@
    </rowConstraints>
    <children>
       <ListView fx:id="listKorisnici" prefHeight="100.0" prefWidth="200.0" GridPane.rowSpan="7" />
-      <Label text="Ime: " GridPane.columnIndex="1" />
+      <Label text="%firstName" GridPane.columnIndex="1" />
       <TextField fx:id="fldIme" GridPane.columnIndex="2" />
-      <Label text="Prezime:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label text="%lastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="fldPrezime" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Label text="E-mail:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label text="%email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="fldEmail" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Label text="Korisničko ime:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label text="%usernameD" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <TextField fx:id="fldUsername" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <Label text="Lozinka:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="%passwordD" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <PasswordField fx:id="fldPassword" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="7">
         <buttons>
-            <Button fx:id="btnObrisi" mnemonicParsing="false" onAction="#obrisiAction" text="Obriši" />
-            <Button fx:id="btnGenerisi" mnemonicParsing="false" onAction="#generisiAction" text="Generiši" />
-            <Button fx:id="btnDodaj" mnemonicParsing="false" onAction="#dodajAction" text="Dodaj" />
-            <Button fx:id="btnKraj" cancelButton="true" mnemonicParsing="false" onAction="#krajAction" text="Kraj" />
+            <Button fx:id="btnObrisi" mnemonicParsing="false" onAction="#obrisiAction" text="%delete" />
+            <Button fx:id="btnGenerisi" mnemonicParsing="false" onAction="#generisiAction" text="%generate" />
+            <Button fx:id="btnDodaj" mnemonicParsing="false" onAction="#dodajAction" text="%add" />
+            <Button fx:id="btnKraj" cancelButton="true" mnemonicParsing="false" onAction="#krajAction" text="%finish" />
         </buttons>
       </ButtonBar>
       <PasswordField fx:id="fldPasswordRepeat" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <Label text="Ponovi lozinku:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <CheckBox fx:id="cbAdmin" mnemonicParsing="false" onAction="#adminAction" prefHeight="17.0" prefWidth="99.0" text="Administrator" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <Label text="%repeatPassword" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <CheckBox fx:id="cbAdmin" mnemonicParsing="false" onAction="#adminAction" prefHeight="17.0" prefWidth="99.0" text="%admin" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

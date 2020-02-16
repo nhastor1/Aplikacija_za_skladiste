@@ -28,10 +28,10 @@
             <children>
                 <TableView fx:id="tableViewProductOrder" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowSpan="9">
                     <columns>
-                        <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="colProduct" prefWidth="246.1999740600586" text="Product" />
-                        <TableColumn fx:id="colAmount" prefWidth="86.60003662109375" text="Amount" />
-                  <TableColumn fx:id="colDate" prefWidth="171.79995727539062" text="Date and time of ordering" />
+                        <TableColumn fx:id="colID" prefWidth="75.0" text="%ID" />
+                        <TableColumn fx:id="colProduct" prefWidth="246.1999740600586" text="%product" />
+                        <TableColumn fx:id="colAmount" prefWidth="86.60003662109375" text="%amount" />
+                  <TableColumn fx:id="colDate" prefWidth="171.79995727539062" text="%dateAndTimeOfOrdering" />
                     </columns>
                     <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -43,10 +43,10 @@
     <top>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#backAction" prefHeight="26.0" prefWidth="100.0" text="Back" />
-                <Button mnemonicParsing="false" onAction="#removeAction" text="Remove order" />
-            <Button mnemonicParsing="false" onAction="#finishInvoiceAction" text="Finish invoice" />
-                <Button mnemonicParsing="false" onAction="#addAction" text="Add to invoice" />
+                <Button mnemonicParsing="false" onAction="#backAction" prefHeight="26.0" prefWidth="100.0" text="%back" />
+                <Button mnemonicParsing="false" onAction="#removeAction" text="%removeOrder" />
+            <Button mnemonicParsing="false" onAction="#finishInvoiceAction" text="%finishInvoice" />
+                <Button mnemonicParsing="false" onAction="#addAction" text="%addToInvoice" />
             </buttons>
             <BorderPane.margin>
                 <Insets left="20.0" />
