@@ -17,7 +17,7 @@ public class ProductOrderDAO {
     private Connection conn;
     private ObservableList<ProductOrder> listProductOrders = FXCollections.observableArrayList();
     private PreparedStatement allProductOrderQuery, getProductOrderQueryFromID, addProductOrderQuery, getProductOrderIDQuery,
-            getProductOrderQueryFromName, removeProductOrderQuery, allProductOrdersFromInoviceQuerry;
+         removeProductOrderQuery;
     private int freeID;
     private ProductOrder currentProductOrder;
 
@@ -26,11 +26,9 @@ public class ProductOrderDAO {
         try {
             allProductOrderQuery = conn.prepareStatement("SELECT * FROM Product_order");
             getProductOrderQueryFromID = conn.prepareStatement("SELECT * FROM Product_order WHERE id=?");
-            getProductOrderQueryFromName = conn.prepareStatement("SELECT * FROM Product_order WHERE name=?");
             addProductOrderQuery = conn.prepareStatement("INSERT INTO Product_order VALUES(?,?,?,?,?,?)");
             getProductOrderIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Product_order");
             removeProductOrderQuery = conn.prepareStatement("DELETE FROM Product_order WHERE id=?");
-            allProductOrdersFromInoviceQuerry = conn.prepareStatement("SELECT * FROM Product_order WHERE ProductOrder.inovice=?");
             ResultSet rs = getProductOrderIDQuery.executeQuery();
             rs.next();
             freeID = rs.getInt(1);
@@ -86,7 +84,12 @@ public class ProductOrderDAO {
             addProductOrderQuery.setInt(1, freeID);
             addProductOrderQuery.setInt(2, p.getProduct().getId());
             addProductOrderQuery.setInt(3, p.getAmount());
-            addProductOrderQuery.setInt(4, p.getInvoice().getId());
+
+            int invoice = 0;
+            if(p.getInvoice()!=null)
+                invoice = p.getInvoice().getId();
+            addProductOrderQuery.setInt(4, invoice);
+
             addProductOrderQuery.setDouble(5, p.getDiscount());
             addProductOrderQuery.setDate(6, p.getTimeOfOrder());
             addProductOrderQuery.executeUpdate();
@@ -98,20 +101,6 @@ public class ProductOrderDAO {
 
         refreshlistProductOrders();
         return p;
-    }
-
-    public ProductOrder getProductOrder(String s){
-        ProductOrder c = null;
-        try {
-            getProductOrderQueryFromName.setString(1, s);
-            ResultSet rs = getProductOrderQueryFromName.executeQuery();
-            if(rs.next()){
-                c = getProductOrderFromRS(rs);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return c;
     }
 
     public ProductOrder getCurrentProductOrder() {

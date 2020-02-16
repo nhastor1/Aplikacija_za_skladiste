@@ -30,6 +30,7 @@
                 <Button mnemonicParsing="false" onAction="#okAction" prefHeight="26.0" prefWidth="118.0" text="Ok" />
                   <Button mnemonicParsing="false" onAction="#changeProduct" text="Change prodcut" />
                   <Button mnemonicParsing="false" onAction="#changeImageAction" text="Change image" />
+                  <Button mnemonicParsing="false" onAction="#productOrederAction" text="Order product" />
               </buttons>
                <GridPane.margin>
                   <Insets bottom="10.0" right="50.0" />

@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.DAO;
 
 import ba.unsa.etf.rpr.Invoice;
-import ba.unsa.etf.rpr.Person.LegalPerson;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -15,8 +14,7 @@ public class InvoiceDAO {
     private static InvoiceDAO instance = null;
     private Connection conn;
     private ObservableList<Invoice> listInvoices = FXCollections.observableArrayList();
-    private PreparedStatement allInvoiceQuery, getInvoiceQueryFromID, addInvoiceQuery, getInvoiceIDQuery, getInvoiceQueryFromName,
-            removeInvoiceQuery, allInvoicesFromWarehouseQuerry, modifyInvoiceQuery;
+    private PreparedStatement allInvoiceQuery, getInvoiceQueryFromID, addInvoiceQuery, getInvoiceIDQuery, removeInvoiceQuery;
     private int freeID;
     private Invoice currentInvoice;
 
@@ -25,12 +23,10 @@ public class InvoiceDAO {
         try {
             allInvoiceQuery = conn.prepareStatement("SELECT * FROM Invoice");
             getInvoiceQueryFromID = conn.prepareStatement("SELECT * FROM Invoice WHERE id=?");
-            getInvoiceQueryFromName = conn.prepareStatement("SELECT * FROM Invoice WHERE name=?");
-            addInvoiceQuery = conn.prepareStatement("INSERT INTO Invoice VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            addInvoiceQuery = conn.prepareStatement("INSERT INTO Invoice VALUES(?,?,?,?,?)");
             getInvoiceIDQuery = conn.prepareStatement("SELECT MAX(id)+1 FROM Invoice");
             removeInvoiceQuery = conn.prepareStatement("DELETE FROM Invoice WHERE id=?");
-            modifyInvoiceQuery = conn.prepareStatement("UPDATE Invoice SET name=?, price=?, amount=?, warehouse=?, guarantee=?, discount=?, category=?, manufacturer=?, locationOfInvoiceion=?, image=? WHERE id=?");
-            allInvoicesFromWarehouseQuerry = conn.prepareStatement("SELECT * FROM Invoice WHERE Invoice.warehouse=?");
+//            modifyInvoiceQuery = conn.prepareStatement("UPDATE Invoice SET discount=? WHERE id=?");
             ResultSet rs = getInvoiceIDQuery.executeQuery();
             rs.next();
             freeID = rs.getInt(1);
@@ -97,20 +93,6 @@ public class InvoiceDAO {
         return p;
     }
 
-    public Invoice getInvoice(String s){
-        Invoice c = null;
-        try {
-            getInvoiceQueryFromName.setString(1, s);
-            ResultSet rs = getInvoiceQueryFromName.executeQuery();
-            if(rs.next()){
-                c = getInvoiceFromRS(rs);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return c;
-    }
-
     public Invoice getCurrentInvoice() {
         return currentInvoice;
     }
@@ -130,22 +112,12 @@ public class InvoiceDAO {
     }
 
 //    public Invoice modifyInvoice(Invoice p) {
-//        Invoice Invoice = getInvoice(p.getName());
+//        Invoice Invoice = getInvoice(p.getId());
 //        if(Invoice==null)
 //            return null;
 //
 //        try {
-//            modifyInvoiceQuery.setString(1, p.getName());
-//            modifyInvoiceQuery.setDouble(2, p.getPrice());
-//            modifyInvoiceQuery.setInt(3, p.getAmount());
-//            modifyInvoiceQuery.setInt(4, p.getWarehouse().getId());
-//            modifyInvoiceQuery.setInt(5, p.getGuarantee());
-//            modifyInvoiceQuery.setDouble(6, p.getDiscount());
-//            modifyInvoiceQuery.setInt(7, p.getCategory().getId());
-//            modifyInvoiceQuery.setInt(8, p.getManufacturer().getId());
-//            modifyInvoiceQuery.setInt(9, p.getLocationOfInvoiceion().getId());
-//            modifyInvoiceQuery.setString(10, p.getImage());
-//            modifyInvoiceQuery.setInt(11, p.getId());
+//            modifyInvoiceQuery.setDouble(1, p.getDiscount());
 //            modifyInvoiceQuery.executeUpdate();
 //
 //        } catch (SQLException e) {

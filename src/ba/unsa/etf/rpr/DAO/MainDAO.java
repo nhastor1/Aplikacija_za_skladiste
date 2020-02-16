@@ -27,7 +27,7 @@ public class MainDAO {
             checkIsThereLocation = conn.prepareStatement("SELECT * FROM Location");
             checkIsThereCountry = conn.prepareStatement("SELECT * FROM Country");
             checkIsThereContinent = conn.prepareStatement("SELECT * FROM Continent");
-            checkIsThereInovice = conn.prepareStatement("SELECT * FROM Inovice");
+            checkIsThereInovice = conn.prepareStatement("SELECT * FROM Invoice");
             checkIsThereLegalPerson = conn.prepareStatement("SELECT * FROM Legal_person");
             checkIsThereNaturalPerson = conn.prepareStatement("SELECT * FROM Natural_person");
             checkIsThereManufacturer = conn.prepareStatement("SELECT * FROM Manufacturer");

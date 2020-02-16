@@ -1,15 +1,19 @@
 package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.DAO.ProductDAO;
+import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
 import ba.unsa.etf.rpr.Product;
+import ba.unsa.etf.rpr.ProductOrder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -17,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -102,6 +107,31 @@ public class ProductController {
         }
     }
 
+    public void productOrederAction(ActionEvent actionEvent){
+        TextInputDialog dialog = new TextInputDialog("1");
+        dialog.setTitle("Text Input Dialog");
+        dialog.setHeaderText("Enter amount of product");
+//        dialog.setContentText("Please enter your name:");
+
+
+        Optional<String> result = dialog.showAndWait();
+
+        result.ifPresent(amount -> {
+            if(isInteger(amount)){
+                makeNewProductOrder(Integer.parseInt(amount));
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Number you input is not valid");
+                alert.setContentText("You need to input an integer");
+
+                alert.showAndWait();
+            }
+
+        });
+    }
+
     private void refreshData(){
         product = ProductDAO.getInstance().getProduct(id);
         lblID.setText(product.getId() + "");
@@ -142,5 +172,22 @@ public class ProductController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
+    }
+
+
+    private void makeNewProductOrder(int amount) {
+        ProductOrderDAO.getInstance().addProductOrder(new ProductOrder(
+                0, product, amount, null, 0
+        ));
+        System.out.println("New product order added");
     }
 }
