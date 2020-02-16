@@ -54,8 +54,7 @@ public class WarehouseDAO {
         Warehouse w = null;
         try {
             w = new Warehouse(rs.getInt(1), rs.getString(2),
-                    LocationDAO.getInstance().getLocation(rs.getInt(3)),
-                    ProductDAO.getInstance().getProductsFromWarehouse(rs.getInt(1)));
+                    LocationDAO.getInstance().getLocation(rs.getInt(3)));
         } catch (SQLException e) {
             e.printStackTrace();
         }

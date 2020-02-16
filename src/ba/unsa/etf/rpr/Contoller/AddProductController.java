@@ -9,17 +9,15 @@ import ba.unsa.etf.rpr.Warehouse;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.util.Calendar;
 
 public class AddProductController {
     public TextField fldPrice;
@@ -58,6 +56,9 @@ public class AddProductController {
                     choiceLoaction.getSelectionModel().getSelectedItem()
                     ));
             cancelAction(actionEvent);
+        }
+        else{
+            ErrorBox("Some fields are empty or incorrect", "You need to enter those fields");
         }
     }
 
@@ -109,8 +110,27 @@ public class AddProductController {
     }
 
     private Date getDate(DatePicker datePicker){
-        LocalDate localDate = datePicker.getValue();
-        Date date = new Date(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth());
-        return date;
+        try {
+            LocalDate localDate = datePicker.getValue();
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.YEAR, localDate.getYear());
+            cal.set(Calendar.MONTH, localDate.getMonthValue());
+            cal.set(Calendar.DAY_OF_MONTH, localDate.getDayOfMonth());
+            return (Date) cal.getTime();
+        }
+        catch (NullPointerException e){
+            return null;
+        }
+    }
+
+
+    private void ErrorBox(String s1, String s2) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText(s1);
+        alert.setContentText(s2);
+
+        alert.showAndWait();
     }
 }

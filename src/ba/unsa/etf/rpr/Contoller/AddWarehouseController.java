@@ -1,11 +1,7 @@
 package ba.unsa.etf.rpr.Contoller;
 
-import ba.unsa.etf.rpr.DAO.LegalPersonDAO;
-import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
 import ba.unsa.etf.rpr.DAO.WarehouseDAO;
 import ba.unsa.etf.rpr.Location.Location;
-import ba.unsa.etf.rpr.Manufacturer;
-import ba.unsa.etf.rpr.Person.LegalPerson;
 import ba.unsa.etf.rpr.Warehouse;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
