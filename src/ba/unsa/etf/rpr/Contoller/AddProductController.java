@@ -16,7 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.temporal.TemporalField;
 import java.util.Calendar;
 
 public class AddProductController {
@@ -30,6 +33,15 @@ public class AddProductController {
     public ChoiceBox<Location> choiceLoaction;
     public DatePicker dateProduction;
     public DatePicker dateLifeTime;
+    private Product product;
+
+    public AddProductController(){
+        product = null;
+    }
+
+    public AddProductController(Product p){
+        product = p;
+    }
 
     @FXML
     public void initialize(){
@@ -37,11 +49,12 @@ public class AddProductController {
         choiceCategory.setItems(CategoryDAO.getInstance().getListCategory());
         choiceManufacturer.setItems(ManufacturerDAO.getInstance().getListManufacturer());
         choiceLoaction.setItems(LocationDAO.getInstance().getListLocation());
+        setProduct();
     }
 
     public void okAction(ActionEvent actionEvent) {
         if(isValid()){
-            ProductDAO.getInstance().addProduct(new Product(
+            Product p = ProductDAO.getInstance().addProduct(new Product(
                     0,
                     fldName.getText(),
                     Double.parseDouble(fldPrice.getText()),
@@ -55,6 +68,8 @@ public class AddProductController {
                     getDate(dateProduction),
                     choiceLoaction.getSelectionModel().getSelectedItem()
                     ));
+            System.out.println(p.getDateOfProduction().getYear() + "-" + p.getDateOfProduction().getMonth() + "-" + p.getDateOfProduction().getDay());
+            System.out.println(p.getLifetime().getYear() + "-" + p.getLifetime().getMonth() + "-" + p.getLifetime().getDay());
             cancelAction(actionEvent);
         }
         else{
@@ -110,20 +125,26 @@ public class AddProductController {
     }
 
     private Date getDate(DatePicker datePicker){
-        try {
-            LocalDate localDate = datePicker.getValue();
-
-            Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.YEAR, localDate.getYear());
-            cal.set(Calendar.MONTH, localDate.getMonthValue());
-            cal.set(Calendar.DAY_OF_MONTH, localDate.getDayOfMonth());
-            return (Date) cal.getTime();
-        }
-        catch (NullPointerException e){
-            return null;
-        }
+        Date date = new Date(datePicker.getValue().getYear(), datePicker.getValue().getMonthValue(), datePicker.getValue().getDayOfMonth());
+        System.out.println(datePicker.getValue().getYear() + "-" + datePicker.getValue().getMonthValue() + "-" + datePicker.getValue().getDayOfMonth());
+        return date;
     }
 
+    private void setProduct(){
+        if(product==null)
+            return;
+
+        fldPrice.setText(product.getPrice() + "");
+        fldName.setText(product.getName());
+        fldAmount.setText(product.getAmount() + "");
+        choiceWarehouse.getSelectionModel().select(product.getWarehouse());
+        fldGuarantee.setText(product.getAmount() + "");
+        choiceCategory.getSelectionModel().select(product.getCategory());
+        choiceManufacturer.getSelectionModel().select(product.getManufacturer());
+        choiceLoaction.getSelectionModel().select(product.getLocationOfProduction());
+        dateProduction.setDisable(true);
+        dateLifeTime.setDisable(true);
+    }
 
     private void ErrorBox(String s1, String s2) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -50,4 +50,6 @@ public class Location {
         return getStreet() + " " + getNumber() + ", " + city + ", " +
                 city.getCountry() + ", " + city.getCountry().getContinent();
     }
+
+
 }

@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.DAO.ProductDAO;
-import ba.unsa.etf.rpr.DAO.WarehouseDAO;
 import ba.unsa.etf.rpr.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,10 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -73,6 +72,23 @@ public class AllProductsController {
             Stage stage = new Stage();
             root = loader.load();
             stage.setTitle("Add product");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void productAction(MouseEvent actionEvent){
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/product.fxml"));
+            ProductController ctrl = new ProductController(tableViewProduct.getSelectionModel().getSelectedItem().getId());
+            loader.setController(ctrl);
+
+            Stage stage = new Stage();
+            root = loader.load();
+            stage.setTitle("Product");
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         } catch (IOException e) {

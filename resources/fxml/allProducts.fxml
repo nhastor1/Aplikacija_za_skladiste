@@ -24,7 +24,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <TableView fx:id="tableViewProduct" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="6" GridPane.rowSpan="6">
+                <TableView fx:id="tableViewProduct" onMouseClicked="#productAction" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="6" GridPane.rowSpan="6">
                     <columns>
                         <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
                         <TableColumn fx:id="colCategory" prefWidth="179.59998321533203" text="Category" />
