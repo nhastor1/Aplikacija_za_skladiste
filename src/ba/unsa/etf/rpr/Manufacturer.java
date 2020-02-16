@@ -37,4 +37,9 @@ public class Manufacturer {
     public String getAddres(){
         return manufacturer.getLocation() + "";
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

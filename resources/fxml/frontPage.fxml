@@ -54,12 +54,12 @@
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productAction" text="Product" GridPane.columnSpan="2" GridPane.rowIndex="4">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allProductAction" text="All products" GridPane.columnSpan="2" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productAction" text="Product" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>
@@ -89,7 +89,7 @@
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAction" text="Search" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>

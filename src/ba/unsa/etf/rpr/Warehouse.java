@@ -94,4 +94,9 @@ public class Warehouse {
         products.get(p.getId()).takeAmount(number);
         return true;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
