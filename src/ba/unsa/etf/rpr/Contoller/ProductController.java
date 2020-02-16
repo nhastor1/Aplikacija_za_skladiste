@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.DAO.ProductDAO;
-import ba.unsa.etf.rpr.Image.SearchImageController;
 import ba.unsa.etf.rpr.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,13 +12,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.ResourceBundle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 

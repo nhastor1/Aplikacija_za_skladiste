@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr.Image;
+package ba.unsa.etf.rpr.Contoller;
 
 import at.mukprojects.giphy4j.Giphy;
 import at.mukprojects.giphy4j.entity.search.SearchFeed;

@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS "Product_order" (
 	FOREIGN KEY("product") REFERENCES "Product_order"("id"),
 	FOREIGN KEY("inovice") REFERENCES "Inovice"("id")
 );
-CREATE TABLE IF NOT EXISTS "Inovice" (
+CREATE TABLE IF NOT EXISTS "Invoice" (
 	"id"	INTEGER,
 	"customer"	INTEGER,
 	"price"	REAL,
