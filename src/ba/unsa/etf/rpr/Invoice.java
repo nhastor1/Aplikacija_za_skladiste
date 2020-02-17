@@ -13,7 +13,7 @@ public class Invoice {
     private double discount = 0;
     private Date timeOfOrder = new Date(System.currentTimeMillis());;
 
-    public Invoice(int id, Person customer, List<ProductOrder> orders) {
+    public Invoice(int id, Person customer) {
         this.id = id;
         this.customer = customer;
     }
