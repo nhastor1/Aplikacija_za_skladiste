@@ -50,12 +50,7 @@
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allProductAction" text="%products" GridPane.columnSpan="2" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
-               </GridPane.margin>
-            </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productAction" text="%product" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allProductAction" text="%products" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
@@ -70,12 +65,12 @@
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAction" text="%search" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAction" text="%search" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeAction" text="%close" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeAction" text="%close2" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
@@ -86,26 +81,22 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="%file">
+          <Menu fx:id="menuFile" text="%file">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#closeAction" text="%close" />
-                  <Menu mnemonicParsing="false" text="Language">
+              <MenuItem fx:id="menuClose" onAction="#closeAction" text="%close" />
+                  <Menu fx:id="menuLanguage" text="%language">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#bosanskiAction" text="Bosnaski" />
-                        <MenuItem mnemonicParsing="false" onAction="#englishAction" text="English" />
+                      <MenuItem fx:id="menuBosanski" onAction="#bosanskiAction" text="_Bosnaski" />
+                        <MenuItem fx:id="menuEngleski" onAction="#englishAction" text="_English" />
                     </items>
                   </Menu>
-                <MenuItem mnemonicParsing="false" onAction="#printAction" text="%print" />
+                  <MenuItem fx:id="menuSave" text="%save" />
+                <MenuItem fx:id="menuPrint" onAction="#printAction" text="%print" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="%edit">
+          <Menu fx:id="menuHelp" text="%help">
             <items>
-              <MenuItem mnemonicParsing="false" text="%delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="%help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="%about" />
+              <MenuItem fx:id="menuAbout" onAction="#aboutAction" text="%about" />
             </items>
           </Menu>
         </menus>
