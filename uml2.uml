@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ba.unsa.etf.rpr.Warehouse</OriginalElement>
+  <nodes>
+    <node x="0.0" y="1058.0">ba.unsa.etf.rpr.Location.Continent</node>
+    <node x="551.0" y="514.0">ba.unsa.etf.rpr.Location.Location</node>
+    <node x="0.0" y="514.0">ba.unsa.etf.rpr.ProductOrder</node>
+    <node x="543.5" y="387.0">ba.unsa.etf.rpr.User.Administrator</node>
+    <node x="0.0" y="0.0">ba.unsa.etf.rpr.Product</node>
+    <node x="769.0" y="514.0">ba.unsa.etf.rpr.Manufacturer</node>
+    <node x="0.0" y="808.0">ba.unsa.etf.rpr.Invoice</node>
+    <node x="218.0" y="808.0">ba.unsa.etf.rpr.Warehouse</node>
+    <node x="299.0" y="514.0">ba.unsa.etf.rpr.Person.Person</node>
+    <node x="501.0" y="0.0">ba.unsa.etf.rpr.User.User</node>
+    <node x="379.0" y="703.0">ba.unsa.etf.rpr.Person.LegalPerson</node>
+    <node x="814.0" y="0.0">ba.unsa.etf.rpr.User.UsersModel</node>
+    <node x="436.0" y="808.0">ba.unsa.etf.rpr.Category</node>
+    <node x="654.0" y="808.0">ba.unsa.etf.rpr.Location.City</node>
+    <node x="872.0" y="808.0">ba.unsa.etf.rpr.Location.Country</node>
+    <node x="218.0" y="703.0">ba.unsa.etf.rpr.Person.NaturalPerson</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ba.unsa.etf.rpr.User.Administrator" target="ba.unsa.etf.rpr.User.User">
+      <point x="0.0" y="-26.5" />
+      <point x="0.0" y="168.5" />
+    </edge>
+    <edge source="ba.unsa.etf.rpr.Person.LegalPerson" target="ba.unsa.etf.rpr.Person.Person">
+      <point x="0.0" y="-14.5" />
+      <point x="442.5" y="678.0" />
+      <point x="398.75" y="678.0" />
+      <point x="33.25" y="69.5" />
+    </edge>
+    <edge source="ba.unsa.etf.rpr.Person.NaturalPerson" target="ba.unsa.etf.rpr.Person.Person">
+      <point x="0.0" y="-14.5" />
+      <point x="288.5" y="678.0" />
+      <point x="332.25" y="678.0" />
+      <point x="-33.25" y="69.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="302.5" y="315.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
