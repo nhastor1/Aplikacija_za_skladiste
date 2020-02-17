@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.Contoller;
 import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.MainDAO;
 import ba.unsa.etf.rpr.DAO.UserDAO;
+import ba.unsa.etf.rpr.Language;
 import ba.unsa.etf.rpr.Report.PrintReport;
 import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.event.ActionEvent;
@@ -258,7 +259,7 @@ public class FrontPageController {
         System.out.println("English language");
         Locale.setDefault(new Locale("en","US"));
 
-        UserDAO.getInstance().setLanguage(1);
+        UserDAO.getInstance().setLanguage(Language.English);
 
         restart();
     }
@@ -267,7 +268,7 @@ public class FrontPageController {
         System.out.println("Bosnian language");
         Locale.setDefault(new Locale("bs","BA"));
 
-        UserDAO.getInstance().setLanguage(2);
+        UserDAO.getInstance().setLanguage(Language.Bosnian);
 
         restart();
     }

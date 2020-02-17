@@ -17,7 +17,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        if(UserDAO.getInstance().getLanguage()==1)
+        if(UserDAO.getInstance().getLanguage().equals(Language.English))
             Locale.setDefault(new Locale("en","US"));
         else
             Locale.setDefault(new Locale("bs","BA"));

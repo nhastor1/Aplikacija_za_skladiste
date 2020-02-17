@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.DAO;
 
+import ba.unsa.etf.rpr.Language;
 import ba.unsa.etf.rpr.User.Administrator;
 import ba.unsa.etf.rpr.User.User;
 import javafx.collections.FXCollections;
@@ -230,19 +231,25 @@ public class UserDAO {
         return isExsisting(u.getUsername(), u.getId());
     }
 
-    public int getLanguage(){
+    public Language getLanguage(){
+        Language lan =  Language.English;
         try {
             ResultSet rs = getLanguageQuerry.executeQuery();
-            return rs.getInt(1);
+            int i =  rs.getInt(1);
+            if(i==2)
+                lan = Language.Bosnian;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
+        return lan;
     }
 
-    public void setLanguage(int i){
+    public void setLanguage(Language lan){
         try {
             deleteLanguageQuery.executeUpdate();
+            int i = 1;
+            if(lan.equals(Language.Bosnian))
+                i = 2;
             setLanguageQuerry.setInt(1, i);
             setLanguageQuerry.executeUpdate();
         } catch (SQLException e) {
