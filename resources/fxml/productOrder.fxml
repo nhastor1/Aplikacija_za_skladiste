@@ -43,7 +43,7 @@
     <top>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#backAction" prefHeight="26.0" prefWidth="100.0" text="%back" />
+                <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backAction" prefHeight="26.0" prefWidth="100.0" text="%back" />
                 <Button mnemonicParsing="false" onAction="#removeAction" text="%removeOrder" />
             <Button mnemonicParsing="false" onAction="#finishInvoiceAction" text="%finishInvoice" />
                 <Button mnemonicParsing="false" onAction="#addAction" text="%addToInvoice" />

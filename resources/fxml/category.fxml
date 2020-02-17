@@ -39,7 +39,7 @@
    <top>
       <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#backAction" text="%back" />
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backAction" text="%back" />
             <Button mnemonicParsing="false" onAction="#removeAction" text="%removeCategory" />
           <Button mnemonicParsing="false" onAction="#addAction" text="%addCategory" />
         </buttons>
