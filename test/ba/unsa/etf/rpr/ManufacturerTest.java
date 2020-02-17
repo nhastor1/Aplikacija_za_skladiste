@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ManufacturerTest {
     @BeforeAll
@@ -21,7 +20,7 @@ class ManufacturerTest {
     void constructor() {
         Manufacturer c = new Manufacturer();
         assertEquals(0, c.getId());
-        assertNull(c.getName());
+        assertThrows(NullPointerException.class, c::getName);
         c = new Manufacturer(1, new LegalPerson(1, null, "kat"));
         assertEquals(1, c.getId());
         assertEquals("kat", c.getName());
@@ -48,9 +47,9 @@ class ManufacturerTest {
         Manufacturer b2 = ManufacturerDAO.getInstance().getManufacturer(2);
 
         assertEquals(b1.getId(), c1.getId());
-        assertEquals(b1.getName(), c1.getName());
+        assertThrows(NullPointerException.class, b1::getName);
 
         assertEquals(b2.getId(), c2.getId());
-        assertEquals(b2.getName(), c2.getName());
+        assertThrows(NullPointerException.class, b2::getName);
     }
 }
