@@ -35,42 +35,42 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Label>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#manufacturerAction" text="%manufacturer" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <Button fx:id="btnManufacturer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#manufacturerAction" text="%manufacturer" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#warehouseAction" text="%warehouse" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <Button fx:id="btnWarehouse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#warehouseAction" text="%warehouse" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryAction" text="%category" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <Button fx:id="btnCategory" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#categoryAction" text="%category" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allProductAction" text="%products" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <Button fx:id="btnPorduct" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#allProductAction" text="%products" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#inoviceAction" text="%invoice" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <Button fx:id="btnInvoice" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#inoviceAction" text="%invoice" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productOrederAction" text="%productOrder" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <Button fx:id="btnProductOrder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#productOrederAction" text="%productOrder" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAction" text="%search" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+            <Button fx:id="btnSearch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAction" text="%search" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeAction" text="%close2" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <Button fx:id="btnClose" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeAction" text="%close2" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>

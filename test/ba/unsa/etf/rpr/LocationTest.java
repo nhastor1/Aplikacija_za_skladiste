@@ -1,8 +1,11 @@
-package ba.unsa.etf.rpr.Location;
+package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.DAO.ContinentDAO;
 import ba.unsa.etf.rpr.DAO.CountryDAO;
 import ba.unsa.etf.rpr.DAO.LocationDAO;
+import ba.unsa.etf.rpr.Location.City;
+import ba.unsa.etf.rpr.Location.Country;
+import ba.unsa.etf.rpr.Location.Location;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
