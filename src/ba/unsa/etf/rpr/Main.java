@@ -1,12 +1,14 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.Contoller.MainController;
+import ba.unsa.etf.rpr.DAO.UserDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
@@ -15,8 +17,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"), bundle);
+        if(UserDAO.getInstance().getLanguage()==1)
+            Locale.setDefault(new Locale("en","US"));
+        else
+            Locale.setDefault(new Locale("bs","BA"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"), Bundle.get());
         MainController ctrl = new MainController(primaryStage);
         loader.setController(ctrl);
         Parent root = loader.load();

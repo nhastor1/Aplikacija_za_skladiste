@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.MainDAO;
+import ba.unsa.etf.rpr.DAO.UserDAO;
 import ba.unsa.etf.rpr.Report.PrintReport;
 import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.event.ActionEvent;
@@ -201,6 +202,8 @@ public class FrontPageController {
         System.out.println("English language");
         Locale.setDefault(new Locale("en","US"));
 
+        UserDAO.getInstance().setLanguage(1);
+
         restart();
     }
 
@@ -208,16 +211,17 @@ public class FrontPageController {
         System.out.println("Bosnian language");
         Locale.setDefault(new Locale("bs","BA"));
 
+        UserDAO.getInstance().setLanguage(2);
+
         restart();
     }
 
     private void restart(){
-        ResourceBundle bundle = Bundle.get();
-        Stage prozor = (Stage) btnUser.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/frontPage.fxml"), bundle);
+        Stage newStage = (Stage) btnUser.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/frontPage.fxml"), Bundle.get());
         loader.setController(this);
         try {
-            prozor.setScene(new Scene(loader.load()));
+            newStage.setScene(new Scene(loader.load()));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -33,7 +33,6 @@ public class MainController {
 
     public MainController(Stage stage){
         primaryStage = stage;
-        Locale.setDefault(new Locale("en","US"));
     }
 
     @FXML
@@ -85,10 +84,22 @@ public class MainController {
             stage.setOnHiding((event)->{
                 primaryStage = new Stage();
                 primaryStage.setScene(scene);
+                restart();
             });
             stage.show();
             } catch (IOException e) {
             e.printStackTrace();
             }
+    }
+
+    private void restart(){
+        Stage newStage = (Stage) fldUsername.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"), Bundle.get());
+        loader.setController(this);
+        try {
+            newStage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

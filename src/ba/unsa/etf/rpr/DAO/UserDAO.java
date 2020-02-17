@@ -16,7 +16,7 @@ public class UserDAO {
     private Connection conn;
     private ObservableList<User> listUsers = FXCollections.observableArrayList();
     private PreparedStatement allUserQuery, getUserQueryFromID, addUserQuery, removeUserQuery, updateUserQuery, getIDQuery,
-            getUserQueryFromUsername, countUsernameQuery;
+            getUserQueryFromUsername, countUsernameQuery, getLanguageQuerry, setLanguageQuerry, deleteLanguageQuery;
     private int freeID;
 
     private UserDAO() {
@@ -45,6 +45,9 @@ public class UserDAO {
             rs.next();
             freeID = rs.getInt(1);
 
+            getLanguageQuerry = conn.prepareStatement("SELECT * FROM Language");
+            deleteLanguageQuery = conn.prepareStatement("DELETE FROM Language WHERE lan IN (1,2)");
+            setLanguageQuerry = conn.prepareStatement("INSERT INTO Language VALUES (?)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -225,6 +228,26 @@ public class UserDAO {
 
     public boolean isExsisting(User u){
         return isExsisting(u.getUsername(), u.getId());
+    }
+
+    public int getLanguage(){
+        try {
+            ResultSet rs = getLanguageQuerry.executeQuery();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public void setLanguage(int i){
+        try {
+            deleteLanguageQuery.executeUpdate();
+            setLanguageQuerry.setInt(1, i);
+            setLanguageQuerry.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private ArrayList<User> getAllUsers() {
