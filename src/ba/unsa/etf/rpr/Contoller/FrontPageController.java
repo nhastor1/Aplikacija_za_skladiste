@@ -1,28 +1,19 @@
 package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.Bundle;
-import ba.unsa.etf.rpr.DAO.InvoiceDAO;
 import ba.unsa.etf.rpr.DAO.MainDAO;
-import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
-import ba.unsa.etf.rpr.Exception.InvalidPasswordException;
-import ba.unsa.etf.rpr.Exception.InvalidUsernameException;
-import ba.unsa.etf.rpr.Invoice;
-import ba.unsa.etf.rpr.ProductOrder;
 import ba.unsa.etf.rpr.Report.PrintReport;
-import ba.unsa.etf.rpr.User.User;
 import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
@@ -203,6 +194,32 @@ public class FrontPageController {
             new PrintReport().showReport(MainDAO.getInstance().getConn(), "/reports/Products.jrxml");
         } catch (JRException e1) {
             e1.printStackTrace();
+        }
+    }
+
+    public void englishAction(ActionEvent actionEvent){
+        System.out.println("English language");
+        Locale.setDefault(new Locale("en","US"));
+
+        restart();
+    }
+
+    public void bosanskiAction(ActionEvent actionEvent){
+        System.out.println("Bosnian language");
+        Locale.setDefault(new Locale("bs","BA"));
+
+        restart();
+    }
+
+    private void restart(){
+        ResourceBundle bundle = Bundle.get();
+        Stage prozor = (Stage) btnUser.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/frontPage.fxml"), bundle);
+        loader.setController(this);
+        try {
+            prozor.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

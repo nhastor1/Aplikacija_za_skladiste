@@ -89,6 +89,12 @@
           <Menu mnemonicParsing="false" text="%file">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#closeAction" text="%close" />
+                  <Menu mnemonicParsing="false" text="Language">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#bosanskiAction" text="Bosnaski" />
+                        <MenuItem mnemonicParsing="false" onAction="#englishAction" text="English" />
+                    </items>
+                  </Menu>
                 <MenuItem mnemonicParsing="false" onAction="#printAction" text="%print" />
             </items>
           </Menu>
