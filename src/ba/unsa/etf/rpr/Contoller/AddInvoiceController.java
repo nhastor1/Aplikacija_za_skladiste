@@ -2,10 +2,10 @@ package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.LegalPersonDAO;
-import ba.unsa.etf.rpr.DAO.ManufacturerDAO;
+import ba.unsa.etf.rpr.DAO.NaturalPersonDAO;
 import ba.unsa.etf.rpr.Location.Location;
-import ba.unsa.etf.rpr.Manufacturer;
 import ba.unsa.etf.rpr.Person.LegalPerson;
+import ba.unsa.etf.rpr.Person.NaturalPerson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -24,7 +23,7 @@ public class AddInvoiceController {
     public TextField fldDiscount;
     public TextField fldName;
     private Location location = null;
-    private LegalPerson legalPerson;
+    private NaturalPerson naturalPerson;
 
     public void addLocationAction(ActionEvent actionEvent) {
         Parent root = null;
@@ -58,7 +57,7 @@ public class AddInvoiceController {
             alert.showAndWait();
         }
         else{
-            legalPerson = LegalPersonDAO.getInstance().addLegalPerson(new LegalPerson(0, location, fldName.getText()));
+            naturalPerson = NaturalPersonDAO.getInstance().addNaturalPerson(new NaturalPerson(0, location, fldName.getText()));
             cancelAction(actionEvent);
         }
     }
@@ -73,8 +72,8 @@ public class AddInvoiceController {
         return fldName.getText();
     }
 
-    public LegalPerson getLegalPerson() {
-        return legalPerson;
+    public NaturalPerson getNaturalPerson() {
+        return naturalPerson;
     }
 
     public double getDiscount(){

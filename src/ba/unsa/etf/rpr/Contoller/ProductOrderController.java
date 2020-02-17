@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.DAO.InvoiceDAO;
 import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
 import ba.unsa.etf.rpr.Invoice;
 import ba.unsa.etf.rpr.Person.LegalPerson;
+import ba.unsa.etf.rpr.Person.NaturalPerson;
 import ba.unsa.etf.rpr.ProductOrder;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
@@ -25,7 +26,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class ProductOrderController {
     public TableView<ProductOrder> tableViewProductOrder;
@@ -36,7 +36,7 @@ public class ProductOrderController {
     private Scene scene;
     private ProductOrderDAO dao;
     private ArrayList<ProductOrder> producOrders = null;
-    private LegalPerson legalPerson = null;
+    private NaturalPerson naturalPerson = null;
     private double discount = 0;
 
     public ProductOrderController(Scene scene) {
@@ -86,7 +86,7 @@ public class ProductOrderController {
             stage.setTitle(Bundle.get().getString("newInvoice"));
             stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
             stage.setOnHiding((event) -> {
-                legalPerson = ctrl.getLegalPerson();
+                naturalPerson = ctrl.getNaturalPerson();
                 discount = ctrl.getDiscount();
             });
             stage.show();
@@ -112,7 +112,7 @@ public class ProductOrderController {
             double price = 0;
             for(ProductOrder p : getProducOrders())
                 price += p.getPrice();
-            Invoice invoice = InvoiceDAO.getInstance().addInvoice(new Invoice(0, legalPerson, price, discount));
+            Invoice invoice = InvoiceDAO.getInstance().addInvoice(new Invoice(0, naturalPerson, price, discount));
             for(ProductOrder p : getProducOrders()) {
                 p.setInvoice(invoice);
                 ProductOrderDAO.getInstance().addProductOrder(p);

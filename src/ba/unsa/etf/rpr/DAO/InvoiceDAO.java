@@ -50,7 +50,7 @@ public class InvoiceDAO {
     public Invoice getInvoiceFromRS(ResultSet rs){
         Invoice p = null;
         try {
-            p = new Invoice(rs.getInt(1), LegalPersonDAO.getInstance().getLegalPerson(rs.getInt(2)), rs.getDouble(3),
+            p = new Invoice(rs.getInt(1), NaturalPersonDAO.getInstance().getNaturalPerson(rs.getInt(2)), rs.getDouble(3),
                     rs.getDouble(4), rs.getDate(5));
         } catch (SQLException e) {
             //
