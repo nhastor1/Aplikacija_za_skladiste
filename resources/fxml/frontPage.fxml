@@ -89,6 +89,7 @@
           <Menu mnemonicParsing="false" text="%file">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#closeAction" text="%close" />
+                <MenuItem mnemonicParsing="false" onAction="#printAction" text="%print" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="%edit">

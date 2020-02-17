@@ -2,11 +2,13 @@ package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.InvoiceDAO;
+import ba.unsa.etf.rpr.DAO.MainDAO;
 import ba.unsa.etf.rpr.DAO.ProductOrderDAO;
 import ba.unsa.etf.rpr.Exception.InvalidPasswordException;
 import ba.unsa.etf.rpr.Exception.InvalidUsernameException;
 import ba.unsa.etf.rpr.Invoice;
 import ba.unsa.etf.rpr.ProductOrder;
+import ba.unsa.etf.rpr.Report.PrintReport;
 import ba.unsa.etf.rpr.User.User;
 import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -192,6 +195,14 @@ public class FrontPageController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void printAction(ActionEvent actionEvent){
+        try {
+            new PrintReport().showReport(MainDAO.getInstance().getConn(), "/reports/Products.jrxml");
+        } catch (JRException e1) {
+            e1.printStackTrace();
         }
     }
 }
