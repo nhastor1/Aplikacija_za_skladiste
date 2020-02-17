@@ -18,7 +18,7 @@ public class AboutController {
 
     @FXML
     public void initialize(){
-        Image image = new Image("file:resources/images/avatar.jpg");
+        Image image = new Image("file:resources/img/avatar.jpg");
         imgAvatar.setImage(image);
     }
 

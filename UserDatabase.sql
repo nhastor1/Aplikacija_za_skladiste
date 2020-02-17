@@ -13,6 +13,6 @@ CREATE TABLE IF NOT EXISTS "Language" (
     "lan" INTEGER,
     PRIMARY KEY("lan")
 );
-INSERT INTO "User" VALUES (1,'Admin', 'Admin', 'admin@admin', 'admin', 'Ad1!', 1);
+INSERT INTO "User" VALUES (1,'Admin', 'Admin', 'admin@admin', 'admin', 'Admin123!', 1);
 INSERT INTO "Language" VALUES (1);
 COMMIT;
