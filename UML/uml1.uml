@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ba.unsa.etf.rpr.Warehouse</OriginalElement>
+  <nodes>
+    <node x="160.0" y="725.0">ba.unsa.etf.rpr.Location.Continent</node>
+    <node x="721.0" y="362.0">ba.unsa.etf.rpr.Location.Location</node>
+    <node x="425.0" y="0.0">ba.unsa.etf.rpr.ProductOrder</node>
+    <node x="239.0" y="213.0">ba.unsa.etf.rpr.User.Administrator</node>
+    <node x="0.0" y="0.0">ba.unsa.etf.rpr.Product</node>
+    <node x="506.0" y="362.0">ba.unsa.etf.rpr.Manufacturer</node>
+    <node x="333.0" y="362.0">ba.unsa.etf.rpr.Invoice</node>
+    <node x="608.0" y="583.0">ba.unsa.etf.rpr.Warehouse</node>
+    <node x="85.5" y="362.0">ba.unsa.etf.rpr.Person.Person</node>
+    <node x="250.0" y="0.0">ba.unsa.etf.rpr.User.User</node>
+    <node x="161.0" y="509.0">ba.unsa.etf.rpr.Person.LegalPerson</node>
+    <node x="0.0" y="583.0">ba.unsa.etf.rpr.User.UsersModel</node>
+    <node x="223.0" y="583.0">ba.unsa.etf.rpr.Category</node>
+    <node x="0.0" y="725.0">ba.unsa.etf.rpr.Location.City</node>
+    <node x="427.0" y="583.0">ba.unsa.etf.rpr.Location.Country</node>
+    <node x="0.0" y="509.0">ba.unsa.etf.rpr.Person.NaturalPerson</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ba.unsa.etf.rpr.User.Administrator" target="ba.unsa.etf.rpr.User.User">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="ba.unsa.etf.rpr.Person.LegalPerson" target="ba.unsa.etf.rpr.Person.Person">
+      <point x="0.0" y="-14.5" />
+      <point x="224.5" y="484.0" />
+      <point x="178.5" y="484.0" />
+      <point x="31.0" y="48.5" />
+    </edge>
+    <edge source="ba.unsa.etf.rpr.Person.NaturalPerson" target="ba.unsa.etf.rpr.Person.Person">
+      <point x="0.0" y="-14.5" />
+      <point x="70.5" y="484.0" />
+      <point x="116.5" y="484.0" />
+      <point x="-31.0" y="48.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="302.5" y="507.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
