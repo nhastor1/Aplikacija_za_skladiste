@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.DAO;
 
-import ba.unsa.etf.rpr.Language;
+import ba.unsa.etf.rpr.Enum.Language;
 import ba.unsa.etf.rpr.User.Administrator;
 import ba.unsa.etf.rpr.User.User;
 import javafx.collections.FXCollections;

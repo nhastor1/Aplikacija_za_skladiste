@@ -2,8 +2,10 @@ package ba.unsa.etf.rpr.Contoller;
 
 import ba.unsa.etf.rpr.Bundle;
 import ba.unsa.etf.rpr.DAO.MainDAO;
+import ba.unsa.etf.rpr.DAO.ProductDAO;
 import ba.unsa.etf.rpr.DAO.UserDAO;
-import ba.unsa.etf.rpr.Language;
+import ba.unsa.etf.rpr.Enum.Language;
+import ba.unsa.etf.rpr.Product;
 import ba.unsa.etf.rpr.Report.PrintReport;
 import ba.unsa.etf.rpr.User.UsersModel;
 import javafx.event.ActionEvent;
@@ -14,15 +16,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.PopupControl;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -288,6 +295,48 @@ public class FrontPageController {
             myStage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void actionSave(ActionEvent actionEvent){
+        System.out.println("Save");
+
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle(Bundle.get().getString("Dialogbox"));
+        dialog.setHeaderText(Bundle.get().getString("Unesiteimedatoteke"));
+        dialog.setContentText("");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> System.out.println("File name: " + name));
+        
+        writeInFile(result.get());
+    }
+
+    private void writeInFile(String s) {
+        File file = new File(s);
+        List<Product> products = ProductDAO.getInstance().getListProduct();
+
+        PrintWriter izlaz;
+        try {
+            izlaz = new PrintWriter(new FileWriter(file));
+            izlaz.write("id : Name : Amount : Price : WarehoseID : LocationID ::\n");
+            for(Product p : products){
+                izlaz.write(Integer.toString(p.getId()));
+                izlaz.write(':');
+                izlaz.write(p.getName());
+                izlaz.write(':');
+                izlaz.write(Integer.toString(p.getAmount()));
+                izlaz.write(':');
+                izlaz.write(Double.toString(p.getPrice()));
+                izlaz.write(':');
+                izlaz.write(Integer.toString(p.getWarehouse().getId()));
+                izlaz.write(' ');
+                izlaz.write(Integer.toString(p.getLocationOfProduction().getId()));
+                izlaz.write("::\n");
+            }
+            izlaz.close();
+        } catch (IOException e) {
+            System.out.println("File " + s + " can not be opened.");
         }
     }
 

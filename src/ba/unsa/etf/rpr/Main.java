@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.Contoller.MainController;
 import ba.unsa.etf.rpr.DAO.UserDAO;
+import ba.unsa.etf.rpr.Enum.Language;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 

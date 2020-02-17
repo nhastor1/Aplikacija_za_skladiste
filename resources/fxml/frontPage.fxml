@@ -90,7 +90,7 @@
                         <MenuItem fx:id="menuEngleski" onAction="#englishAction" text="_English" />
                     </items>
                   </Menu>
-                  <MenuItem fx:id="menuSave" text="%save" />
+                  <MenuItem fx:id="menuSave" onAction="#actionSave" text="%save" />
                 <MenuItem fx:id="menuPrint" onAction="#printAction" text="%print" />
             </items>
           </Menu>
